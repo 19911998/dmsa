@@ -21,10 +21,6 @@ hero:
       color: gray
       to: https://github.com/nuxt-ui-pro/docs
       target: _blank
-  code: |
-    ```bash [Terminal]
-    npx nuxi init -t github:nuxt-ui-pro/docs
-    ```
 features:
   title: 'All-in-one docs template'
   links:
