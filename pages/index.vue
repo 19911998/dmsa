@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+const { data: blog } = await useAsyncData('blog', () => queryContent('blog').sort({ createdAt: -1 }).limit(6).find())
 
 useSeoMeta({
   title: page.value.title,
@@ -37,7 +38,7 @@ defineOgImage({
 
     <ULandingSection :title="page.features.title" :links="page.features.links">
       <UPageGrid>
-        <ULandingCard v-for="(item, index) of page.features.items" :key="index" v-bind="item" />
+        <ULandingCard v-for="(item, index) of blog" :key="index" v-bind="item" />
       </UPageGrid>
     </ULandingSection>
   </div>
