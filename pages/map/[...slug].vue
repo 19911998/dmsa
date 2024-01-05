@@ -1,28 +1,13 @@
 <template>
   <div>
-    <UPageHero
-      v-bind="page"
-    >
+    <UPageHero v-bind="page">
       <template #description>
-        <div class="mb-8 text-slate-600 dark:text-slate-500 text-sm flex items-center gap-x-4">
-          <div class="flex gap-x-2 items-center">
-            <UIcon name="i-heroicons-calendar" />
-            {{ getCreationDate(page) }}
-          </div>
-
-          <TagList :tags="page.tags" />
-        </div>
+        {{ page.categories }}
 
         <MDC :value="page.description" />
       </template>
 
-      <NuxtImg
-        v-if="page.image"
-        :src="page.image.src"
-        :alt="page.image.alt"
-        class="ml-auto"
-        preset="page"
-      />
+      <NuxtImg v-if="page.image" :src="page.image.src" :alt="page.image.alt" class="ml-auto" preset="page" />
     </UPageHero>
 
     <UPageBody prose>
@@ -36,7 +21,7 @@
     </UPageBody>
   </div>
 </template>
-
+  
 <script setup lang="ts">
 import { withoutTrailingSlash } from 'ufo'
 
@@ -52,7 +37,7 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('blog')
+const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('map')
   .where({ _extension: 'md', navigation: { $ne: false } })
   .only(['title', 'description', '_path'])
   .findSurround(withoutTrailingSlash(route.path))
@@ -72,3 +57,4 @@ defineOgImage({
   description: page.value.description
 })
 </script>
+  

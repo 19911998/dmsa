@@ -6,17 +6,31 @@ hero:
   title: »Du musst sie akzeptieren!«
   description: Glatzenpflege auf Staatskosten
   links:
-    - label: Get started
+    - label: Einführung
+      icon: i-heroicons-information-circle-20-solid
+      color: gray
+      trailing: false
+      to: /#intro
+      size: lg
+    - label: Zur Karte
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: https://github.com/nuxt-ui-pro/docs
+      to: /map
       size: lg
-      target: _blank
 blog:
-  title: 'Der Blog'
+  headline: Blog
   links:
-    - label: 'Alle Beiträge'
-      trailingIcon: 'i-heroicons-arrow-right-20-solid'
-      color: 'gray'
-      to: '/blog'
+    - label: Alle Beiträge
+      trailingIcon: i-heroicons-arrow-right-20-solid
+      color: gray
+      to: /blog
+      size: lg
+map:
+  title: Die Karte
+  description: Blablabla
+  links:
+    - label: Zur Karte
+      trailingIcon: i-heroicons-arrow-right-20-solid
+      color: gray
+      to: /map
       size: lg

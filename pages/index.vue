@@ -1,30 +1,3 @@
-<script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
-const { data: blog } = await useAsyncData('blog-entries', () => queryContent('blog').sort({ createdAt: -1 }).limit(4).find())
-
-const headerLinks = useState('header-links', () => undefined)
-
-headerLinks.value = [{
-  label: 'Blog',
-  to: '#blog',
-  icon: 'i-heroicons-cube-transparent',
-  exactHash: true
-}]
-
-useSeoMeta({
-  title: page.value.title,
-  ogTitle: page.value.title,
-  description: page.value.description,
-  ogDescription: page.value.description
-})
-
-defineOgImage({
-  component: 'Docs',
-  title: page.value.title,
-  description: page.value.description
-})
-</script>
-
 <template>
   <div>
     <ULandingHero
@@ -49,7 +22,15 @@ defineOgImage({
       </template>
     </ULandingHero>
 
-    <ULandingSection id="blog" :title="page.blog.title" :links="page.blog.links">
+    <ULandingSection id="intro" v-bind="intro" />
+
+    <ULandingSection id="map">
+      <ULandingCTA
+        v-bind="page.map"
+      />
+    </ULandingSection>
+
+    <ULandingSection id="blog" :ui="{ container: 'gap-8 sm:gap-8', links: '!mt-4' }" v-bind="page.blog">
       <UPageGrid class="xl:grid-cols-4">
         <ULandingCard
           v-for="(item, index) of blog"
@@ -69,3 +50,38 @@ defineOgImage({
     </ULandingSection>
   </div>
 </template>
+
+<script setup lang="ts">
+const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+const { data: blog } = await useAsyncData('blog-entries', () => queryContent('blog').sort({ createdAt: -1 }).limit(4).find())
+const { data: intro } = await useAsyncData('intro', () => queryContent('intro').findOne())
+
+const headerLinks = useState('header-links', () => undefined)
+
+headerLinks.value = [{
+  label: 'Intro',
+  to: '#intro',
+  exactHash: true
+}, {
+  label: 'Karte',
+  to: '#map',
+  exactHash: true
+}, {
+  label: 'Blog',
+  to: '#blog',
+  exactHash: true
+}]
+
+useSeoMeta({
+  title: page.value.title,
+  ogTitle: page.value.title,
+  description: page.value.description,
+  ogDescription: page.value.description
+})
+
+defineOgImage({
+  component: 'Docs',
+  title: page.value.title,
+  description: page.value.description
+})
+</script>

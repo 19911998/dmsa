@@ -22,8 +22,8 @@
                 <MDC :value="item.title" />
               </div>
 
-              <div class="mb-4 text-sky-600 dark:text-sky-300 text-sm flex items-center gap-x-2">
-                <UIcon name="i-heroicons-clock" />
+              <div class="mb-4 text-slate-500 dark:text-slate-400 text-sm flex items-center gap-x-2">
+                <UIcon name="i-heroicons-calendar" />
                 {{ getCreationDate(item) }}
               </div>
 
