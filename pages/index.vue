@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
-const { data: blog } = await useAsyncData('blog', () => queryContent('blog/').sort({ createdAt: -1 }).limit(4).find())
+const { data: blog } = await useAsyncData('blog-entries', () => queryContent('blog').sort({ createdAt: -1 }).limit(4).find())
 
 const headerLinks = useState('header-links', () => undefined)
 
