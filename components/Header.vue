@@ -21,7 +21,7 @@ const { header } = useAppConfig()
     </template>
 
     <template v-if="header?.search && route.name !== 'index'" #center>
-      <UDocsSearchButton class="hidden lg:flex" />
+      <UDocsSearchButton label="Suche&hellip;" class="hidden lg:flex" />
     </template>
 
     <template #right>

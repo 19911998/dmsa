@@ -1,3 +1,42 @@
+<template>
+  <div>
+    <UPageHero
+      v-bind="page"
+    >
+      <template #description>
+        <div class="mb-8 text-sky-600 dark:text-sky-300 text-sm flex items-baseline gap-x-4">
+          <div>
+            <UIcon name="i-heroicons-clock" />
+            {{ getCreationDate(page) }}
+          </div>
+
+          <TagList :tags="page.tags" />
+        </div>
+
+        <MDC :value="page.description" />
+      </template>
+
+      <NuxtImg
+        v-if="page.image"
+        :src="page.image.src"
+        :alt="page.image.alt"
+        class="ml-auto"
+        preset="page"
+      />
+    </UPageHero>
+
+    <UPageBody prose>
+      <UContainer>
+        <ContentRenderer v-if="page.body" :value="page" class="max-w-xl mx-auto" />
+      </UContainer>
+
+      <hr v-if="surround?.length">
+
+      <UDocsSurround :surround="surround" />
+    </UPageBody>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { withoutTrailingSlash } from 'ufo'
 
@@ -33,37 +72,3 @@ defineOgImage({
   description: page.value.description
 })
 </script>
-
-<template>
-  <div>
-    <UPageHero
-      v-bind="page"
-    >
-      <template #description>
-        <div class="mb-8 text-sky-600 dark:text-sky-300 text-sm">
-          <UIcon name="i-heroicons-clock" />
-          {{ getCreationDate(page) }}
-        </div>
-        <MDC :value="page.description" />
-      </template>
-
-      <NuxtImg
-        v-if="page.image"
-        :src="page.image.src"
-        :alt="page.image.alt"
-        class="ml-auto"
-        preset="page"
-      />
-    </UPageHero>
-
-    <UPageBody prose>
-      <UContainer>
-        <ContentRenderer v-if="page.body" :value="page" class="max-w-xl mx-auto" />
-      </UContainer>
-
-      <hr v-if="surround?.length">
-
-      <UDocsSurround :surround="surround" />
-    </UPageBody>
-  </div>
-</template>

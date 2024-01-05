@@ -18,5 +18,5 @@ blog:
     - label: 'Alle Beiträge'
       trailingIcon: 'i-heroicons-arrow-right-20-solid'
       color: 'gray'
-      to: '/entries'
+      to: '/blog'
       size: lg
