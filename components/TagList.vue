@@ -20,5 +20,5 @@ const props = defineProps<{
   pageTag?: string
 }>()
 
-const tagsArr = props.tags?.split(' ')
+const tagsArr = computed(() => props.tags?.split(' '))
 </script>
