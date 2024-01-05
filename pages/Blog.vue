@@ -2,13 +2,13 @@
   <UContainer>
     <UPageHero v-if="page.hero" v-bind="page.hero" />
 
-    <BlogList :entries="blog" />
+    <BlogList :entries="entries" />
   </UContainer>
 </template>
 
 <script setup lang="ts">
-const { data: page } = await useAsyncData('entries', () => queryContent('entries').findOne())
-const { data: blog } = await useAsyncData('blog', () => queryContent('/blog').sort({ createdAt: -1 }).find())
+const { data: page } = await useAsyncData('blog-list', () => queryContent('blog-list').findOne())
+const { data: entries } = await useAsyncData('entries', () => queryContent('blog/').sort({ createdAt: -1 }).find())
 
 useSeoMeta({
   title: page.value.title,
