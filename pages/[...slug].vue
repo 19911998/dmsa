@@ -35,7 +35,7 @@ defineOgImage({
 </script>
 
 <template>
-  <UPage>
+  <div>
     <UPageHero
       v-bind="page"
     >
@@ -65,5 +65,5 @@ defineOgImage({
 
       <UDocsSurround :surround="surround" />
     </UPageBody>
-  </UPage>
+  </div>
 </template>

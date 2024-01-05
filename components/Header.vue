@@ -2,12 +2,15 @@
 import type { NavItem } from '@nuxt/content/dist/runtime/types'
 
 const navigation = inject<NavItem[]>('navigation', [])
+const route = useRoute()
+
+const headerLinks = useState('header-links', () => undefined)
 
 const { header } = useAppConfig()
 </script>
 
 <template>
-  <UHeader>
+  <UHeader :links="headerLinks">
     <template #logo>
       <template v-if="header?.logo?.dark || header?.logo?.light">
         <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
@@ -17,7 +20,7 @@ const { header } = useAppConfig()
       </template>
     </template>
 
-    <template v-if="header?.search" #center>
+    <template v-if="header?.search && route.name !== 'index'" #center>
       <UDocsSearchButton class="hidden lg:flex" />
     </template>
 

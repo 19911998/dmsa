@@ -2,6 +2,15 @@
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
 const { data: blog } = await useAsyncData('blog', () => queryContent('blog/').sort({ createdAt: -1 }).limit(4).find())
 
+const headerLinks = useState('header-links', () => undefined)
+
+headerLinks.value = [{
+  label: 'Blog',
+  to: '#blog',
+  icon: 'i-heroicons-cube-transparent',
+  exactHash: true
+}]
+
 useSeoMeta({
   title: page.value.title,
   ogTitle: page.value.title,
@@ -40,7 +49,7 @@ defineOgImage({
       </template>
     </ULandingHero>
 
-    <ULandingSection :title="page.blog.title" :links="page.blog.links">
+    <ULandingSection id="blog" :title="page.blog.title" :links="page.blog.links">
       <UPageGrid class="xl:grid-cols-4">
         <ULandingCard
           v-for="(item, index) of blog"
