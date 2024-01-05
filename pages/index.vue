@@ -7,19 +7,6 @@
         title: 'text-4xl'
       }"
     >
-      <template #headline>
-        <UBadge
-          v-if="page.hero.headline"
-          variant="subtle"
-          size="lg"
-          class="relative rounded-full font-semibold"
-        >
-          {{ page.hero.headline.label }}
-
-          <UIcon v-if="page.hero.headline.icon" :name="page.hero.headline.icon" class="ml-1 w-4 h-4 pointer-events-none" />
-        </UBadge>
-      </template>
-
       <template #title>
         <MDC :value="page.hero.title" />
       </template>
