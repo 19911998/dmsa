@@ -5,10 +5,9 @@
         v-for="(item, index) of entries"
         :key="index"
         :to="item?._path"
-        orientation="horizontal"
       >
         <template #container>
-          <div class="flex items-start gap-4">
+          <div class="flex flex-col md:flex-row items-start gap-4">
             <NuxtImg
               v-if="item.image"
               :src="item.image.src"
