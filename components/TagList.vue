@@ -6,7 +6,7 @@
       class="z-50"
       :color="tag === pageTag ? 'primary' : 'gray'"
     >
-      <NuxtLink :to="'/tags/' + tag" class="flex items-center gap-x-2">
+      <NuxtLink :to="pageTag ? '/blog/' : '/tags/' + tag" class="flex items-center gap-x-2">
         <UIcon name="i-heroicons-tag" />
         {{ tag }}
       </NuxtLink>
