@@ -9,13 +9,8 @@ hero:
     - label: Get started
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: '/getting-started'
-      size: lg
-    - label: Use this template
-      icon: i-simple-icons-github
-      size: lg
-      color: gray
       to: https://github.com/nuxt-ui-pro/docs
+      size: lg
       target: _blank
 blog:
   title: 'Der Blog'

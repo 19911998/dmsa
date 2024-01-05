@@ -16,7 +16,8 @@ export default defineNuxtConfig({
         modifiers: {
           fit: 'cover',
           format: 'webp',
-          loading: 'lazy'
+          loading: 'lazy',
+          modifiers: { resize: '250x150' }
         },
       },
       page: {

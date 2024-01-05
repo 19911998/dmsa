@@ -60,10 +60,8 @@ defineOgImage({
           <NuxtImg
             v-if="item.image"
             :src="item.image.src"
-            style="order: -2"
+            style="order: -2; max-width: 250px;"
             :alt="item.image.alt"
-            width="250"
-            height="250"
             preset="blog"
           />
         </ULandingCard>
