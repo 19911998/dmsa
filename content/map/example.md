@@ -1,6 +1,9 @@
 ---
 title: Test
 description: Welcome to Nuxt UI Pro documentation template.
+---
+Text
+---
 createdAt: 2024-01-03
 categories: {
   longitude: 52.23444,
