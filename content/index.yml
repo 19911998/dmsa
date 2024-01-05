@@ -17,14 +17,10 @@ hero:
       trailing: true
       to: /map
       size: lg
-blog:
-  headline: Blog
-  links:
-    - label: Alle Beiträge
-      trailingIcon: i-heroicons-arrow-right-20-solid
-      color: gray
-      to: /blog
-      size: lg
+intro:
+  headline: Einführung
+  title: Wieso? Weshalb? Warum?
+  description: Welcome to Nuxt UI Pro documentation template.
 map:
   title: Die Karte
   description: Blablabla
@@ -33,4 +29,12 @@ map:
       trailingIcon: i-heroicons-arrow-right-20-solid
       color: gray
       to: /map
+      size: lg
+blog:
+  headline: Blog
+  links:
+    - label: Alle Beiträge
+      trailingIcon: i-heroicons-arrow-right-20-solid
+      color: gray
+      to: /blog
       size: lg

@@ -12,7 +12,7 @@
       </template>
     </ULandingHero>
 
-    <ULandingSection id="intro" v-bind="intro" />
+    <ULandingSection id="intro" v-bind="page.intro" />
 
     <ULandingSection id="map">
       <ULandingCTA
@@ -44,7 +44,6 @@
 <script setup lang="ts">
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
 const { data: blog } = await useAsyncData('blog-entries', () => queryContent('blog').sort({ createdAt: -1 }).limit(4).find())
-const { data: intro } = await useAsyncData('intro', () => queryContent('intro').findOne())
 
 const headerLinks = useState('header-links', () => undefined)
 

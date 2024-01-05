@@ -25,7 +25,7 @@ const { header } = useAppConfig()
     </template>
 
     <template #right>
-      <UDocsSearchButton v-if="header?.search" :label="null" class="lg:hidden" />
+      <UDocsSearchButton v-if="header?.search" :label="null" :class="{ 'lg:hidden': route.name !== 'index' }" />
 
       <UColorModeButton v-if="header?.colorMode" />
 
