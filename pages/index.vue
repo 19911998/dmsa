@@ -3,6 +3,9 @@
     <ULandingHero
       v-if="page.hero"
       v-bind="page.hero"
+      :ui="{
+        title: 'text-4xl'
+      }"
     >
       <template #headline>
         <UBadge
