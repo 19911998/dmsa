@@ -13,7 +13,7 @@
 <script setup lang="ts">
 const [slug] = useRoute().params.slug
 
-const { data: blog } = await useAsyncData('blog', () => queryContent('blog').where({ tags: { $contains: slug } }).sort({ createdAt: -1 }).find())
+const { data: blog } = await useAsyncData('tag-' + slug, () => queryContent('blog').where({ tags: { $contains: slug } }).sort({ createdAt: -1 }).find())
 
 if (!blog.value.length) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
