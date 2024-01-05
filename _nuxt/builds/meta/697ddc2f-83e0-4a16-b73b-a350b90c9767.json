@@ -1,0 +1,1 @@
+{"id":"697ddc2f-83e0-4a16-b73b-a350b90c9767","timestamp":1704492851347,"matcher":{"static":{"/":null,"/api":null,"/api/search.json":{"prerender":true}},"wildcard":{},"dynamic":{}},"prerendered":["/blog","/","/map","/tags/document","/tags/test","/tags/example","/blog/bliblablub","/blog/test","/map/example"]}
