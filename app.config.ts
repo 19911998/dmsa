@@ -1,6 +1,6 @@
 export default defineAppConfig({
   ui: {
-    primary: 'green',
+    primary: 'sky',
     gray: 'slate',
     footer: {
       bottom: {
@@ -20,12 +20,7 @@ export default defineAppConfig({
     },
     search: true,
     colorMode: true,
-    links: [{
-      icon: 'i-simple-icons-github',
-      to: 'https://github.com/nuxt-ui-pro/docs',
-      target: '_blank',
-      'aria-label': 'Docs template on GitHub'
-    }]
+    links: []
   },
   footer: {
     credits: 'Copyright © 2023',

@@ -1,0 +1,10 @@
+title: 'Nuxt UI Pro - Docs template'
+description: 'Welcome to Nuxt UI Pro documentation template.'
+navigation: false
+hero:
+  title: '»Du musst sie akzeptieren!«'
+  description: 'Create your documentation in seconds with this template!'
+  headline:
+    label: Der Blog
+    to: https://ui.nuxt.com/pro
+    icon: i-heroicons-arrow-top-right-on-square-20-solid

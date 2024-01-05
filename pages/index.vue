@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
-const { data: blog } = await useAsyncData('blog', () => queryContent('blog').sort({ createdAt: -1 }).limit(6).find())
+const { data: blog } = await useAsyncData('blog', () => queryContent('blog/').sort({ createdAt: -1 }).limit(4).find())
 
 useSeoMeta({
   title: page.value.title,
@@ -18,13 +18,17 @@ defineOgImage({
 
 <template>
   <div>
-    <ULandingHero v-if="page.hero" v-bind="page.hero">
+    <ULandingHero
+      v-if="page.hero"
+      v-bind="page.hero"
+    >
       <template #headline>
-        <UBadge v-if="page.hero.headline" variant="subtle" size="lg" class="relative rounded-full font-semibold">
-          <NuxtLink :to="page.hero.headline.to" target="_blank" class="focus:outline-none" tabindex="-1">
-            <span class="absolute inset-0" aria-hidden="true" />
-          </NuxtLink>
-
+        <UBadge
+          v-if="page.hero.headline"
+          variant="subtle"
+          size="lg"
+          class="relative rounded-full font-semibold"
+        >
           {{ page.hero.headline.label }}
 
           <UIcon v-if="page.hero.headline.icon" :name="page.hero.headline.icon" class="ml-1 w-4 h-4 pointer-events-none" />
@@ -36,9 +40,24 @@ defineOgImage({
       </template>
     </ULandingHero>
 
-    <ULandingSection :title="page.features.title" :links="page.features.links">
-      <UPageGrid>
-        <ULandingCard v-for="(item, index) of blog" :key="index" v-bind="item" />
+    <ULandingSection :title="page.blog.title" :links="page.blog.links">
+      <UPageGrid class="xl:grid-cols-4">
+        <ULandingCard
+          v-for="(item, index) of blog"
+          :key="index"
+          v-bind="item"
+          :to="item._path"
+        >
+          <NuxtImg
+            v-if="item.image"
+            :src="item.image.src"
+            style="order: -2"
+            :alt="item.image.alt"
+            width="250"
+            height="250"
+            preset="blog"
+          />
+        </ULandingCard>
       </UPageGrid>
     </ULandingSection>
   </div>

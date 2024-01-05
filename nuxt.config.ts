@@ -7,8 +7,25 @@ export default defineNuxtConfig({
     '@nuxthq/studio',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
-    'nuxt-og-image'
+    'nuxt-og-image',
+    '@nuxt/image'
   ],
+  image: {
+    presets: {
+      blog: {
+        modifiers: {
+          fit: 'cover',
+          format: 'webp',
+          loading: 'lazy'
+        },
+      },
+      page: {
+        modifiers: {
+          format: 'webp',
+        }
+      }
+    }
+  },
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
     'components:extend': (components) => {
