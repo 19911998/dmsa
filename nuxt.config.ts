@@ -8,8 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
-    '@nuxt/image',
-    'nuxt-simple-robots'
+    '@nuxt/image'
   ],
   image: {
     presets: {
