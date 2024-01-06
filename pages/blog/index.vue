@@ -13,9 +13,11 @@
 <script setup lang="ts">
 const tag = computed(() => useRoute().query.tag as string)
 
-const { data: entries } = tag.value
-  ? await useAsyncData('tag-' + tag.value, () => queryContent('blog').where({ tags: { $contains: tag.value } }).sort({ createdAt: -1 }).find())
-  : await useAsyncData('blog-entries', () => queryContent('blog').sort({ createdAt: -1 }).find())
+const { data: entries } = await useAsyncData(tag.value ? 'tag-' + tag.value : 'blog-entries',
+  () => tag.value
+    ? queryContent('blog').where({ tags: { $contains: tag.value } }).sort({ createdAt: -1 }).find()
+    : queryContent('blog').sort({ createdAt: -1 }).find(),
+  { watch: [tag] })
 
 if (!entries.value.length) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })

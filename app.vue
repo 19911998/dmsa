@@ -1,3 +1,23 @@
+<template>
+  <div>
+    <Header />
+
+    <UMain>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </UMain>
+
+    <Footer />
+
+    <ClientOnly>
+      <LazyUDocsSearch :files="files" :navigation="navigation" />
+    </ClientOnly>
+
+    <UNotifications />
+  </div>
+</template>
+
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
@@ -28,23 +48,3 @@ useSeoMeta({
 
 provide('navigation', navigation)
 </script>
-
-<template>
-  <div>
-    <Header />
-
-    <UMain>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-    </UMain>
-
-    <Footer />
-
-    <ClientOnly>
-      <LazyUDocsSearch :files="files" :navigation="navigation" />
-    </ClientOnly>
-
-    <UNotifications />
-  </div>
-</template>
