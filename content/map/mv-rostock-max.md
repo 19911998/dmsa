@@ -1,6 +1,6 @@
 ---
 title: Jugendclub Max Reichpietsch
-description: Welcome to Nuxt UI Pro documentation template.
+description: Überregionales rechtes Zentrum in Rostocker Jugendclub.
 tags: blood&honour mecklenburg-vorpommern
 meta:
   bundesland: Mecklenburg-Vorpommern

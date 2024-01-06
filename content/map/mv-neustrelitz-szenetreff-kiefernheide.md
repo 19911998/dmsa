@@ -1,6 +1,6 @@
 ---
 title: Szenetreff Kiefernheide
-description: Welcome to Nuxt UI Pro documentation template.
+description: Von Rechten geleiteter Jugendtreff in Neustrelitz.
 tags: mecklenburg-vorpommern
 meta:
   bundesland: Mecklenburg-Vorpommern
