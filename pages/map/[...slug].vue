@@ -2,17 +2,35 @@
   <div>
     <UPageHero v-bind="page">
       <template #description>
-        {{ page.categories }}
-
         <MDC :value="page.description" />
       </template>
 
-      <NuxtImg v-if="page.image" :src="page.image.src" :alt="page.image.alt" class="ml-auto" preset="page" />
+      <dl>
+        <template
+          v-for="prop of ['bundesland', 'ort', 'träger', 'organisationen', 'zeitraum']"
+          :key="prop"
+        >
+          <div
+            v-if="page.meta[prop]"
+            class="grid grid-cols-3 gap-x-2" 
+          >
+            <dt class="text-right font-semibold capitalize">
+              {{ prop }}:
+            </dt>
+            <dd
+              class="col-span-2"
+              v-html="Array.isArray(page.meta[prop])
+                ? page.meta[prop].join(',<br>')
+                : page.meta[prop]"
+            />
+          </div>
+        </template>
+      </dl>
     </UPageHero>
 
     <UPageBody prose>
       <UContainer>
-        <ContentRenderer v-if="page.body" :value="page" class="max-w-xl mx-auto" />
+        <ContentRenderer v-if="page.body" :value="page" class="max-w-lg mx-auto" />
       </UContainer>
 
       <hr v-if="surround?.length">
@@ -35,6 +53,19 @@ const { seo } = useAppConfig()
 const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+}
+
+if (page.value.meta.jahre) {
+  page.value.meta.zeitraum = page.value.meta.jahre.reduce((acc: number[][], val: number) => {
+    if (!acc.length || (val > acc.at(-1)[0] + 1)) {
+      acc.push([val])
+    } else {
+      acc.at(-1)[1] = val
+    }
+    return acc
+  }, []).map(val => {
+    return (val.length > 1) ? val.join(' – ') : val[0]
+  })
 }
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('map')

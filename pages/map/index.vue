@@ -16,7 +16,7 @@
                   <MDC :value="item.title" />
                 </div>
 
-                {{ item.categories }}
+                {{ item.meta }}
 
                 <div class="text-[15px] text-gray-500 dark:text-gray-400 mt-1">
                   <MDC :value="item.description" />
