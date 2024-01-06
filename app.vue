@@ -11,7 +11,7 @@
     <Footer />
 
     <ClientOnly>
-      <LazyUDocsSearch :files="files" :navigation="navigation" />
+      <LazyUDocsSearch :files="files" :navigation="navigation" hide-color-mode />
     </ClientOnly>
 
     <UNotifications />

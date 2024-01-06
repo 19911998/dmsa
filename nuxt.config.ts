@@ -12,9 +12,6 @@ export default defineNuxtConfig({
     'nuxt-simple-sitemap',
     'nuxt-simple-robots'
   ],
-  site: {
-    defaultLocale: 'de'
-  },
   image: {
     presets: {
       blog: {
@@ -56,6 +53,9 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/api/search.json': { prerender: true },
+  },
+  colorMode: {
+    preference: 'dark'
   },
   // Devtools / Typescript
   devtools: { enabled: true },
