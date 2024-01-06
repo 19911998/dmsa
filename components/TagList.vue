@@ -7,7 +7,10 @@
       size="md"
       :color="tag === pageTag ? 'primary' : 'gray'"
     >
-      <NuxtLink :to="(tag === pageTag) ? base : base + '?tag=' + tag" class="flex items-center gap-x-2">
+      <NuxtLink
+        :to="(tag === pageTag) ? base : base + '?tag=' + encodeURIComponent(tag)"
+        class="flex items-center gap-x-2"
+      >
         <UIcon name="i-heroicons-tag" />
         {{ tag }}
       </NuxtLink>
