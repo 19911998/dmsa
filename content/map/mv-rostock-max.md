@@ -12,6 +12,8 @@ meta:
     - 1992
     - 2001
     - 2002
+  start: 1992
+  ende: 2002
   sozialarbeitende: true
   rechte-sozialarbeitende:
   selbstverwaltung:
