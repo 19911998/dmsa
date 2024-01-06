@@ -8,8 +8,13 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
-    '@nuxt/image'
+    '@nuxt/image',
+    'nuxt-simple-sitemap',
+    'nuxt-simple-robots'
   ],
+  site: {
+    defaultLocale: 'de'
+  },
   image: {
     presets: {
       blog: {
