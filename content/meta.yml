@@ -1,7 +1,7 @@
 meta:
   ort:
     bundesland: {Bundesland}
-    ort: Rostock {Ort}
+    ort: {Ort}
     einwohnerzahl: {Einwohnerzahl}
     name: {Name}
     adresse: {Adresse}
@@ -35,5 +35,5 @@ meta:
     verdrängungseffekt: {Verdrängungseffekt}
   träger: {Traeger:Array}
   organisationen: {Organisationen:Array}
-  lng: {Laenge}
+  lng: {Länge}
   lat: {Breite}
