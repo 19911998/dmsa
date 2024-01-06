@@ -4,12 +4,12 @@
       <template #description>
         <MDC :value="page.description" />
 
-        <TagList base="/map" :tags="page.tags" class="mt-lg" />
+        <TagList base="/map" :tags="page.tags" class="mt-5" />
       </template>
 
       <dl>
         <template
-          v-for="prop of ['ort', 'träger', 'organisationen', 'zeitraum']"
+          v-for="prop of ['ort', 'träger', 'zeitraum', 'adresse']"
           :key="prop"
         >
           <div
@@ -22,7 +22,7 @@
             <dd
               class="col-span-2"
               v-html="Array.isArray(page.meta[prop])
-                ? page.meta[prop].join(',<br>')
+                ? page.meta[prop].join(', ')
                 : page.meta[prop]"
             />
           </div>

@@ -4,16 +4,18 @@
       v-bind="page"
     >
       <template #description>
-        <div class="mb-8 text-slate-600 dark:text-slate-500 text-sm flex items-center gap-x-4">
-          <div class="flex gap-x-2 items-center">
-            <UIcon name="i-heroicons-calendar" />
-            {{ getCreationDate(page) }}
+        <div class="flex flex-col">
+          <MDC :value="page.description" />
+
+          <div class="flex items-center mt-5 gap-5">
+            <div class="text-slate-500 font-light text-sm tracking-wide flex items-center gap-x-2">
+              <UIcon name="i-heroicons-calendar" class="text-lg" />
+              {{ getCreationDate(page) }}
+            </div>
+
+            <TagList base="/blog" tag-base="/blog/tags" :tags="page.tags" />
           </div>
-
-          <TagList base="/blog" :tags="page.tags" />
         </div>
-
-        <MDC :value="page.description" />
       </template>
 
       <NuxtImg

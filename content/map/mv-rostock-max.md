@@ -5,7 +5,7 @@ tags: blood&honour mecklenburg-vorpommern
 meta:
   bundesland: Mecklenburg-Vorpommern
   ort: Rostock
-  einwohnerzahl: 207.513
+  einwohnerzahl: 207513
   name: Jugendclub Max Reichpietsch
   adresse: Anschrift unbekannt
   jahre:
