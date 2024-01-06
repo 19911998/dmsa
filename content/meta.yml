@@ -1,32 +1,38 @@
 meta:
-  bundesland: {Bundesland}
-  ort: Rostock {Ort}
-  einwohnerzahl: {Einwohnerzahl}
-  name: {Name}
-  adresse: {Adresse}
-  jahre: {Jahre:Array}
-  start: {Eröffnung}
-  ende: {Schließung}
-  sozialarbeitende: {Sozialarbeitende:Boolean}
-  rechte-sozialarbeitende: {rechte Sozialarbeitende:Boolean}
-  selbstverwaltung: {Selbstverwaltung:Boolean}
-  rechte-subkultur: {rechte Subkultur:Boolean}
-  organisierte-rechte: {organisierte Rechte:Boolean}
-  integrierte-nutzung: {integrierte Nutzung:Boolean}
-  privilegierte-nutzung: {privilegierte Nutzung:Boolean}
-  bandproben: {Bandproben:Boolean}
-  szeneveranstaltungen: {Szeneveranstaltungen:Boolean}
-  szeneparties: {Szeneparties:Boolean}
-  szenekonzerte: {Szenekonzerte:Boolean}
-  kameradschaftstreffen: {Kameradschaftstreffen:Boolean}
-  propaganda: {Propaganda:Boolean}
-  andere-ressource: {andere:Boolean}
-  mörderinnen: {Mörder*innen:Boolean}
-  mord: {Tathandlung (Mord):Boolean}
-  gewalttäterinnen: {Gewalttäter*innen:Boolean}
-  gewalt: {Tathandlung (Gewalt):Boolean}
-  straftat-sonstige: {Tathandlung (sonstige):Boolean}
-  verdrängungseffekt: {Verdrängungseffekt}
+  ort:
+    bundesland: {Bundesland}
+    ort: Rostock {Ort}
+    einwohnerzahl: {Einwohnerzahl}
+    name: {Name}
+    adresse: {Adresse}
+  chronik:
+    jahre: {Jahre:Array}
+    start: {Eröffnung}
+    ende: {Schließung}
+  leitung:
+    sozialarbeitende: {Sozialarbeitende:Boolean}
+    rechte-sozialarbeitende: {rechte Sozialarbeitende:Boolean}
+    selbstverwaltung: {Selbstverwaltung:Boolean}
+  klientel:
+    rechte-subkultur: {rechte Subkultur:Boolean}
+    organisierte-rechte: {organisierte Rechte:Boolean}
+  struktur-für:  
+    integrierte-nutzung: {integrierte Nutzung:Boolean}
+    privilegierte-nutzung: {privilegierte Nutzung:Boolean}
+    bandproben: {Bandproben:Boolean}
+    szeneveranstaltungen: {Szeneveranstaltungen:Boolean}
+    szeneparties: {Szeneparties:Boolean}
+    szenekonzerte: {Szenekonzerte:Boolean}
+    kameradschaftstreffen: {Kameradschaftstreffen:Boolean}
+    propaganda: {Propaganda:Boolean}
+    andere-ressource: {andere:Boolean}
+  bezug-zu:
+    mörderinnen: {Mörder*innen:Boolean}
+    mord: {Tathandlung (Mord):Boolean}
+    gewalttäterinnen: {Gewalttäter*innen:Boolean}
+    gewalt: {Tathandlung (Gewalt):Boolean}
+    straftat-sonstige: {Tathandlung (sonstige):Boolean}
+    verdrängungseffekt: {Verdrängungseffekt}
   träger: {Traeger:Array}
   organisationen: {Organisationen:Array}
   lng: {Laenge}
