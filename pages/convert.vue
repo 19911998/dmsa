@@ -56,7 +56,7 @@ const records = computed(() => {
 })
 
 function translate (id) {
-  return meta.value.replace(/^( *)([^{]+){([^:}]+):?([^}]+)?}.*\n/gm, (_match: string, spaces: string, category: string, key: string, modifier?: string) => {
+  return meta.value.replace(/^( *)([^\n{]+){([^:}]+):?([^}]+)?}.*\n/gm, (_match: string, spaces: string, category: string, key: string, modifier?: string) => {
     let value = records.value.get(id)[key]
     if (!value) return ''
 
