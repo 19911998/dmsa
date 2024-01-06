@@ -27,7 +27,7 @@ meta:
   szenekonzerte: true
   kameradschaftstreffen: true
   propaganda: true
-  andere:
+  andere-ressource:
   mörderinnen:
   mord:
   gewalttäterinnen: true
