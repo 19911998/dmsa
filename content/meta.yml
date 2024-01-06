@@ -1,0 +1,15 @@
+meta:
+  Bundesland: {Bundesland}
+  Ort: {Ort}
+  Einwohnerzahl: {Einwohnerzahl}
+  Name: {Name}
+  Adresse: {Adresse}
+  Jahre: {Jahre:Array}
+  Sozialarbeitende: {Sozialarbeitende:Boolean}
+  Nutzung:
+    privilegierte Nutzung: {privilegierte_Nutzung:Boolean}
+    integrierte Nutzung: {integrierte_Nutzung:Boolean}
+  Träger: {Traeger:Array}
+  Organisationen: {Organisationen:Array}
+  lng: {Laenge}
+  lat: {Breite}

@@ -12,6 +12,14 @@ export default defineNuxtConfig({
     'nuxt-simple-sitemap',
     'nuxt-simple-robots'
   ],
+  runtimeConfig: {
+    public: {
+      site_env: process.env.NUXT_SITE_ENV
+    }
+  },
+  sitemap: {
+    exclude: ['convert']
+  },
   image: {
     presets: {
       blog: {
@@ -59,5 +67,8 @@ export default defineNuxtConfig({
   },
   // Devtools / Typescript
   devtools: { enabled: true },
-  typescript: { strict: false }
+  typescript: { strict: false },
+  routeRules: {
+    '/convert': { ssr: false }
+  }
 })
