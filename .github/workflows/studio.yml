@@ -73,6 +73,7 @@ jobs:
           NUXT_PUBLIC_STUDIO_TOKENS: beb507f9c395e2cb29cc6a54db5af5fdac39260e09db356405a3a28f48453aca
           NUXT_PUBLIC_SITE_URL: ${{ secrets.NUXT_PUBLIC_SITE_URL }}
           NUXT_SITE_ENV: ${{ secrets.NUXT_SITE_ENV }}
+          NUXT_SITE_NAME: ${{ secrets.NUXT_SITE_NAME }}
           NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
 
       - name: Add .nojekyll file
