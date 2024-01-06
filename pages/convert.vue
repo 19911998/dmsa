@@ -6,20 +6,22 @@
       :rows="5"
     />
 
-    <USelect
-      v-if="records?.size"
-      v-model="id"
-      :options="[ ...records.keys() ]"
-      placeholder="ID"
-      class="mt-8"
-    />
+    <ClientOnly>
+      <USelect
+        v-if="records?.size"
+        v-model="id"
+        :options="[ ...records.keys() ]"
+        placeholder="ID"
+        class="mt-8"
+      />
 
-    <UTextarea v-if="id" :model-value="translate(id)" autoresize class="mt-8" />
+      <UTextarea v-if="id" :model-value="translate(id)" autoresize class="mt-8" />
+    </ClientOnly>
   </UContainer>
 </template>
 
 <script setup lang="ts">
-import { parse } from 'papaparse'
+import Papa from 'papaparse'
 
 if (useRuntimeConfig().public.site_env !== 'preview') {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
@@ -30,10 +32,10 @@ const id = ref('')
 
 const { data: meta } = await useFetch('/api/meta.yml')
 
-const parsed = computed(() => parse(input.value)?.data)
+const parsed = computed(() => input.value ? Papa.parse(input.value)?.data : undefined)
 
 const records = computed(() => {
-  if (!parsed.value?.length) return
+  if (!parsed.value) return
 
   const categories = parsed.value[0].map((key: string) => key.trim())
 

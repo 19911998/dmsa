@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     }
   },
   sitemap: {
-    exclude: ['convert']
+    exclude: ['/convert']
   },
   image: {
     presets: {
@@ -61,14 +61,12 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/api/search.json': { prerender: true },
+    '/api/meta.yml': { prerender: true }
   },
   colorMode: {
     preference: 'dark'
   },
   // Devtools / Typescript
   devtools: { enabled: true },
-  typescript: { strict: false },
-  routeRules: {
-    '/convert': { ssr: false }
-  }
+  typescript: { strict: false }
 })
