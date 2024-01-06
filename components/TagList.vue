@@ -6,7 +6,7 @@
       class="z-50"
       :color="tag === pageTag ? 'primary' : 'gray'"
     >
-      <NuxtLink :to="(tag === pageTag) ? '/blog' : '/tags/' + tag" class="flex items-center gap-x-2">
+      <NuxtLink :to="(tag === pageTag) ? base : base + '/tags/' + tag" class="flex items-center gap-x-2">
         <UIcon name="i-heroicons-tag" />
         {{ tag }}
       </NuxtLink>
@@ -16,6 +16,7 @@
 
 <script lang="ts" setup>
 const props = defineProps<{
+  base: string
   tags?: string
   pageTag?: string
 }>()

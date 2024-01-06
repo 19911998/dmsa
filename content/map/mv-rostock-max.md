@@ -1,6 +1,7 @@
 ---
 title: Jugendclub Max Reichpietsch
 description: Welcome to Nuxt UI Pro documentation template.
+tags: blood&honour mecklenburg-vorpommern
 meta:
   bundesland: Mecklenburg-Vorpommern
   ort: Rostock
@@ -39,7 +40,7 @@ meta:
   lat: 54.148937
 ---
 
-Der Jugendclub Max Reichpietsch (»Max«) im Rostocker Stadtteil Groß-Klein wurde Ende der 1980er Jahre noch von mehreren Subkulturen wie Punks, Skins und Grufties genutzt. Mit der Wende und der Zuwendung eines Großteils der „subkulturellen“ Jugend hin zur Hooligan- und Neonaziszene, wurden die übriggebliebenen Vertreter[*]innen der linken Subkulturen aus dem Club verdrängt und die Einrichtung war bald in Neonazihand – ein Prozess, wie er in vielen Einrichtungen von statten ging. So entwickelte sich das »Max« in den frühen 1990ern rasch zum berühmt-berüchtigten Neonazitreffpunkt, während Sozialarbeiter[*]innen in der Kritik standen, die Neonazis durch akzeptierende Jugendarbeit zu fördern und zu unterstützen.
+Der Jugendclub Max Reichpietsch (»Max«) im Rostocker Stadtteil Groß-Klein wurde Ende der 1980er Jahre noch von mehreren Subkulturen wie Punks, Skins und Grufties genutzt. Mit der Wende und der Zuwendung eines Großteils der „subkulturellen“ Jugend hin zur Hooligan- und Neonaziszene, wurden die übriggebliebenen Vertreter[*]innen der linken Subkulturen aus dem Club verdrängt und die Einrichtung war bald in Neonazihand – ein Prozess, wie er in vielen Einrichtungen vonstattenging. So entwickelte sich das »Max« in den frühen 1990ern rasch zum berühmt-berüchtigten Neonazitreffpunkt, während Sozialarbeiter[*]innen in der Kritik standen, die Neonazis durch akzeptierende Jugendarbeit zu fördern und zu unterstützen.
 
 So machte das »Max« auch 1992 im Zusammenhang mit dem rassistischen Pogrom von Rostock-Lichtenhagen von sich reden. Die zuständigen Behörden und Sozialarbeiter[*]innen hatten offenbar im Vorfeld geahnt, welches Potential sich in dem Club zusammenbraut. So zitierte die FAZ kurz nach dem mehrtätigen Pogrom einen Sozialarbeiter des »Max« mit den Worten: „Das hätte man wissen müssen, schon lange“. Schließlich führt er aus: Schon im Februar habe sich die ,rechte' Szene mit der Polizei und dem Innensenator von Rostock getroffen, hier im Clubhaus. Da sei dem Polizeichef gesagt worden: „Wenn hier noch mehr Ausländer herkommen, dann protestieren wir.“ Auch Recherchen antifaschistischer Initiativen legen eine aktive Rolle von Nutzer[*]innen des »Max« beim Schüren der Pogromstimmung in Lichtenhagen nahe. Sie berichteten von Verteilaktionen rassistischer Flugblätter in den Monaten zuvor: „Es tauchte jemand im Jugendclub »Max Reichpietsch« in Groß Klein auf und stachelte die Jugendlichen an, die HLA-Flugblätter »Rostock bleibt deutsch« flächen deckend in die Briefkästen zu stecken.“ 
 

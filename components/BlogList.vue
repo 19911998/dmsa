@@ -31,7 +31,7 @@
                 <MDC :value="item.description" />
               </div>
 
-              <TagList :tags="item.tags" :page-tag="pageTag" class="mt-4" />
+              <TagList base="/blog" :tags="item.tags" :page-tag="pageTag" class="mt-4" />
             </div>
           </div>
         </template>

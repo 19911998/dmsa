@@ -10,7 +10,7 @@
             {{ getCreationDate(page) }}
           </div>
 
-          <TagList :tags="page.tags" />
+          <TagList base="/blog" :tags="page.tags" />
         </div>
 
         <MDC :value="page.description" />

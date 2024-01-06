@@ -3,11 +3,13 @@
     <UPageHero v-bind="page">
       <template #description>
         <MDC :value="page.description" />
+
+        <TagList base="/map" :tags="page.tags" class="mt-lg" />
       </template>
 
       <dl>
         <template
-          v-for="prop of ['bundesland', 'ort', 'träger', 'organisationen', 'zeitraum']"
+          v-for="prop of ['ort', 'träger', 'organisationen', 'zeitraum']"
           :key="prop"
         >
           <div
@@ -63,8 +65,8 @@ if (page.value.meta.jahre) {
       acc.at(-1)[1] = val
     }
     return acc
-  }, []).map(val => {
-    return (val.length > 1) ? val.join(' – ') : val[0]
+  }, []).map((val: number[]) => {
+    return (val.length > 1) ? val.join('\u202f–\u202f') : val[0]
   })
 }
 
