@@ -9,7 +9,7 @@
 
       <dl>
         <template
-          v-for="prop of ['ort', 'träger', 'zeitraum', 'adresse']"
+          v-for="prop of ['ort', 'träger', 'zeitraum']"
           :key="prop"
         >
           <div
