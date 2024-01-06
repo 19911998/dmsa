@@ -1,10 +1,10 @@
 title: »Du musst sie akzeptieren!«
-description: Glatzenpflege auf Staatskosten
+description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
 navigation: false
 search: false
 hero:
   title: »Du musst sie akzeptieren!«
-  description: Glatzenpflege auf Staatskosten
+  description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
   links:
     - label: Einführung
       icon: i-heroicons-information-circle-20-solid
@@ -20,7 +20,7 @@ hero:
 intro:
   headline: Einführung
   title: Wieso? Weshalb? Warum?
-  description: Welcome to Nuxt UI Pro documentation template.
+  description: Willkommen auf unserer Seite! Hier geht es um...
 map:
   title: Die Karte
   description: Blablabla
