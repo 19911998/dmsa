@@ -10,6 +10,8 @@ meta:
   adresse: Töpferstraße 12
   jahre:
     - 1993
+  start: 
+  ende:   
   sozialarbeitende: 
   rechte-sozialarbeitende: true
   selbstverwaltung:
