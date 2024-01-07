@@ -1,0 +1,1 @@
+{"id":"e721e8d8-e04b-4f47-83b1-14e6c200d89a","timestamp":1704587798055,"matcher":{"static":{"/":null,"/api":null,"/api/search.json":{"prerender":true},"/api/meta.yml":{"prerender":true}},"wildcard":{},"dynamic":{}},"prerendered":["/convert","/","/blog","/map","/blog/test","/map/mv-rostock-max","/map/mv-neustrelitz-szenetreff-kiefernheide"]}
