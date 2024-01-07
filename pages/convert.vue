@@ -34,14 +34,17 @@ const records = computed(() => {
   return parsed.value.slice(1).reduce((acc: Map<string, Record<string, string>>, curr: string[]) => {
     const record = categories.reduce((acc: Record<string, string>, key: string, idx: number) => {
       if (key) {
-        acc[key] = curr[idx].trim()
+        acc[key] = curr[idx]?.trim()
       }
       return acc
     }, {})
 
     const { ID } = record
-    delete record.ID
-    acc.set(ID, record)
+
+    if (ID) {
+      delete record.ID
+      acc.set(ID, record)
+    }
 
     return acc
   }, new Map())

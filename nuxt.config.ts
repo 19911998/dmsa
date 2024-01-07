@@ -10,7 +10,8 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     '@nuxt/image',
     'nuxt-simple-sitemap',
-    'nuxt-simple-robots'
+    'nuxt-simple-robots',
+    'nuxt3-leaflet'
   ],
   runtimeConfig: {
     public: {

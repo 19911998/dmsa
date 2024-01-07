@@ -2,7 +2,28 @@
   <UContainer>
     <UPageHero v-if="page.hero" v-bind="page.hero" />
   
-    <ULandingSection class="max-w-full w-[42rem] mx-auto" :ui="{ container: '!px-0' }">
+    <div class="h-[70vh]">
+      <LMap
+        ref="map"
+        :zoom="zoom"
+        :center="[47.21322, -1.559482]"
+      >
+        <LTileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution="&amp;copy; <a href=&quot;https://www.openstreetmap.org/&quot;>OpenStreetMap</a> contributors"
+          layer-type="base"
+          name="OpenStreetMap"
+        />
+
+        <LMarker
+          v-for="item of entries"
+          :key="item._path"
+          :lat-lng="[item.meta.lat, item.meta.lng]"
+        />
+      </LMap>
+    </div>
+
+    <ULandingSection class="max-w-full w-[42rem] mx-auto !py-0" :ui="{ container: '!px-0' }">
       <ULandingCard
         v-for="(item, index) of entries"
         :key="index"
@@ -29,6 +50,8 @@
 </template>
   
 <script setup lang="ts">
+const zoom = 3
+
 const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
 
