@@ -19,11 +19,11 @@
           v-for="item of entries"
           :key="item._path"
           :lat-lng="[item.meta.lat, item.meta.lng]"
-          :options="{
-            title: item.meta['meta-daten']?.name
-          }"
         >
-          <l-popup>
+          <LTooltip>
+            {{ item.meta['meta-daten']?.name }}
+          </LTooltip>
+          <LPopup>
             <div class="font-semibold">{{ item.title }}</div>
             <div class="text-gray">
               {{ item.description }}
@@ -31,7 +31,7 @@
                 mehr&hellip;
               </NuxtLink>
             </div>
-          </l-popup>
+          </LPopup>
         </LMarker>
       </LMap>
     </div>
