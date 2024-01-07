@@ -16,7 +16,7 @@ meta:
   klientel:
     rechte-subkultur: {rechte Subkultur:Boolean}
     organisierte-rechte: {organisierte Rechte:Boolean}
-  struktur-für:  
+  struktur-für:
     integrierte-nutzung: {integrierte Nutzung:Boolean}
     privilegierte-nutzung: {privilegierte Nutzung:Boolean}
     bandproben: {Bandproben:Boolean}
