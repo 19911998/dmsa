@@ -1,1 +1,0 @@
-import{k as o,a8 as s,w as e,aG as c,b as _,g as r,ab as l,bi as f}from"./entry.Si3Upoyj.js";const d={};function u(n,i){const t=f,a=c;return _(),s(a,null,{default:e(()=>[r(t,null,{default:e(()=>[l(n.$slots,"default")]),_:3})]),_:3})}const p=o(d,[["render",u]]);export{p as default};
