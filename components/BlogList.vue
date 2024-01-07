@@ -1,6 +1,6 @@
 <template>
   <ULandingSection>
-    <ULandingGrid class="lg:grid-cols-1 max-w-full w-672 mx-auto">
+    <ULandingGrid class="lg:grid-cols-1 max-w-full w-[42rem] mx-auto">
       <ULandingCard
         v-for="(item, index) of entries"
         :key="index"
