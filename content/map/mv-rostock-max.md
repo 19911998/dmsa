@@ -6,11 +6,11 @@ tags:
   - mecklenburg-vorpommern
 meta:
   meta-daten:
-    bundesland: Berlin
-    ort: Pankow
-    einwohnerzahl: 3600000
-    name: Jugendclub Ottomar Geschke
-    adresse: Blankenburger Chaussee 1
+    bundesland: Mecklenburg-Vorpommern
+    ort: Rostock
+    einwohnerzahl: 207513
+    name: Jugendclub Max Reichpietsch
+    adresse: Anschrift unbekannt
   leitung:
     sozialarbeitende: true
   klientel:
@@ -18,20 +18,22 @@ meta:
     organisierte-rechte: true
   struktur-für:
     integrierte-nutzung: true
+    privilegierte-nutzung: true
     szeneveranstaltungen: true
     szenekonzerte: true
+    kameradschaftstreffen: true
     propaganda: true
   bezug-zu:
     gewalttäterinnen: true
+    gewalt: true
     verdrängungseffekt: true
+  träger: 
+    - Jugendamt Rostock
   organisationen: 
-    - Deutsche Alternative (DA)
-    - Wotans Volk
-    - Arnulf Priem
-    - Andreas Storr
-    - Junge Nationaldemokraten (JN)
-  lng: 13.480211
-  lat: 52.609053
+    - Blood&Honour
+    - Kameradschaftsbund Mecklenburg (KBM)
+  lng: 12.079494
+  lat: 54.148937
 ---
 
 Der Jugendclub Max Reichpietsch (»Max«) im Rostocker Stadtteil Groß-Klein wurde Ende der 1980er Jahre noch von mehreren Subkulturen wie Punks, Skins und Grufties genutzt. Mit der Wende und der Zuwendung eines Großteils der „subkulturellen“ Jugend hin zur Hooligan- und Neonaziszene, wurden die übriggebliebenen Vertreter[*]innen der linken Subkulturen aus dem Club verdrängt und die Einrichtung war bald in Neonazihand – ein Prozess, wie er in vielen Einrichtungen vonstattenging. So entwickelte sich das »Max« in den frühen 1990ern rasch zum berühmt-berüchtigten Neonazitreffpunkt, während Sozialarbeiter[*]innen in der Kritik standen, die Neonazis durch akzeptierende Jugendarbeit zu fördern und zu unterstützen.

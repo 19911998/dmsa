@@ -4,37 +4,26 @@ description: Von Rechten geleiteter Jugendtreff in Neustrelitz.
 tags:
   - mecklenburg-vorpommern
 meta:
-  bundesland: Mecklenburg-Vorpommern
-  ort: Neustrelitz
-  einwohnerzahl: 20426
-  name: Szenetreff Kiefernheide
-  adresse: Töpferstraße 12
-  jahre:
-    - 1993
-  start: 
-  ende:   
-  sozialarbeitende: 
-  rechte-sozialarbeitende: true
-  selbstverwaltung:
-  rechte-subkultur: true
-  organisierte-rechte:
-  integrierte-nutzung: true
-  privilegierte-nutzung: true
-  bandproben:
-  szeneveranstaltungen: true
-  szeneparties:
-  szenekonzerte: 
-  kameradschaftstreffen: 
-  propaganda: true
-  andere-ressource:
-  mörderinnen:
-  mord:
-  gewalttäterinnen: true
-  gewalt:
-  straftat-sonstige: true
-  verdrängungseffekt:
-  träger: Jugendamt Neustrelitz
-  organisationen:
+  meta-daten:
+    bundesland: Mecklenburg-Vorpommern
+    ort: Neustrelitz
+    einwohnerzahl: 20426
+    name: Szenetreff Kiefernheide
+    adresse: Töpferstraße12
+  leitung:
+    rechte-sozialarbeitende: true
+  klientel:
+    rechte-subkultur: true
+  struktur-für:
+    integrierte-nutzung: true
+    privilegierte-nutzung: true
+    szeneveranstaltungen: true
+    propaganda: true
+  bezug-zu:
+    gewalttäterinnen: true
+    straftat-sonstige: true
+  träger: 
+    - Jugendamt Neustrelitz
   lng: 13.062159
   lat: 53.363102
 ---
