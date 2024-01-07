@@ -1,22 +1,14 @@
 <template>
   <UContainer class="mt-4">
-    <UTextarea
-      v-model="input"
-      placeholder="CSV"
-      :rows="5"
+    <USelect
+      v-if="records?.size"
+      v-model="id"
+      :options="[ ...records.keys() ]"
+      placeholder="ID"
+      class="mt-8"
     />
 
-    <ClientOnly>
-      <USelect
-        v-if="records?.size"
-        v-model="id"
-        :options="[ ...records.keys() ]"
-        placeholder="ID"
-        class="mt-8"
-      />
-
-      <UTextarea v-if="id" :model-value="translate(id)" autoresize class="mt-8" />
-    </ClientOnly>
+    <UTextarea v-if="id" :model-value="translate(id)" autoresize class="mt-8" />
   </UContainer>
 </template>
 
@@ -27,12 +19,12 @@ if (useRuntimeConfig().public.site_env !== 'preview') {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-const input = ref('')
 const id = ref('')
 
 const { data: meta } = await useFetch('/api/meta.yml')
+const { data: csv } = await useFetch('/api/meta.csv')
 
-const parsed = computed(() => input.value ? Papa.parse(input.value)?.data : undefined)
+const parsed = computed(() => csv.value ? Papa.parse(csv.value)?.data : undefined)
 
 const records = computed(() => {
   if (!parsed.value) return
