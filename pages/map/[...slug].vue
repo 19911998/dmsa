@@ -87,16 +87,6 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => qu
   .findSurround(withoutTrailingSlash(route.path))
 )
 
-const links = [{
-  label: 'Home',
-  icon: 'i-heroicons-home',
-  to: '/'
-}, {
-  label: 'Karte',
-  icon: 'i-heroicons-map',
-  to: '/map'
-}]
-
 useSeoMeta({
   titleTemplate: `%s - ${seo?.siteName}`,
   title: page.value.title,
