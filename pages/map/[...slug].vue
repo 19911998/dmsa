@@ -1,5 +1,20 @@
 <template>
   <div>
+    <UBreadcrumb
+      :links="[
+        {
+          label: 'Home',
+          icon: 'i-heroicons-home',
+          to: '/'
+        }, {
+          label: 'Karte',
+          icon: 'i-heroicons-map',
+          to: '/map'
+        }
+      ]"
+      class="mt-4"
+    />
+
     <UPageHero v-bind="page">
       <template #description>
         <MDC :value="page.description" />
@@ -75,6 +90,16 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => qu
   .only(['title', 'description', '_path'])
   .findSurround(withoutTrailingSlash(route.path))
 )
+
+const links = [{
+  label: 'Home',
+  icon: 'i-heroicons-home',
+  to: '/'
+}, {
+  label: 'Karte',
+  icon: 'i-heroicons-map',
+  to: '/map'
+}]
 
 useSeoMeta({
   titleTemplate: `%s - ${seo?.siteName}`,
