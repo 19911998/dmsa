@@ -71,6 +71,6 @@ function translate (id) {
       }
     }
     return spaces + category + value + '\n'
-  })
+  }).replace(/^ {2}.+?:\n(?= {2}\S)/gm, '')
 }
 </script>
