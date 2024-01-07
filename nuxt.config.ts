@@ -62,6 +62,9 @@ export default defineNuxtConfig({
   routeRules: {
     '/api/search.json': { prerender: true }
   },
+  router: {
+    trailingSlash: false
+  },
   colorMode: {
     preference: 'dark'
   },
