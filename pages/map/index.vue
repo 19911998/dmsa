@@ -3,7 +3,7 @@
     <UPageHero v-if="page.hero" v-bind="page.hero" />
   
     <ULandingSection>
-      <ULandingGrid class="lg:grid-cols-1 max-w-2xl mx-auto">
+      <ULandingGrid class="lg:grid-cols-1 max-w-full w-672 mx-auto">
         <ULandingCard
           v-for="(item, index) of entries"
           :key="index"
@@ -11,8 +11,8 @@
         >
           <template #container>
             <div class="flex flex-col md:flex-row items-start gap-4">
-              <div>
-                <div class="text-2xl mb-1 text-gray-900 dark:text-white font-bold truncate">
+              <div class="w-full">
+                <div class="text-2xl mb-1 text-gray-900 dark:text-white font-bold">
                   <MDC :value="item.title" />
                 </div>
 
