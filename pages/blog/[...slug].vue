@@ -36,6 +36,9 @@
 
       <UDocsSurround :surround="surround" />
     </UPageBody>
+    <template v-if="page.body?.toc?.links?.length">
+      <UDocsToc :links="page.body.toc.links" />
+    </template>
   </div>
 </template>
 

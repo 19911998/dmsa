@@ -17,7 +17,7 @@
       v-bind="page.cards[key]"
       :id="key"
       :key="key"
-      :ui="{ container: 'gap-8 sm:gap-8', description: 'max-w-3xl', links: '!mt-4' }"
+      :ui="{ container: 'gap-8 sm:gap-8', description: 'max-w-3xl', links: '!mt-4', headline: 'headline text-lg' }"
     >
       <UPageGrid v-if="key === 'blog'" class="xl:grid-cols-4">
         <ULandingCard
@@ -62,5 +62,23 @@ defineOgImage({
   component: 'Docs',
   title: page.value.title,
   description: page.value.description
+})
+
+onMounted(() => {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const id = entry.target.closest('[id]').getAttribute('id')
+      const link = headerLinks.value.find(({ to }) => to === '#' + id)
+      if (link) {
+        link.class = entry.isIntersecting ? 'text-primary' : '!text-inherit hover:!text-primary'
+      }
+    })
+  }, {
+    threshold: 1.0
+  })
+  // Track all sections that have an `id` applied
+  document.querySelectorAll('div[id] > div').forEach((section) => {
+    observer.observe(section)
+  })  
 })
 </script>
