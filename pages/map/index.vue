@@ -2,7 +2,7 @@
   <UContainer>
     <UPageHero v-if="page.hero" v-bind="page.hero" />
   
-    <div class="h-[70vh]">
+    <div class="h-[70vh] mb-8">
       <LMap
         ref="map"
         :zoom="zoom"
@@ -19,11 +19,24 @@
           v-for="item of entries"
           :key="item._path"
           :lat-lng="[item.meta.lat, item.meta.lng]"
-        />
+          :options="{
+            title: item.meta['meta-daten']?.name
+          }"
+        >
+          <l-popup>
+            <div class="font-semibold">{{ item.title }}</div>
+            <div class="text-gray">
+              {{ item.description }}
+              <NuxtLink :to="item._path" class="font-semibold">
+                mehr&hellip;
+              </NuxtLink>
+            </div>
+          </l-popup>
+        </LMarker>
       </LMap>
     </div>
 
-    <ULandingSection class="max-w-full w-[42rem] mx-auto !py-0" :ui="{ container: '!px-0' }">
+    <!--ULandingSection class="max-w-full w-[42rem] mx-auto !py-0" :ui="{ container: '!px-0' }">
       <ULandingCard
         v-for="(item, index) of entries"
         :key="index"
@@ -36,7 +49,7 @@
                 <MDC :value="item.title" />
               </div>
 
-              {{ item.meta }}
+              {{ item.meta['meta-daten']?.name }}
 
               <div class="text-[15px] text-gray-500 dark:text-gray-400 mt-1">
                 <MDC :value="item.description" />
@@ -45,7 +58,7 @@
           </div>
         </template>
       </ULandingCard>
-    </ULandingSection>
+    </ULandingSection-->
   </UContainer>
 </template>
   
