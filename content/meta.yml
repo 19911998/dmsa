@@ -33,7 +33,7 @@ meta:
     gewalt: {Tathandlung (Gewalt):Boolean}
     straftat-sonstige: {Tathandlung (sonstige):Boolean}
     verdrängungseffekt: {Verdrängungseffekt:Boolean}
-  träger: {Traeger:Array}
+  träger: {Träger:Array}
   organisationen: {Organisationen:Array}
   lng: {Länge}
   lat: {Breite}
