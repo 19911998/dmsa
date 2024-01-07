@@ -5,8 +5,10 @@
     <div class="h-[70vh] mb-8">
       <LMap
         ref="map"
-        :zoom="zoom"
-        :center="[47.21322, -1.559482]"
+        :zoom="7"
+        :center="bounds[0]"
+        :bounds="bounds"
+        :max-bounds="bounds"
       >
         <LTileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -19,17 +21,22 @@
           v-for="item of entries"
           :key="item._path"
           :lat-lng="[item.meta.lat, item.meta.lng]"
+          :options="{
+            autoPanOnFocus: true
+          }"
         >
           <LTooltip>
             {{ item.meta['meta-daten']?.name }}
           </LTooltip>
           <LPopup>
             <div class="font-semibold">{{ item.title }}</div>
-            <div class="text-gray">
-              {{ item.description }}
-              <NuxtLink :to="item._path" class="font-semibold">
+            <div class="flex gap-2">
+              <div class="text-gray">
+                {{ item.description }}
+              </div>
+              <UButton :to="item._path" size="xs">
                 mehr&hellip;
-              </NuxtLink>
+              </UButton>
             </div>
           </LPopup>
         </LMarker>
@@ -63,10 +70,14 @@
 </template>
   
 <script setup lang="ts">
-const zoom = 3
 
 const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
+
+const bounds = computed(() => [
+  [ Math.min(...entries.value.map(m => m.meta.lat)), Math.max(...entries.value.map(m => m.meta.lng)) ],
+  [ Math.max(...entries.value.map(m => m.meta.lat)), Math.min(...entries.value.map(m => m.meta.lng)) ] 
+])
 
 useSeoMeta({
   title: page.value.title,
