@@ -12,16 +12,14 @@
       </template>
     </ULandingHero>
 
-    <ULandingSection id="intro" v-bind="page.intro" />
-
-    <ULandingSection id="map">
-      <ULandingCTA
-        v-bind="page.map"
-      />
-    </ULandingSection>
-
-    <ULandingSection id="blog" :ui="{ container: 'gap-8 sm:gap-8', links: '!mt-4' }" v-bind="page.blog">
-      <UPageGrid class="xl:grid-cols-4">
+    <ULandingSection
+      v-for="key of Object.keys(page.cards)"
+      v-bind="page.cards[key]"
+      :id="key"
+      :key="key"
+      :ui="{ container: 'gap-8 sm:gap-8', description: 'max-w-3xl', links: '!mt-4' }"
+    >
+      <UPageGrid v-if="key === 'blog'" class="xl:grid-cols-4">
         <ULandingCard
           v-for="(item, index) of blog"
           :key="index"
@@ -47,19 +45,11 @@ const { data: blog } = await useAsyncData('blog-entries', () => queryContent('bl
 
 const headerLinks = useState('header-links', () => undefined)
 
-headerLinks.value = [{
-  label: 'Intro',
-  to: '#intro',
+headerLinks.value = Object.keys(page.value.cards).map(key => ({
+  label: page.value.cards[key].headline,
+  to: '#' + key,
   exactHash: true
-}, {
-  label: 'Karte',
-  to: '#map',
-  exactHash: true
-}, {
-  label: 'Blog',
-  to: '#blog',
-  exactHash: true
-}]
+}))
 
 useSeoMeta({
   title: page.value.title,

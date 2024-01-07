@@ -1,7 +1,7 @@
 <template>
   <div v-if="tags" class="flex gap-x-2">
     <UBadge
-      v-for="tag of tagsArr"
+      v-for="tag of tags"
       :key="tag"
       class="z-50"
       size="md"
@@ -19,11 +19,9 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
+defineProps<{
   base: string
-  tags?: string
+  tags?: string[]
   pageTag?: string
 }>()
-
-const tagsArr = computed(() => props.tags?.split(' '))
 </script>

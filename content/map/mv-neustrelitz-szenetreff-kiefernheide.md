@@ -1,7 +1,8 @@
 ---
 title: Szenetreff Kiefernheide
 description: Von Rechten geleiteter Jugendtreff in Neustrelitz.
-tags: mecklenburg-vorpommern
+tags:
+  - mecklenburg-vorpommern
 meta:
   bundesland: Mecklenburg-Vorpommern
   ort: Neustrelitz
