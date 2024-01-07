@@ -1,14 +1,5 @@
 <template>
   <UContainer>
-    <UBreadcrumb
-      :links="[{
-        label: 'Home',
-        icon: 'i-heroicons-home',
-        to: '/'
-      }]"
-      class="mt-4"
-    />
-
     <UPageHero v-if="page.hero" v-bind="page.hero">
       <template v-if="tag" #description>
         Es werden alle Blog-Beiträge mit dem Tag <span class="text-primary">#{{ tag }}</span> angezeigt

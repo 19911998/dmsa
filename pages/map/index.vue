@@ -1,14 +1,5 @@
 <template>
   <UContainer>
-    <UBreadcrumb
-      :links="[{
-        label: 'Home',
-        icon: 'i-heroicons-home',
-        to: '/'
-      }]"
-      class="mt-4"
-    />
-
     <UPageHero v-if="page.hero" v-bind="page.hero" />
   
     <ULandingSection>

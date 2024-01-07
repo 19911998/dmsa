@@ -3,10 +3,6 @@
     <UBreadcrumb
       :links="[
         {
-          label: 'Home',
-          icon: 'i-heroicons-home',
-          to: '/'
-        }, {
           label: 'Karte',
           icon: 'i-heroicons-map',
           to: '/map'
