@@ -10,6 +10,9 @@
         <loc>https://dmsa.nuxt.space/map</loc>
     </url>
     <url>
+        <loc>https://dmsa.nuxt.space/blog/example</loc>
+    </url>
+    <url>
         <loc>https://dmsa.nuxt.space/blog/test</loc>
     </url>
     <url>
