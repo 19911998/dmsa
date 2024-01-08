@@ -65,11 +65,20 @@
       </ClientOnly>
     </div>
 
-    <UCard>
-      <UButtonGroup v-if="states.length > 1">
-        <USelect v-model="state" :options="states" placeholder="Bundesland" />
-        <UButton v-if="state" color="gray" icon="i-heroicons-x-mark-20-solid" @click="state = ''" />
-      </UButtonGroup>
+    <UCard class="min-w-fit">
+      <div class="flex flex-col gap-4 items-start">
+        <UBadge v-if="tag" size="md" class="pr-1">
+          <div class="whitespace-nowrap flex items-center gap-x-1">
+            {{ tag }}
+            <UButton icon="i-heroicons-x-mark-20-solid" class="text-md" :padded="false" :to="route.path" />
+          </div>
+        </UBadge>
+
+        <UButtonGroup>
+          <USelect v-model="state" :options="states" placeholder="Bundesland" />
+          <UButton v-if="state" color="gray" icon="i-heroicons-x-mark-20-solid" @click="state = ''" />
+        </UButtonGroup>
+      </div>
     </UCard>
   </div>
 </template>
@@ -77,7 +86,8 @@
 <script setup lang="ts">
 import { LMap, LMarker } from '@vue-leaflet/vue-leaflet'
 
-const { tag } = useRoute().query
+const route = useRoute()
+const tag = computed(() => route.query.tag as string)
 
 let L: any
 
@@ -88,24 +98,41 @@ const { data: page } = await useAsyncData('map-overview', () => queryContent('_m
 
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
 
+const filteredBeforeState = computed(() => entries.value.filter(({ meta, tags }) => {
+  if (!(meta.lng && meta.lat)) return
+  if (tag.value && !tags?.includes(tag.value)) return
+
+  return true
+}))
+
+const filtered = computed(() => filteredBeforeState.value.filter(({ meta }) => {
+  if (state.value && meta.bundesland !== state.value) return
+
+  return true
+}))
+
+const states = computed(() => [...entries.value.reduce((acc, { meta }) => {
+  if (meta.bundesland) acc.add(meta.bundesland)
+  return acc
+}, new Set() as Set<string>)].map(label => ({
+  label,
+  disabled: !filteredBeforeState.value.find(_ => _.meta.bundesland === label)
+})))
+
+const state = useState('state', () => null)
+
+if (tag.value) {
+  const stateSelected = states.value.find(_ => _.label.toLowerCase() === tag.value.toLowerCase())
+  if (stateSelected) {
+    state.value = stateSelected?.label
+    useRouter().push(route.path)
+  }
+}
+
 const bounds = computed(() => [
   [ Math.min(...filtered.value.map(m => m.meta.lat)), Math.min(...filtered.value.map(m => m.meta.lng)) ],
   [ Math.max(...filtered.value.map(m => m.meta.lat)), Math.max(...filtered.value.map(m => m.meta.lng)) ] 
 ])
-
-const state = ref('')
-const states = computed(() => [...filtered.value.reduce((acc, { meta }) => {
-  if (meta.bundesland) acc.add(meta.bundesland)
-  return acc
-}, new Set() as Set<string>)])
-
-const filtered = computed(() => entries.value.filter(({ meta, tags }) => {
-  if (!(meta.lng && meta.lat)) return
-  if (tag && !tags?.includes(tag)) return
-  if (state.value && meta.bundesland === state.value) return
-
-  return true
-}))
 
 watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], async ([map]) => {
   if (!map) return
