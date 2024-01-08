@@ -20,7 +20,7 @@
 
       <dl>
         <template
-          v-for="prop of ['ort', 'träger', 'zeitraum']"
+          v-for="prop of ['ort', 'träger', 'chronik']"
           :key="prop"
         >
           <div
@@ -68,6 +68,7 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
+/*
 if (page.value.meta.jahre) {
   page.value.meta.zeitraum = page.value.meta.jahre.reduce((acc: number[][], val: number) => {
     if (!acc.length || (val > acc.at(-1)[0] + 1)) {
@@ -79,7 +80,7 @@ if (page.value.meta.jahre) {
   }, []).map((val: number[]) => {
     return (val.length > 1) ? val.join('\u202f–\u202f') : val[0]
   })
-}
+} */
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('map')
   .where({ _extension: 'md', navigation: { $ne: false } })

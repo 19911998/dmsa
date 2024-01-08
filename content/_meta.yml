@@ -1,12 +1,11 @@
 meta:
-  meta-daten:
-    bundesland: {Bundesland}
-    ort: {Ort}
-    einwohnerzahl: {Einwohnerzahl}
-    name: {Name}
-    adresse: {Adresse}
+  bundesland: {Bundesland}
+  ort: {Ort}
+  einwohnerzahl: {Einwohnerzahl}
+  name: {Name}
+  adresse: {Adresse}
+  jahre: {Jahre:Array}
   chronik:
-    jahre: {Jahre:Array}
     start: {Eröffnung}
     ende: {Schließung}
   leitung:

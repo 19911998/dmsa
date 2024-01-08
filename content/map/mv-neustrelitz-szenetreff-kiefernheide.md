@@ -4,12 +4,11 @@ description: Von Rechten geleiteter Jugendtreff in Neustrelitz.
 tags:
   - mecklenburg-vorpommern
 meta:
-  meta-daten:
-    bundesland: Mecklenburg-Vorpommern
-    ort: Neustrelitz
-    einwohnerzahl: 20426
-    name: Szenetreff Kiefernheide
-    adresse: Töpferstraße12
+  bundesland: Mecklenburg-Vorpommern
+  ort: Neustrelitz
+  einwohnerzahl: 20426
+  name: Szenetreff Kiefernheide
+  adresse: Töpferstraße12
   leitung:
     rechte-sozialarbeitende: true
   klientel:
