@@ -11,7 +11,12 @@
     <Footer />
 
     <ClientOnly>
-      <LazyUDocsSearch :files="files" :navigation="navigation" hide-color-mode />
+      <LazyUDocsSearch
+        :files="files"
+        :navigation="navigation"
+        hide-color-mode
+        :ui="{ wrapper: 'z-[1000]' }"
+      />
     </ClientOnly>
 
     <UNotifications />

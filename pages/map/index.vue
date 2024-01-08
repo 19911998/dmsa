@@ -46,15 +46,18 @@
       </LMap>
 
       <template #fallback>
-        <ULandingSection class="max-w-full w-[42rem] mx-auto !py-8" :ui="{ container: '!px-0 !gap-4' }">
-          <ULandingCard
-            v-for="(item, index) of entries"
-            :key="index"
-            :to="item?._path"
-            :title="item.title + ', ' + item.meta.ort"
-            :description="item.description"
-          />
-        </ULandingSection>
+        <UContainer class="mt-4">
+          <ULandingGrid class="w-full">
+            <ULandingCard
+              v-for="(item, index) of entries"
+              :key="index"
+              :to="item?._path"
+              :title="item.title + ', ' + item.meta.ort"
+              :description="item.description"
+              class="col-span-3"
+            />
+          </ULandingGrid>
+        </UContainer>
       </template>
     </ClientOnly>
   </div>
@@ -96,4 +99,3 @@ defineOgImage({
   description: page.value.description
 })
 </script>
-  
