@@ -24,14 +24,21 @@
           <LTooltip>
             {{ item.meta.name }}, <span class="font-semibold">{{ item.meta.ort }}</span>
           </LTooltip>
+
           <LPopup>
             <div class="font-semibold">{{ item.title }}</div>
             <div class="flex gap-2">
               <div class="text-gray">
                 {{ item.description }}
               </div>
-              <UButton :to="item._path" size="sm">
-                mehr&hellip;
+
+              <UButton
+                :to="item._path"
+                size="sm"
+                icon="i-heroicons-arrow-right-20-solid"
+                trailing
+              >
+                Mehr
               </UButton>
             </div>
           </LPopup>
@@ -39,12 +46,12 @@
       </LMap>
 
       <template #fallback>
-        <ULandingSection class="max-w-full w-[42rem] mx-auto !py-0" :ui="{ container: '!px-0' }">
+        <ULandingSection class="max-w-full w-[42rem] mx-auto !py-8" :ui="{ container: '!px-0 !gap-4' }">
           <ULandingCard
             v-for="(item, index) of entries"
             :key="index"
             :to="item?._path"
-            :title="item.title"
+            :title="item.title + ', ' + item.meta.ort"
             :description="item.description"
           />
         </ULandingSection>
