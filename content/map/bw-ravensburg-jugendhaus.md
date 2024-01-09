@@ -3,10 +3,10 @@ title: Jugendhaus Ravensburg
 description: Neonazis im Jugendhaus Ravensburg.
 tags:
 meta:
-  bundesland: Bayern
-  ort: Schwabach
+  bundesland: Baden-Württemberg
+  ort: Ravensburg
   einwohnerzahl: 40792
-  name: Jugendzentrum
+  name: Jugendhaus
   adresse: Anschrift unbekannt
   filter:
     Rechte Klientel:
@@ -19,8 +19,8 @@ meta:
   Integrierte Nutzung: true
   Organisationen: 
     - Boots&Braces(Band)
-  lng: 11.027498
-  lat: 49.324754
+  lng: 9.605318
+  lat: 47.770677
 ---
 
 Im Februar 1990 verhängt das Landgericht Ravensburg Haft- und Bewährungsstrafen gegen insgesamt 20 neonazistische Skinheads.i
