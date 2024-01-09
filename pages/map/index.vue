@@ -80,7 +80,7 @@
         </UButtonGroup>
 
         <template v-for="(value, key) of schema.meta.filter" :key="key">
-          <div class="text-sm font-medium pl-2 text-gray-300 tracking-wider">
+          <div class="text-sm pl-2 text-gray-900 dark:text-gray-300 tracking-wide">
             {{ key }}
           </div>
         </template>
