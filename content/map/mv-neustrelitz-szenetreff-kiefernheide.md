@@ -6,23 +6,24 @@ tags:
 meta:
   bundesland: Mecklenburg-Vorpommern
   ort: Neustrelitz
-  einwohnerzahl: 20426
-  name: Szenetreff Kiefernheide
-  adresse: Töpferstraße12
-  leitung:
-    rechte-sozialarbeitende: true
-  klientel:
-    rechte-subkultur: true
-  struktur-für:
-    integrierte-nutzung: true
-    privilegierte-nutzung: true
-    szeneveranstaltungen: true
-    propaganda: true
-  bezug-zu:
-    gewalttäterinnen: true
-    straftat-sonstige: true
   träger: 
     - Jugendamt Neustrelitz
+  einwohnerzahl: 20426
+  name: Szenetreff Kiefernheide
+  adresse: Töpferstraße 12
+  filter:
+    Rechte Klientel:
+      subkulturell: true
+    Infrastruktur für:
+      Propaganda: true
+    Tatbestände:
+      Sonstige: true
+  Leitung:
+    Rechte Sozialarbeitende: true
+  Bezug zu:
+    Gewalttäterinnen: true
+  Integrierte Nutzung: true
+  Privilegierte Nutzung: true
   lng: 13.062159
   lat: 53.363102
 ---

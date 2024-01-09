@@ -3,7 +3,7 @@
     <USelect
       v-if="records?.size"
       v-model="id"
-      :options="[ ...records.keys() ]"
+      :options="[...records.keys()].sort((a: string, b: string) => a.localeCompare(b))"
       placeholder="ID"
       class="mt-8"
     />
@@ -50,9 +50,12 @@ const records = computed(() => {
   }, new Map())
 })
 
-function translate (id) {
-  return meta.value.replace(/^( *)([^\n{]+){([^:}]+):?([^}]+)?}.*\n/gm, (_match: string, spaces: string, category: string, key: string, modifier?: string) => {
-    let value = records.value.get(id)[key]
+function translate (id: string) {
+  return meta.value.replace(/^( *)([^\n{]+){([^:}]+):?([^}]+)?}.*\n/gm, (_match: string, spaces: string, category: string, keys: string, modifier?: string) => {
+    const [key, key2] = keys.split('|')
+
+    let value = records.value.get(id)[key] || (key2 && records.value.get(id)[key2])
+
     if (!value) return ''
 
     if (modifier) {
@@ -66,6 +69,8 @@ function translate (id) {
       }
     }
     return spaces + category + value + '\n'
-  }).replace(/^ {2}.+?:\n(?= {2}\S)/gm, '')
+  })
+  .replace(/^ {2}.+?:\n(?= {2}\S)/gm, '')
+  .replace(/^ {4}.+?:\n(?= {4}\S)/gm, '')
 }
 </script>

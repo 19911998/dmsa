@@ -20,7 +20,7 @@
 
       <dl>
         <template
-          v-for="prop of ['ort', 'träger', 'chronik']"
+          v-for="prop of ['ort', 'träger']"
           :key="prop"
         >
           <div

@@ -7,32 +7,33 @@ tags:
 meta:
   bundesland: Mecklenburg-Vorpommern
   ort: Rostock
+  träger: 
+    - Jugendamt Rostock
   einwohnerzahl: 207513
   name: Jugendclub Max Reichpietsch
   adresse: Anschrift unbekannt
-  leitung:
-    sozialarbeitende: true
-  klientel:
-    rechte-subkultur: true
-    organisierte-rechte: true
-  struktur-für:
-    integrierte-nutzung: true
-    privilegierte-nutzung: true
-    szeneveranstaltungen: true
-    szenekonzerte: true
-    kameradschaftstreffen: true
-    propaganda: true
-  bezug-zu:
-    gewalttäterinnen: true
-    gewalt: true
-    verdrängungseffekt: true
-  träger: 
-    - Jugendamt Rostock
-  organisationen: 
+  filter:
+    Rechte Klientel:
+      subkulturell: true
+      organisiert: true
+    Infrastruktur für:
+      Parties & Konzerte: true
+      Kameradschaftstreffen: true
+      Propaganda: true
+    Tatbestände:
+      Gewalt: true
+    Verdrängungseffekt: true
+  Leitung:
+    Sozialarbeitende: true
+  Bezug zu:
+    Gewalttäterinnen: true
+  Integrierte Nutzung: true
+  Privilegierte Nutzung: true
+  Organisationen: 
     - Blood&Honour
     - Kameradschaftsbund Mecklenburg (KBM)
-  lng: 12.073352
-  lat: 54.157016
+  lng: 12.079494
+  lat: 54.148937
 ---
 
 Der Jugendclub Max Reichpietsch (»Max«) im Rostocker Stadtteil Groß-Klein wurde Ende der 1980er Jahre noch von mehreren Subkulturen wie Punks, Skins und Grufties genutzt. Mit der Wende und der Zuwendung eines Großteils der „subkulturellen“ Jugend hin zur Hooligan- und Neonaziszene, wurden die übriggebliebenen Vertreter_innen der linken Subkulturen aus dem Club verdrängt und die Einrichtung war bald in Neonazihand – ein Prozess, wie er in vielen Einrichtungen vonstattenging. So entwickelte sich das »Max« in den frühen 1990ern rasch zum berühmt-berüchtigten Neonazitreffpunkt, während Sozialarbeiter_innen in der Kritik standen, die Neonazis durch akzeptierende Jugendarbeit zu fördern und zu unterstützen.

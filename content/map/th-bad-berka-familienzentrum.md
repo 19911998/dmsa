@@ -9,17 +9,15 @@ meta:
   einwohnerzahl: 7540
   name: Familien- und Jugendzentrum Bad Berka
   adresse: Herderstraße 20
-  leitung:
-    sozialarbeitende: true
-  klientel:
-    rechte-subkultur: true
-  struktur-für:
-    integrierte-nutzung: true
-  bezug-zu:
-    verdrängungseffekt: true
+  filter:
+    Rechte Klientel:
+      subkulturell: true
+    Verdrängungseffekt: true
+  Leitung:
+    Sozialarbeitende: true
+  Integrierte Nutzung: true
   lng: 11.289093
   lat: 50.893916
-
 ---
 
 Anlässlich einer NPD-Demonstration in Weimar rufen antifaschistische Initiativen im April 2008 zu einer Demonstration auf. In einem Redebeitrag heißt es, vor allem im Umland habe sich eine neonazistische, jugendkulturelle Hegemonie eingestellt. Als Gründe würden oft fehlende Angebote für Jugendliche oder eine hohe Jugendarbeitslosenquote angeführt. Dies mögen entscheidende Faktoren sein, das eigene Problem werde dadurch jedoch verschleiert: „Es etabliert sich zunehmend eine vom rechten Konsens getragene, eigenständige Jugendkultur, die nicht davon lebt, dass es den Jugendlichen schlecht geht, sondern in der es ganz einfach zum guten Ton gehört mit rassistischen Parolen durch Kleinstädte zu ziehen und Andersdenkende oder Migrant_innen anzugreifen bzw. einzuschüchtern.“
