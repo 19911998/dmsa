@@ -82,7 +82,7 @@
         <div class="flex flex-col gap-2">
           <template v-for="(filter, key) in filters" :key="key">
             <div v-if="typeof filter == 'object'">
-              <div class="text-primary text-sm tracking-wide">{{ key }}</div>
+              <div class="italic text-sm tracking-wide">{{ key }}</div>
               <div class="flex flex-col gap-1 mt-1">
                 <UCheckbox
                   v-for="key2 in Object.keys(filter)"
@@ -141,6 +141,16 @@ const filteredBeforeState = computed(() => entries.value.filter(({ meta, tags })
   if (!(meta?.lng && meta.lat)) return
   if (tag.value && !tags?.includes(tag.value)) return
 
+  for (const key in filters.value) {
+    if (typeof filters.value[key] === 'object') {
+      for (const key2 in filters.value[key]) {
+        if (filters.value[key][key2] && !meta.filter[key]?.[key2]) {
+          return
+        }
+      }
+    } else if (filters.value[key] && !meta.filter[key]) return
+  }
+
   return true
 }))
 
@@ -177,13 +187,13 @@ if (tag.value) {
   }
 }
 
-const bounds = computed(() => [
+const bounds = computed(() => filtered.value.length && [
   [ Math.min(...filtered.value.map(m => m.meta.lat)), Math.min(...filtered.value.map(m => m.meta.lng)) ],
-  [ Math.max(...filtered.value.map(m => m.meta.lat)), Math.max(...filtered.value.map(m => m.meta.lng)) ] 
+  [ Math.max(...filtered.value.map(m => m.meta.lat)), Math.max(...filtered.value.map(m => m.meta.lng)) ]
 ])
 
 watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], async ([map]) => {
-  if (!map) return
+  if (!map || !bounds.value) return
 
   L ||= await import('leaflet')
 
