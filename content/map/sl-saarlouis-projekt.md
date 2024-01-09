@@ -5,23 +5,22 @@ tags:
 meta:
   bundesland: Saarland
   ort: Saarlouis
-  einwohnerzahl: 3395
-  name: Sozialpädagogisches Projekt
+  einwohnerzahl: 34849
+  name: Projekt
   adresse: Anschrift unbekannt
-  chronik:
-    start: 1997
-    ende: 2000
   filter:
     Rechte Klientel:
       subkulturell: true
-    Infrastruktur für:
+      organisiert: true
+    Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
-    Selbstverwaltung: true
   Bezug zu:
-    Mörderinnen: true
     Gewalttäterinnen: true
+  Integrierte Nutzung: true
   Privilegierte Nutzung: true
+  Organisationen: 
+    - Freiheitliche Deutsche Arbeiterpartei (FAP)
   lng: 6.747731
   lat: 49.310138
 ---
