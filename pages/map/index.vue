@@ -87,9 +87,8 @@
                 <UCheckbox
                   v-for="key2 in Object.keys(filter)"
                   :key="key2"
-                  :model-value="filter[key2] || filterSetNotAffected[key2]"
+                  :model-value="filter[key2]"
                   :label="key2"
-                  :indeterminate="disabled[key2]"
                   :disabled="disabled[key2] || filterSetNotAffected[key2]"
                   :color="disabled[key2] ? 'orange' : undefined"
                   :ui="(disabled[key2] || filterSetNotAffected[key2])
@@ -102,15 +101,13 @@
             <template v-else>
               <UDivider />
               <UCheckbox
-                :model-value="filters[key] || filterSetNotAffected[key]"
+                v-model="filters[key]"
                 :disabled="disabled[key] || filterSetNotAffected[key]"
-                :indeterminate="disabled[key]"
                 :color="disabled[key] ? 'orange' : undefined"
                 :label="key"
                 :ui="(disabled[key] || filterSetNotAffected[key])
                   ? { label: 'text-gray-500 dark:text-gray-400 cursor-not-allowed' }
                   : undefined"
-                @update:model-value="filters[key] = $event"
               />
             </template>
           </template>
