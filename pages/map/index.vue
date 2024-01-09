@@ -79,11 +79,27 @@
           <UButton v-if="state" color="gray" icon="i-heroicons-x-mark-20-solid" @click="state = ''" />
         </UButtonGroup>
 
-        <template v-for="(value, key) of schema.meta.filter" :key="key">
-          <div class="text-sm pl-2 text-gray-900 dark:text-gray-300 tracking-wide">
-            {{ key }}
-          </div>
-        </template>
+        <div class="pl-2 flex flex-col gap-2">
+          <template v-for="(filter, key) in filters" :key="key">
+            <div v-if="typeof filter == 'object'">
+              <div class="text-primary text-sm tracking-wide">{{ key }}</div>
+              <div class="flex flex-col gap-1 mt-1">
+                <UCheckbox
+                  v-for="key2 in Object.keys(filter)"
+                  :key="key2"
+                  v-model="filter[key2]"
+                  :label="key2"
+                  class="bg-gray"
+                />
+              </div>
+            </div>
+            <UCheckbox
+              v-else
+              v-model="filters[key]"
+              :label="key"
+            />
+          </template>
+        </div>
       </div>
     </UCard>
   </div>
@@ -103,6 +119,20 @@ const markerRef = ref<typeof LMarker[]>([])
 const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
 const { data: schema } = await useAsyncData('filters', () => queryContent('schema').findOne())
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
+
+
+function extractFilters (scheme: Record<string, any>) {
+  return Object.keys(scheme).reduce((acc, key) => {
+    if (Object.keys(scheme[key]).length === 1) {
+      acc[key] = false
+    } else {
+      acc[key] = extractFilters(scheme[key])
+    }
+    return acc
+  }, {})
+}
+
+const filters = useState('filters', () => extractFilters(schema.value.meta.filter))
 
 const filteredBeforeState = computed(() => entries.value.filter(({ meta, tags }) => {
   if (!(meta?.lng && meta.lat)) return
