@@ -1,1 +1,0 @@
-import{k as o,a9 as c,w as e,aH as s,b as _,g as r,ac as l,bx as f}from"./entry.52ncvpoV.js";const d={};function u(n,m){const t=f,a=s;return _(),c(a,null,{default:e(()=>[r(t,null,{default:e(()=>[l(n.$slots,"default")]),_:3})]),_:3})}const i=o(d,[["render",u]]);export{i as default};
