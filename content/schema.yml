@@ -13,6 +13,8 @@ meta:
     Rechte Klientel:
       subkulturell: {rechte Subkultur:Boolean}
       organisiert: {organisierte Rechte:Boolean}
+      gewaltbereit: {Gewalttäter*innen:Boolean}
+      angestellt: {rechte Sozialarbeitende:Boolean}
     Infrastruktur für:
       Bandproben: {Bandproben:Boolean}
       Parties & Konzerte: {Szeneparties|Szenekonzerte:Boolean}
@@ -25,11 +27,9 @@ meta:
     Verdrängungseffekt: {Verdrängungseffekt:Boolean}
   Leitung:
     Sozialarbeitende: {Sozialarbeitende:Boolean}
-    Rechte Sozialarbeitende: {rechte Sozialarbeitende:Boolean}
     Selbstverwaltung: {Selbstverwaltung:Boolean}
   Bezug zu:
     Mörderinnen: {Mörder*innen:Boolean}
-    Gewalttäterinnen: {Gewalttäter*innen:Boolean}
   Integrierte Nutzung: {integrierte Nutzung:Boolean}
   Privilegierte Nutzung: {privilegierte Nutzung:Boolean}
   Organisationen: {Organisationen:Array}
