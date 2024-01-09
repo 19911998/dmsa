@@ -78,6 +78,12 @@
           <USelect v-model="state" :options="states" />
           <UButton v-if="state" color="gray" icon="i-heroicons-x-mark-20-solid" @click="state = ''" />
         </UButtonGroup>
+
+        <template v-for="(value, key) of schema.meta.filter" :key="key">
+          <div v-if="Object.keys(value).length > 1" class="text-sm font-medium pl-2 text-gray-300 tracking-wider">
+            {{ key }}
+          </div>
+        </template>
       </div>
     </UCard>
   </div>
@@ -95,7 +101,7 @@ const mapRef = ref<typeof LMap | null>(null)
 const markerRef = ref<typeof LMarker[]>([])
 
 const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
-
+const { data: schema } = await useAsyncData('filters', () => queryContent('schema').findOne())
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
 
 const filteredBeforeState = computed(() => entries.value.filter(({ meta, tags }) => {

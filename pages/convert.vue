@@ -21,7 +21,7 @@ if (useRuntimeConfig().public.site_env !== 'preview') {
 
 const id = ref('')
 
-const { data: meta } = await useFetch('/api/meta.yml')
+const { data: meta } = await useFetch('/api/schema.yml')
 const { data: csv } = await useFetch('/api/meta.csv')
 
 const parsed = computed(() => csv.value ? Papa.parse(csv.value)?.data : undefined)
