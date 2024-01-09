@@ -5,7 +5,7 @@ meta:
   einwohnerzahl: {Einwohnerzahl}
   name: {Name}
   adresse: {Adresse}
-  jahre: {Relevante Vorgänge:Array}
+  jahre: {relevante Vorgänge:Array}
   chronik:
     start: {Eröffnung}
     ende: {Schließung}
