@@ -20,8 +20,7 @@ meta:
   Organisationen: 
     - Boots&Braces(Band)
   lng: 11.027498
-  lat: 49.324754
-  
+  lat: 49.324754  
 ---
 
 Antifaschist[*]innen veröffentlichen im Jahr 2003 eine umfassende Recherche zur Neonaziszene in Mittelfranken. Im Kapitel zur 40.000-Einwohner*innenstadt Schwabach, in der Nähe von Nürnberg, ist von einer Neonaziszene die Rede, die gut im gesellschaftlichen Leben verankert ist. Mitglieder der Nationaldemokratischen Partei Deutschlands (NPD) seien in diversen Vereinen und Verbänden der Stadt aktiv und „aufstrebende Jungnazis“ profitierten davon, dass „ältere Rechtsextremisten“ ihnen finanziell und logistisch unter die Arme greifen.

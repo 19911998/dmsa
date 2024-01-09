@@ -21,7 +21,6 @@ meta:
     - Boots&Braces(Band)
   lng: 11.027498
   lat: 49.324754
-  
 ---
 
 Im Februar 1990 verhängt das Landgericht Ravensburg Haft- und Bewährungsstrafen gegen insgesamt 20 neonazistische Skinheads.i
