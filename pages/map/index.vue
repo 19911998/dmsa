@@ -79,7 +79,7 @@
           <UButton v-if="state" color="gray" icon="i-heroicons-x-mark-20-solid" @click="state = ''" />
         </UButtonGroup>
 
-        <div class="pl-2 flex flex-col gap-2">
+        <div class="flex flex-col gap-2">
           <template v-for="(filter, key) in filters" :key="key">
             <div v-if="typeof filter == 'object'">
               <div class="text-primary text-sm tracking-wide">{{ key }}</div>
@@ -93,11 +93,14 @@
                 />
               </div>
             </div>
-            <UCheckbox
-              v-else
-              v-model="filters[key]"
-              :label="key"
-            />
+            <template v-else>
+              <UDivider />
+              <UCheckbox
+                v-model="filters[key]"
+                class="bt-1"
+                :label="key"
+              />
+            </template>
           </template>
         </div>
       </div>
