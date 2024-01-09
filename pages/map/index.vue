@@ -6,7 +6,7 @@
         <LMap
           ref="mapRef"
           :min-zoom="5"
-          :max-zoom="8"
+          :max-zoom="10"
         >
           <LTileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -75,7 +75,7 @@
         </UBadge>
 
         <UButtonGroup>
-          <USelect v-model="state" :options="states" placeholder="Bundesland" />
+          <USelect v-model="state" :options="states" />
           <UButton v-if="state" color="gray" icon="i-heroicons-x-mark-20-solid" @click="state = ''" />
         </UButtonGroup>
       </div>
@@ -111,15 +111,24 @@ const filtered = computed(() => filteredBeforeState.value.filter(({ meta }) => {
   return true
 }))
 
-const states = computed(() => [...entries.value.reduce((acc, { meta }) => {
-  if (meta.bundesland) acc.add(meta.bundesland)
-  return acc
-}, new Set() as Set<string>)].map(label => ({
-  label,
-  disabled: !filteredBeforeState.value.find(_ => _.meta.bundesland === label)
-})))
+const states = computed(() => [
+  { label: 'Alle Bundesländer', value: '' },
+  ...Array.from(
+      // extract unique list of states from all entries via Set syntax
+      entries.value.reduce((acc, { meta }) => {
+        if (meta.bundesland) acc.add(meta.bundesland)
+        return acc
+      }, new Set() as Set<string>)
+    )
+    // transform to array and disable states that are not available due to active filters
+    .map(value => ({
+      label: value,
+      value,
+      disabled: !filteredBeforeState.value.find(_ => _.meta.bundesland === value)
+    }))
+])
 
-const state = useState('state', () => null)
+const state = useState('state', () => '')
 
 if (tag.value) {
   const stateSelected = states.value.find(_ => _.label.toLowerCase() === tag.value.toLowerCase())
