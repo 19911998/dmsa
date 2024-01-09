@@ -8,6 +8,8 @@ meta:
   einwohnerzahl: 34849
   name: Projekt
   adresse: Anschrift unbekannt
+  jahre: 
+    - 1998
   filter:
     Rechte Klientel:
       subkulturell: true
