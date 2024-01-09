@@ -87,13 +87,13 @@
                 <UCheckbox
                   v-for="key2 in Object.keys(filter)"
                   :key="key2"
-                  :model-value="filter[key2] || includedInAll[key2]"
+                  :model-value="filter[key2] || filterSetNotAffected[key2]"
                   :label="key2"
                   :indeterminate="disabled[key2]"
-                  :disabled="disabled[key2] || includedInAll[key2]"
+                  :disabled="disabled[key2] || filterSetNotAffected[key2]"
                   :color="disabled[key2] ? 'orange' : undefined"
-                  :ui="(disabled[key2] || includedInAll[key2])
-                    ? { label: 'text-gray-400 dark:text-gray-400 cursor-not-allowed' }
+                  :ui="(disabled[key2] || filterSetNotAffected[key2])
+                    ? { label: 'text-gray-500 dark:text-gray-400 cursor-not-allowed' }
                     : undefined"
                   @update:model-value="filter[key2] = $event"
                 />
@@ -102,13 +102,13 @@
             <template v-else>
               <UDivider />
               <UCheckbox
-                :model-value="filters[key] || includedInAll[key]"
-                :disabled="disabled[key] || includedInAll[key]"
+                :model-value="filters[key] || filterSetNotAffected[key]"
+                :disabled="disabled[key] || filterSetNotAffected[key]"
                 :indeterminate="disabled[key]"
-                :color="disabled[key] ? 'gray' : undefined"
+                :color="disabled[key] ? 'orange' : undefined"
                 :label="key"
-                :ui="(disabled[key] || includedInAll[key])
-                  ? { label: 'text-gray-400 dark:text-gray-400 cursor-not-allowed' }
+                :ui="(disabled[key] || filterSetNotAffected[key])
+                  ? { label: 'text-gray-500 dark:text-gray-400 cursor-not-allowed' }
                   : undefined"
                 @update:model-value="filters[key] = $event"
               />
@@ -151,33 +151,51 @@ const disabled = computed(() => {
   return ret
 })
 
-const includedInAll = computed(() => {
+const filterSetNotAffected = computed(() => {
   const ret = {}
   for (const key in filters.value) {
     if (typeof filters.value[key] === 'object') {
       for (const key2 in filters.value[key]) {
-        ret[key2] = !filters.value[key][key2] && filtered.value.every(({ meta }) => meta.filter[key]?.[key2])
+        ret[key2] = filters.value[key][key2]
+          // deactivating filter doesn't change anything
+          ? beforeFilterSet.value.filter(({ meta }) =>
+              inFilterSet(meta, {
+                ...filters.value,
+                [key]: {
+                  ...filters.value[key],
+                  [key2]: false
+                }
+              })
+            ).length === filtered.value.length
+          // activating filter doesn't change anything
+          : filtered.value.every(({ meta }) => meta.filter[key]?.[key2])
       }
     } else {
-      ret[key] = !filters.value[key] && filtered.value.every(({ meta }) => meta.filter[key])
+      ret[key] = filters.value[key]
+        // deactivating filter doesn't change anything
+        ? beforeFilterSet.value.filter(({ meta }) =>
+            inFilterSet(meta, { ...filters.value, [key]: false })
+          ).length === filtered.value.length
+        // activating filter doesn't change anything
+        : filtered.value.every(({ meta }) => meta.filter[key])
     }
   }
   return ret
 })
 
-const filteredBeforeState = computed(() => entries.value.filter(({ meta, tags }) => {
+const filteredBasic = computed(() => entries.value.filter(({ meta, tags }) => {
   if (!(meta?.lng && meta.lat)) return
   if (tag.value && !tags?.includes(tag.value)) return
-  if (notInFilters(meta, filters.value)) return
-
   return true
 }))
 
-const filtered = computed(() => filteredBeforeState.value.filter(({ meta }) => {
-  if (state.value && meta.bundesland !== state.value) return
+const beforeFilterSet = computed(() => state.value
+  ? filteredBasic.value.filter(({ meta }) => meta.bundesland === state.value)
+  : filteredBasic.value)
 
-  return true
-}))
+const filtered = computed(() => beforeFilterSet.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
+
+const notFilteredByState = computed(() => filteredBasic.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
 
 const states = computed(() => [
   { label: 'Alle Bundesländer', value: '' },
@@ -192,7 +210,7 @@ const states = computed(() => [
     .map(value => ({
       label: value,
       value,
-      disabled: !filteredBeforeState.value.find(_ => _.meta.bundesland === value)
+      disabled: !notFilteredByState.value.some(_ => _.meta.bundesland === value)
     }))
 ])
 
@@ -222,16 +240,15 @@ function extractFilters (scheme: Record<string, any>) {
   }, {})
 }
 
-function notInFilters (meta: Record<string, any>, activeFilters: Record<string, any>) {
+function inFilterSet (meta: Record<string, any>, activeFilters: Record<string, any>) {
   for (const key in activeFilters) {
     if (typeof activeFilters[key] === 'object') {
       for (const key2 in activeFilters[key]) {
-        if (activeFilters[key][key2] && !meta.filter[key]?.[key2]) {
-          return true
-        }
+        if (activeFilters[key][key2] && !meta.filter[key]?.[key2]) return false
       }
-    } else if (activeFilters[key] && !meta.filter[key]) return true
+    } else if (activeFilters[key] && !meta.filter[key]) return false
   }
+  return true
 }
 
 watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], async ([map]) => {
