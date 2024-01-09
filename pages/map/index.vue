@@ -90,7 +90,7 @@
                   v-model="filter[key2]"
                   :label="key2"
                   :disabled="disabled[key2]"
-                  :ui="disabled[key2] ? { label: 'text-gray-400 cursor-not-allowed' } : undefined"
+                  :ui="disabled[key2] ? { label: 'text-gray-400 dark:text-grey-800 cursor-not-allowed' } : undefined"
                 />
               </div>
             </div>
@@ -101,7 +101,7 @@
                 :disabled="disabled[key]"
                 class="bt-1"
                 :label="key"
-                :ui="disabled[key] ? { label: 'text-gray-400 cursor-not-allowed' } : undefined"
+                :ui="disabled[key] ? { label: 'text-gray-400 dark:text-gray-800 cursor-not-allowed' } : undefined"
               />
             </template>
           </template>
