@@ -132,7 +132,7 @@ const mapRef = ref<typeof LMap | null>(null)
 const markerRef = ref<typeof LMarker[]>([])
 
 const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
-const { data: schema } = await useAsyncData('filters', () => queryContent('schema').findOne())
+const { data: schema } = await useAsyncData('filters', () => queryContent('_schema').findOne())
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').without('body').find())
 
 const filters = useState<Record<string, any>>('filters', () => extractFilters(schema.value.meta.filter))

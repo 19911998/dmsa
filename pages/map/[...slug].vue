@@ -1,24 +1,15 @@
 <template>
   <UPage>
-    <template #left>
+    <template #left></template>
+
+    <template #right>
       <UAside
         :links="page.tags?.map((tag: string) => ({
           label: tag,
           to: `/map?tag=${encodeURIComponent(tag)}`,
           icon: 'i-heroicons-tag'
         }))"
-        :ui="{ top: '' }"
       >
-        <template v-if="page.tags" #top>
-          <div class="mb-3">
-            Schlagworte
-          </div>
-        </template>
-      </UAside>
-    </template>
-
-    <template #right>
-      <UAside>
         <dl class="flex flex-col gap-y-2 text-sm">
           <template
             v-for="prop of ['bundesland', 'ort', 'träger', 'zeitraum', 'Organisationen']"
