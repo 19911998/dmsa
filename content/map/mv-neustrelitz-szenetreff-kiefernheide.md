@@ -16,14 +16,12 @@ meta:
   filter:
     Rechte Klientel:
       subkulturell: true
+      gewaltbereit: true
+      angestellt: true
     Infrastruktur für:
       Propaganda: true
     Tatbestände:
       Sonstige: true
-  Leitung:
-    Rechte Sozialarbeitende: true
-  Bezug zu:
-    Gewalttäterinnen: true
   Integrierte Nutzung: true
   Privilegierte Nutzung: true
   lng: 13.062159

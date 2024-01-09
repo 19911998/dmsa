@@ -20,6 +20,7 @@ meta:
     Rechte Klientel:
       subkulturell: true
       organisiert: true
+      gewaltbereit: true
     Infrastruktur für:
       Parties & Konzerte: true
       Kameradschaftstreffen: true
@@ -29,8 +30,6 @@ meta:
     Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
-  Bezug zu:
-    Gewalttäterinnen: true
   Integrierte Nutzung: true
   Privilegierte Nutzung: true
   Organisationen: 

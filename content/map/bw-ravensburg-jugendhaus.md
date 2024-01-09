@@ -5,20 +5,21 @@ tags:
 meta:
   bundesland: Baden-Württemberg
   ort: Ravensburg
-  einwohnerzahl: 40792
+  einwohnerzahl: 50393
   name: Jugendhaus
   adresse: Anschrift unbekannt
+  jahre: 
+    - 1986
+    - 1989
   filter:
     Rechte Klientel:
       subkulturell: true
-    Infrastruktur für:
-      Parties & Konzerte: true
+    Tatbestände:
+      Gewalt: true
     Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true
-  Organisationen: 
-    - Boots&Braces(Band)
   lng: 9.605318
   lat: 47.770677
 ---
