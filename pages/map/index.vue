@@ -52,7 +52,7 @@
           <UContainer class="mt-4">
             <ULandingGrid class="w-full">
               <ULandingCard
-                v-for="(item, index) of entries"
+                v-for="(item, index) of filtered"
                 :key="index"
                 :to="item?._path"
                 :title="item.title + ', ' + item.meta.ort"
@@ -105,7 +105,7 @@ const { data: schema } = await useAsyncData('filters', () => queryContent('schem
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
 
 const filteredBeforeState = computed(() => entries.value.filter(({ meta, tags }) => {
-  if (!(meta.lng && meta.lat)) return
+  if (!(meta?.lng && meta.lat)) return
   if (tag.value && !tags?.includes(tag.value)) return
 
   return true
@@ -122,7 +122,7 @@ const states = computed(() => [
   ...Array.from(
       // extract unique list of states from all entries via Set syntax
       entries.value.reduce((acc, { meta }) => {
-        if (meta.bundesland) acc.add(meta.bundesland)
+        if (meta?.bundesland) acc.add(meta.bundesland)
         return acc
       }, new Set() as Set<string>)
     )
