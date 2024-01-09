@@ -81,27 +81,32 @@
 
         <div class="flex flex-col gap-2">
           <template v-for="(filter, key) in filters" :key="key">
-            <div v-if="typeof filter == 'object'">
+            <div v-if="typeof filter === 'object'">
               <div class="italic text-sm tracking-wide">{{ key }}</div>
               <div class="flex flex-col gap-1 mt-1">
                 <UCheckbox
                   v-for="key2 in Object.keys(filter)"
                   :key="key2"
-                  v-model="filter[key2]"
+                  :model-value="filter[key2] || includedInAll[key2]"
                   :label="key2"
-                  :disabled="disabled[key2]"
-                  :ui="disabled[key2] ? { label: 'text-gray-400 dark:text-grey-800 cursor-not-allowed' } : undefined"
+                  :disabled="disabled[key2] || includedInAll[key2]"
+                  :ui="(disabled[key2] || includedInAll[key2])
+                    ? { label: 'text-gray-400 dark:text-gray-400 cursor-not-allowed' }
+                    : undefined"
+                  @update:model-value="filter[key2] = $event"
                 />
               </div>
             </div>
             <template v-else>
               <UDivider />
               <UCheckbox
-                v-model="filters[key]"
-                :disabled="disabled[key]"
-                class="bt-1"
+                :model-value="filters[key] || includedInAll[key]"
+                :disabled="disabled[key] || includedInAll[key]"
                 :label="key"
-                :ui="disabled[key] ? { label: 'text-gray-400 dark:text-gray-800 cursor-not-allowed' } : undefined"
+                :ui="(disabled[key] || includedInAll[key])
+                  ? { label: 'text-gray-400 dark:text-gray-400 cursor-not-allowed' }
+                  : undefined"
+                @update:model-value="filters[key] = $event"
               />
             </template>
           </template>
@@ -126,7 +131,7 @@ const { data: page } = await useAsyncData('map-overview', () => queryContent('_m
 const { data: schema } = await useAsyncData('filters', () => queryContent('schema').findOne())
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
 
-const filters = useState('filters', () => extractFilters(schema.value.meta.filter))
+const filters = useState<Record<string, any>>('filters', () => extractFilters(schema.value.meta.filter))
 
 const disabled = computed(() => {
   const ret = {}
@@ -137,6 +142,20 @@ const disabled = computed(() => {
       }
     } else {
       ret[key] = filtered.value.every(({ meta }) => !meta.filter[key])
+    }
+  }
+  return ret
+})
+
+const includedInAll = computed(() => {
+  const ret = {}
+  for (const key in filters.value) {
+    if (typeof filters.value[key] === 'object') {
+      for (const key2 in filters.value[key]) {
+        ret[key2] = !filters.value[key][key2] && filtered.value.every(({ meta }) => meta.filter[key]?.[key2])
+      }
+    } else {
+      ret[key] = !filters.value[key] && filtered.value.every(({ meta }) => meta.filter[key])
     }
   }
   return ret
