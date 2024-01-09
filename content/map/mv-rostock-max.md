@@ -11,7 +11,11 @@ meta:
     - Jugendamt Rostock
   einwohnerzahl: 207513
   name: Jugendclub Max Reichpietsch
-  adresse: Anschrift unbekannt
+  adresse: Zum Laakkanal
+  jahre: 
+    - 1992
+    - 2001
+    - 2002
   filter:
     Rechte Klientel:
       subkulturell: true
@@ -32,8 +36,8 @@ meta:
   Organisationen: 
     - Blood&Honour
     - Kameradschaftsbund Mecklenburg (KBM)
-  lng: 12.079494
-  lat: 54.148937
+  lng: 12.073352
+  lat: 54.157016
 ---
 
 Der Jugendclub Max Reichpietsch (»Max«) im Rostocker Stadtteil Groß-Klein wurde Ende der 1980er Jahre noch von mehreren Subkulturen wie Punks, Skins und Grufties genutzt. Mit der Wende und der Zuwendung eines Großteils der „subkulturellen“ Jugend hin zur Hooligan- und Neonaziszene, wurden die übriggebliebenen Vertreter_innen der linken Subkulturen aus dem Club verdrängt und die Einrichtung war bald in Neonazihand – ein Prozess, wie er in vielen Einrichtungen vonstattenging. So entwickelte sich das »Max« in den frühen 1990ern rasch zum berühmt-berüchtigten Neonazitreffpunkt, während Sozialarbeiter_innen in der Kritik standen, die Neonazis durch akzeptierende Jugendarbeit zu fördern und zu unterstützen.

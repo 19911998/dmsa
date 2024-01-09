@@ -11,6 +11,8 @@ meta:
   einwohnerzahl: 20426
   name: Szenetreff Kiefernheide
   adresse: Töpferstraße 12
+  jahre: 
+    - 1993
   filter:
     Rechte Klientel:
       subkulturell: true
