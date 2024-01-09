@@ -89,7 +89,8 @@
                   :key="key2"
                   v-model="filter[key2]"
                   :label="key2"
-                  class="bg-gray"
+                  :disabled="disabled[key2]"
+                  :ui="disabled[key2] ? { label: 'text-gray-400 cursor-not-allowed' } : undefined"
                 />
               </div>
             </div>
@@ -97,8 +98,10 @@
               <UDivider />
               <UCheckbox
                 v-model="filters[key]"
+                :disabled="disabled[key]"
                 class="bt-1"
                 :label="key"
+                :ui="disabled[key] ? { label: 'text-gray-400 cursor-not-allowed' } : undefined"
               />
             </template>
           </template>
@@ -123,33 +126,26 @@ const { data: page } = await useAsyncData('map-overview', () => queryContent('_m
 const { data: schema } = await useAsyncData('filters', () => queryContent('schema').findOne())
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
 
-
-function extractFilters (scheme: Record<string, any>) {
-  return Object.keys(scheme).reduce((acc, key) => {
-    if (Object.keys(scheme[key]).length === 1) {
-      acc[key] = false
-    } else {
-      acc[key] = extractFilters(scheme[key])
-    }
-    return acc
-  }, {})
-}
-
 const filters = useState('filters', () => extractFilters(schema.value.meta.filter))
+
+const disabled = computed(() => {
+  const ret = {}
+  for (const key in filters.value) {
+    if (typeof filters.value[key] === 'object') {
+      for (const key2 in filters.value[key]) {
+        ret[key2] = filtered.value.every(({ meta }) => !meta.filter[key]?.[key2])
+      }
+    } else {
+      ret[key] = filtered.value.every(({ meta }) => !meta.filter[key])
+    }
+  }
+  return ret
+})
 
 const filteredBeforeState = computed(() => entries.value.filter(({ meta, tags }) => {
   if (!(meta?.lng && meta.lat)) return
   if (tag.value && !tags?.includes(tag.value)) return
-
-  for (const key in filters.value) {
-    if (typeof filters.value[key] === 'object') {
-      for (const key2 in filters.value[key]) {
-        if (filters.value[key][key2] && !meta.filter[key]?.[key2]) {
-          return
-        }
-      }
-    } else if (filters.value[key] && !meta.filter[key]) return
-  }
+  if (notInFilters(meta, filters.value)) return
 
   return true
 }))
@@ -191,6 +187,29 @@ const bounds = computed(() => filtered.value.length && [
   [ Math.min(...filtered.value.map(m => m.meta.lat)), Math.min(...filtered.value.map(m => m.meta.lng)) ],
   [ Math.max(...filtered.value.map(m => m.meta.lat)), Math.max(...filtered.value.map(m => m.meta.lng)) ]
 ])
+
+function extractFilters (scheme: Record<string, any>) {
+  return Object.keys(scheme).reduce((acc, key) => {
+    if (Object.keys(scheme[key]).length === 1) {
+      acc[key] = false
+    } else {
+      acc[key] = extractFilters(scheme[key])
+    }
+    return acc
+  }, {})
+}
+
+function notInFilters (meta: Record<string, any>, activeFilters: Record<string, any>) {
+  for (const key in activeFilters) {
+    if (typeof activeFilters[key] === 'object') {
+      for (const key2 in activeFilters[key]) {
+        if (activeFilters[key][key2] && !meta.filter[key]?.[key2]) {
+          return true
+        }
+      }
+    } else if (activeFilters[key] && !meta.filter[key]) return true
+  }
+}
 
 watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], async ([map]) => {
   if (!map || !bounds.value) return
