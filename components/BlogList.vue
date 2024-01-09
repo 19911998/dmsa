@@ -42,7 +42,7 @@
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 
 defineProps<{
-  entries: ParsedContent[]
+  entries: Omit<ParsedContent, 'body'>[]
   pageTag?: string
 }>()
 </script>

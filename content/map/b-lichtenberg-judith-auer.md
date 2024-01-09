@@ -2,7 +2,6 @@
 title: Judith-Auer-Club
 description: Rechtes Zentrum von überregionaler Bedeutung.
 tags:
-  - berlin
 meta:
   bundesland: Berlin
   ort: Lichtenberg

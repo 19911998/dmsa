@@ -133,7 +133,7 @@ const markerRef = ref<typeof LMarker[]>([])
 
 const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
 const { data: schema } = await useAsyncData('filters', () => queryContent('schema').findOne())
-const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
+const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').without('body').find())
 
 const filters = useState<Record<string, any>>('filters', () => extractFilters(schema.value.meta.filter))
 
@@ -201,13 +201,13 @@ const states = computed(() => [
   { label: 'Alle Bundesländer', value: '' },
   ...Array.from(
       // extract unique list of states from all entries via Set syntax
-      entries.value.reduce((acc, { meta }) => {
+      (entries.value as any[]).reduce((acc, { meta }) => {
         if (meta?.bundesland) acc.add(meta.bundesland)
         return acc
       }, new Set() as Set<string>)
     )
     // transform to array and disable states that are not available due to active filters
-    .map(value => ({
+    .map((value: string) => ({
       label: value,
       value,
       disabled: !notFilteredByState.value.some(_ => _.meta.bundesland === value)
@@ -215,14 +215,6 @@ const states = computed(() => [
 ])
 
 const state = useState('state', () => '')
-
-if (tag.value) {
-  const stateSelected = states.value.find(_ => _.label.toLowerCase() === tag.value.toLowerCase())
-  if (stateSelected) {
-    state.value = stateSelected?.label
-    useRouter().push(route.path)
-  }
-}
 
 const bounds = computed(() => filtered.value.length && [
   [ Math.min(...filtered.value.map(m => m.meta.lat)), Math.min(...filtered.value.map(m => m.meta.lng)) ],
