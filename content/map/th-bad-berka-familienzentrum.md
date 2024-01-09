@@ -9,6 +9,8 @@ meta:
   einwohnerzahl: 7540
   name: Familien- und Jugendzentrum Bad Berka
   adresse: Herderstraße 20
+  jahre: 
+    - 2008
   filter:
     Rechte Klientel:
       subkulturell: true
