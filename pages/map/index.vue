@@ -89,7 +89,9 @@
                   :key="key2"
                   :model-value="filter[key2] || includedInAll[key2]"
                   :label="key2"
+                  :indeterminate="disabled[key2]"
                   :disabled="disabled[key2] || includedInAll[key2]"
+                  :color="disabled[key2] ? 'orange' : undefined"
                   :ui="(disabled[key2] || includedInAll[key2])
                     ? { label: 'text-gray-400 dark:text-gray-400 cursor-not-allowed' }
                     : undefined"
@@ -102,6 +104,8 @@
               <UCheckbox
                 :model-value="filters[key] || includedInAll[key]"
                 :disabled="disabled[key] || includedInAll[key]"
+                :indeterminate="disabled[key]"
+                :color="disabled[key] ? 'gray' : undefined"
                 :label="key"
                 :ui="(disabled[key] || includedInAll[key])
                   ? { label: 'text-gray-400 dark:text-gray-400 cursor-not-allowed' }
