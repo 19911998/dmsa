@@ -3,35 +3,27 @@ title: Sozialpädagogisches Projekt
 description: Rechte Skinheads erhalten sozialpädagogische Unterstützung.
 tags:
 meta:
-  bundesland: Mecklenburg-Vorpommern
-  ort: Rostock
-  träger: 
-    - Jugendamt Rostock
-  einwohnerzahl: 207513
-  name: Jugendclub Max Reichpietsch
+  bundesland: Saarland
+  ort: Saarlouis
+  einwohnerzahl: 3395
+  name: Sozialpädagogisches Projekt
   adresse: Anschrift unbekannt
+  chronik:
+    start: 1997
+    ende: 2000
   filter:
     Rechte Klientel:
       subkulturell: true
-      organisiert: true
     Infrastruktur für:
-      Parties & Konzerte: true
-      Kameradschaftstreffen: true
-      Propaganda: true
-    Tatbestände:
-      Gewalt: true
-    Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
+    Selbstverwaltung: true
   Bezug zu:
+    Mörderinnen: true
     Gewalttäterinnen: true
-  Integrierte Nutzung: true
   Privilegierte Nutzung: true
-  Organisationen: 
-    - Blood&Honour
-    - Kameradschaftsbund Mecklenburg (KBM)
-  lng: 12.079494
-  lat: 54.148937
+  lng: 6.747731
+  lat: 49.310138
 ---
 
 Antifaschistische Initiativen aus Saarlouis berichten im September 1998, dass Sozialarbeiter*innen wiederholt gemeinsame Fußballspiele und Freizeitfahrten für eine Gruppe Skinheads aus dem Umfeld der FAP organisieren. Die Einbindung von Kameradschaftsführern wird als pädagogisch wirksames Mittel verteidigt, um besser an die Zielgruppe gelangen zu können. Diese bestimmten wiederum, wie weit der Einfluss der Sozialarbeiter*innen reiche. Würde dies gefordert, verließen die Fachkräfte nach eigenen Angaben die Räumlichkeiten. Antifaschist*innen aus Saarlouis weisen darauf hin, dass die neonazistische Skinheadszene seit Beginn des Projekts auf das Dreifache angewachsen sei und dass deren Organisierungs- und Aktionsgrad durch die regelmäßigen gemeinsamen Aktivitäten zugenommen habe: »Besser sie marschieren, als daß sie Häuser anzünden«, wird ein Sozialarbeiter zitiert. Übergriffe auf nicht-rechte und Migrant*innen fänden weiterhin statt, würden aber von den Sozialarbeiter*innen verharmlost. In mindestens einem Fall konnten Sozialarbeiter*innen die Betroffenen eines Angriffs auf ein multikulturelles Begegnungszentrum von einer Anzeige abbringen, während antifaschistische Initiativen aufgefordert wurden, ihre Öffentlichkeitsarbeit zur rechten Szene einzustellen, da es sonst zur Eskalation käme.
