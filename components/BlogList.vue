@@ -1,11 +1,12 @@
 <template>
-  <ULandingSection class="max-w-full w-[42rem] mx-auto" :ui="{ container: '!px-0' }">
+  <div class="flex flex-col gap-y-8">
     <ULandingCard
       v-for="(item, index) of entries"
       :key="index"
+      :title="item.title"
       :to="item?._path"
-    >
-      <template #container>
+    >    
+      <template #description>
         <div class="flex flex-col md:flex-row items-start gap-4">
           <NuxtImg
             v-if="item.image"
@@ -17,10 +18,6 @@
           />
 
           <div class="w-full">
-            <div class="text-2xl mb-1 text-gray-900 dark:text-white font-bold">
-              <MDC :value="item.title" />
-            </div>
-
             <div class="mb-4 text-slate-500 dark:text-slate-400 text-sm flex items-center gap-x-2">
               <UIcon name="i-heroicons-calendar" />
               {{ getCreationDate(item) }}
@@ -35,7 +32,7 @@
         </div>
       </template>
     </ULandingCard>
-  </ULandingSection>
+  </div>
 </template>
 
 <script lang="ts" setup>

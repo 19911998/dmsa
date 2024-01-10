@@ -1,56 +1,60 @@
 <template>
-  <div>
-    <UBreadcrumb
-      :links="[
-        {
-          label: 'Blog',
-          icon: 'i-heroicons-square-3-stack-3d',
-          to: '/blog'
-        }
-      ]"
-      class="mt-4"
-    />
+  <UPage>
+    <template #right>
+      <UAside>
+        <UPageLinks
+          :links="page.tags?.map((tag: string) => ({
+            label: tag,
+            to: `/blog?tag=${encodeURIComponent(tag)}`,
+            icon: 'i-heroicons-tag'
+          }))"
+          title="Schlagworte"
+        />
+      </UAside>
+    </template>
 
-    <UPageHero
-      v-bind="page"
-    >
-      <template #description>
-        <div class="flex flex-col">
-          <MDC :value="page.description" />
-
-          <div class="flex items-center mt-5 gap-5">
-            <div class="text-slate-500 font-light text-sm tracking-wide flex items-center gap-x-2">
-              <UIcon name="i-heroicons-calendar" class="text-lg" />
-              {{ getCreationDate(page) }}
-            </div>
-
-            <TagList base="/blog" tag-base="/blog/tags" :tags="page.tags" />
-          </div>
+    <template #left>
+      <UAside>
+        <div class="text-slate-500 font-light text-sm tracking-wide flex items-center gap-x-2">
+          <UIcon name="i-heroicons-calendar" class="text-lg" />
+          {{ getCreationDate(page) }}
         </div>
-      </template>
+      </UAside>
+    </template>
 
+    <UPageHeader :title="page.title" :description="page.description">
+      <template #headline>
+        <UBreadcrumb
+          :links="[
+            {
+              label: 'Blog',
+              icon: 'i-heroicons-square-3-stack-3d',
+              to: '/blog'
+            }
+          ]"
+        />
+      </template>
+    </UPageHeader>
+
+    <UPageBody prose>
       <NuxtImg
         v-if="page.image"
         :src="page.image.src"
         :alt="page.image.alt"
-        class="ml-auto"
         preset="page"
       />
-    </UPageHero>
 
-    <UPageBody prose>
-      <UContainer>
-        <ContentRenderer v-if="page.body" :value="page" class="max-w-xl mx-auto" />
-      </UContainer>
+      <ContentRenderer v-if="page.body" :value="page" class="max-w-xl" />
 
       <hr v-if="surround?.length">
 
       <UDocsSurround :surround="surround" />
     </UPageBody>
+
     <template v-if="page.body?.toc?.links?.length">
       <UDocsToc :links="page.body.toc.links" />
     </template>
-  </div>
+  </UPage>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,4 @@
 <template>
-  <!-- UPageHero v-if="page.hero" v-bind="page.hero" /-->
   <div style="height: calc(100vh - 65px)" class="flex">
     <div class="w-full">
       <ClientOnly>
