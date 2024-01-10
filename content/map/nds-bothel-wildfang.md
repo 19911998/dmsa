@@ -6,35 +6,20 @@ meta:
   bundesland: Niedersachsen
   ort: Bothel
   träger: 
-    - Jugendamt Rostock
-  einwohnerzahl: 207513
-  name: Jugendclub Max Reichpietsch
-  adresse: Zum Laakkanal
+    - Kinder- und Jugendhilfe Wildfang Gmbh
+  einwohnerzahl: 2375
+  name: Haus Wildfang
+  adresse: Hauptstrasse 30
   jahre: 
-    - 1992
-    - 2001
-    - 2002
+    - 2018
+  chronik:
+    start: 1977
   filter:
     Rechte Klientel:
-      subkulturell: true
-      organisiert: true
-      gewaltbereit: true
+      angestellt: true
     Infrastruktur für:
-      Parties & Konzerte: true
-      Kameradschaftstreffen: true
-      Propaganda: true
-    Tatbestände:
-      Gewalt: true
-    Verdrängungseffekt: true
-  Leitung:
-    Sozialarbeitende: true
-  Integrierte Nutzung: true
-  Privilegierte Nutzung: true
-  Organisationen: 
-    - Blood&Honour
-    - Kameradschaftsbund Mecklenburg (KBM)
-  lng: 12.073352
-  lat: 54.157016
+  lng: 9.501778
+  lat: 53.0705
 ---
 
 Am 9. Juni 2018 trafen sich bis zu 250 Neonazis im sächsischen Grünhain-Beierfeld zum Kampfsporturnier „Tiwaz“. Laut dem antifaschistischen Watchblog „Runter von der Matte“, schließt das erstmals durchgeführte „Tiwaz“ dabei nahtlos an, an rechte Kampfsport-Veranstaltungen wie den „Kampf der Nibelungen“ in Deutschland, den „Day of Glory“ in Frankreich oder den „Triumph of Will“ in Ungarn. Dementsprechend vernetzt könne das „Tiwaz“ auf eine breite Unterstützung innerhalb der neonazistischen Kampfsportszene blicken: 
