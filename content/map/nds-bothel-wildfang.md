@@ -1,6 +1,6 @@
 ---
 title: Haus Wildfang
-description: Neonazi arbeitet in Resozialisierungsprojekt als Sozialpädagoge.
+description: Neonazi arbeitet als Sozialpädagoge in Resozialisierungsprojekt.
 tags:
 meta:
   bundesland: Niedersachsen
