@@ -19,6 +19,8 @@
           }))"
           title="Schlagworte"
         />
+
+        <UDocsToc title="Inhalt" v-if="page.body?.toc?.links?.length" :links="page.body.toc.links" />
       </UAside>
     </template>
 
@@ -48,10 +50,6 @@
 
       <UDocsSurround :surround="surround" />
     </UPageBody>
-
-    <template v-if="page.body?.toc?.links?.length">
-      <UDocsToc :links="page.body.toc.links" />
-    </template>
   </UPage>
 </template>
 
