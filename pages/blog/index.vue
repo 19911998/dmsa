@@ -9,10 +9,11 @@
         <UAside>
           <UPageLinks
             v-if="tags.length"
-            :links="[...tags].filter(([_tag]) => _tag !== tag).map(([tag, count]) => ({
+            :links="[...tags].map(([tag, count]) => ({
               label: `${tag} (${count})`,
               to: `/blog?tag=${encodeURIComponent(tag)}`,
-              icon: 'i-heroicons-tag'
+              icon: 'i-heroicons-tag',
+              exactQuery: true
             }))"
             title="Schlagworte"
           />

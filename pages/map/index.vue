@@ -64,7 +64,11 @@
       </ClientOnly>
     </div>
 
-    <UCard class="min-w-fit">
+    <UCard class="min-w-fit" :ui="{ body: { padding: '!pt-4' }}">
+      <div class="text-primary text-sm/6 font-semibold mb-2">
+        Filter
+      </div>
+
       <div class="flex flex-col gap-4 items-start">
         <UBadge v-if="tag" size="md" class="pr-1">
           <div class="whitespace-nowrap flex items-center gap-x-1">
@@ -112,6 +116,13 @@
           </template>
         </div>
       </div>
+
+      <UPageLinks
+        v-if="page.links"
+        :links="page.links"
+        class="mt-8 text-primary"
+        title="Links"
+      />
     </UCard>
   </div>
 </template>

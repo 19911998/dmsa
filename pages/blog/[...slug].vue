@@ -1,7 +1,16 @@
 <template>
   <UPage>
+    <template #left>
+      <UAside :links="blog.links" />
+    </template>
+
     <template #right>
       <UAside>
+        <div class="text-slate-500 font-light text-sm tracking-wide flex items-center gap-x-2 mb-8">
+          <UIcon name="i-heroicons-calendar" class="text-lg" />
+          {{ getCreationDate(page) }}
+        </div>
+
         <UPageLinks
           :links="page.tags?.map((tag: string) => ({
             label: tag,
@@ -10,15 +19,6 @@
           }))"
           title="Schlagworte"
         />
-      </UAside>
-    </template>
-
-    <template #left>
-      <UAside>
-        <div class="text-slate-500 font-light text-sm tracking-wide flex items-center gap-x-2">
-          <UIcon name="i-heroicons-calendar" class="text-lg" />
-          {{ getCreationDate(page) }}
-        </div>
       </UAside>
     </template>
 
@@ -71,6 +71,8 @@ const { data: page } = await useAsyncData(route.path, () => queryContent(route.p
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
+
+const { data: blog } = await useAsyncData('blog-links', () => queryContent('_blog').only('links').findOne())
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('blog')
   .where({ _extension: 'md', navigation: { $ne: false } })
