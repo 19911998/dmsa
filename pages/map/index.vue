@@ -90,7 +90,7 @@
                 <UCheckbox
                   v-for="key2 in Object.keys(filter)"
                   :key="key2"
-                  :model-value="filter[key2]"
+                  :model-value="filter[key2] || filterSetNotAffected[key2]"
                   :label="key2"
                   :disabled="disabled[key2] || filterSetNotAffected[key2]"
                   :color="disabled[key2] ? 'orange' : undefined"
