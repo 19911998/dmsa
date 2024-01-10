@@ -6,7 +6,7 @@
 
     <template #right>
       <UAside>
-        <div class="text-slate-500 font-light text-sm tracking-wide flex items-center gap-x-2 mb-8">
+        <div class="text-gray-500 dark:text-gray-400 text-sm/6 font-medium tracking-wide flex items-center gap-x-2 mb-8">
           <UIcon name="i-heroicons-calendar" class="text-lg" />
           {{ getCreationDate(page) }}
         </div>
@@ -22,19 +22,17 @@
       </UAside>
     </template>
 
-    <UPageHeader :title="page.title" :description="page.description">
-      <template #headline>
-        <UBreadcrumb
-          :links="[
-            {
-              label: 'Blog',
-              icon: 'i-heroicons-square-3-stack-3d',
-              to: '/blog'
-            }
-          ]"
-        />
-      </template>
-    </UPageHeader>
+    <UPageHeader
+      :title="page.title"
+      :description="page.description"
+      :links="[{
+        label: 'Blog',
+        icon: 'i-heroicons-arrow-uturn-left',
+        to: '/blog',
+        target: '_self'
+      }]"
+      :ui="{ links: 'ml-4 min-w-fit' }"
+    />
 
     <UPageBody prose>
       <NuxtImg
