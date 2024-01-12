@@ -117,27 +117,29 @@
             </template>
           </template>
 
-          <div class="italic text-sm tracking-wide">
-            {{ timeAxis ? 'Jahr' : 'Zeitraum' }}
+          <div class="space-y-1">
+            <div class="italic text-sm tracking-wide">
+              {{ timeAxis ? 'Jahr' : 'Zeitraum' }}
+            </div>
+
+            <UCheckbox v-model="timeAxis" :ui="{ wrapper: 'items-center', inner: 'grow' }">
+              <template #label>
+                <div class="relative flex items-center gap-2">
+                  <span class="whitespace-nowrap">{{ timeAxis ? year : years.join('\u202f–\u202f') }}</span>
+
+                  <URange
+                    :model-value="timeAxis ? year : years[1]"
+                    size="xs"
+                    :min="years[0]"
+                    :max="years[1]"
+                    :ui="timeAxis ? { progress: { background: 'bg-gray-200 dark:bg-gray-700' } } : undefined"
+                    :disabled="!timeAxis"
+                    @update:model-value="year = $event"
+                  />
+                </div>
+              </template>
+            </UCheckbox>
           </div>
-
-          <UCheckbox v-model="timeAxis" :ui="{ wrapper: 'items-center', inner: 'grow' }">
-            <template #label>
-              <div class="relative flex items-center gap-2">
-                <span class="whitespace-nowrap">{{ timeAxis ? year : years.join('\u202f–\u202f') }}</span>
-
-                <URange
-                  :model-value="timeAxis ? year : years[1]"
-                  size="xs"
-                  :min="years[0]"
-                  :max="years[1]"
-                  :ui="timeAxis ? { progress: { background: 'bg-gray-200 dark:bg-gray-700' } } : undefined"
-                  :disabled="!timeAxis"
-                  @update:model-value="year = $event"
-                />
-              </div>
-            </template>
-          </UCheckbox>
         </div>
       </div>
 
