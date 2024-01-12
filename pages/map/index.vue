@@ -108,29 +108,43 @@
               {{ (timeAxis || years.length === 1) ? 'Jahr' : 'Zeitraum' }}
             </div>
 
-            <UCheckbox
-              :model-value="timeAxis || years.length === 1"
-              :disabled="years.length === 1"
-              :ui="{ wrapper: 'items-center', inner: 'grow' }"
-              @update:model-value="timeAxis = $event"
-            >
-              <template #label>
-                <div class="relative flex items-center gap-2">
-                  <span class="whitespace-nowrap">{{ timeAxis ? year : years.join('\u202f–\u202f') }}</span>
+            <div class="flex items-center gap-x-2">
+              <UCheckbox
+                :model-value="timeAxis || years.length === 1"
+                :disabled="years.length === 1"
+                :ui="{ wrapper: 'items-center', inner: 'grow' }"
+                @update:model-value="timeAxis = $event"
+              >
+                <template #label>
+                  <div
+                    class="flex items-stretch gap-2"
+                  >
+                    <span class="whitespace-nowrap">
+                      {{ timeAxis ? year : years.join('\u202f–\u202f') }}
+                    </span>
+                  </div>
+                </template>
+              </UCheckbox>
 
-                  <URange
-                    v-if="years.length > 1"
-                    :model-value="timeAxis ? year : years[1]"
-                    size="xs"
-                    :min="years[0]"
-                    :max="years[1]"
-                    :ui="timeAxis ? { progress: { background: 'bg-gray-200 dark:bg-gray-700' } } : undefined"
-                    :disabled="!timeAxis"
-                    @update:model-value="year = $event"
-                  />
-                </div>
-              </template>
-            </UCheckbox>
+              <div class="relative grow">
+                <div
+                  v-if="!timeAxis"
+                  class="absolute z-10 size-full cursor-not-allowed"
+                  @click="timeAxis = true"
+                />
+
+                <URange
+                  v-if="years.length > 1"
+                  :model-value="timeAxis ? year : years[1]"
+                  size="xs"
+                  :min="years[0]"
+                  :max="years[1]"
+                  :ui="timeAxis ? { progress: { background: 'bg-gray-200 dark:bg-gray-700' } } : undefined"
+                  :disabled="!timeAxis"
+                  @update:model-value="year = $event"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
