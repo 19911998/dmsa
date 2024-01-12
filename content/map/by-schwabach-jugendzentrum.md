@@ -13,7 +13,8 @@ meta:
       subkulturell: true
     Infrastruktur für:
       Parties & Konzerte: true
-    Verdrängungseffekt: true
+    Effekt:
+      Verdrängung: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true

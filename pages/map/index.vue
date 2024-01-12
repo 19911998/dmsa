@@ -86,48 +86,40 @@
         </UButtonGroup>
 
         <div class="flex flex-col gap-2 items-stretch">
-          <template v-for="(filter, key) in filters" :key="key">
-            <div v-if="typeof filter === 'object'">
-              <div class="italic text-sm tracking-wide">{{ key }}</div>
-              <div class="flex flex-col gap-1 mt-1">
-                <UCheckbox
-                  v-for="key2 in Object.keys(filter)"
-                  :key="key2"
-                  :model-value="filter[key2] || filterSetNotAffected[key2]"
-                  :label="key2"
-                  :disabled="disabled[key2] || filterSetNotAffected[key2]"
-                  :ui="(disabled[key2] || filterSetNotAffected[key2])
-                    ? { label: 'text-gray-500 dark:text-gray-400 cursor-not-allowed' }
-                    : undefined"
-                  @update:model-value="filter[key2] = $event"
-                />
-              </div>
-            </div>
-            <template v-else>
-              <UDivider />
+          <div v-for="(filter, key) in filters" :key="key">
+            <div class="italic text-sm tracking-wide">{{ key }}</div>
+            <div class="flex flex-col gap-1 mt-1">
               <UCheckbox
-                v-model="filters[key]"
-                :disabled="disabled[key] || filterSetNotAffected[key]"
-                :color="disabled[key] ? 'orange' : undefined"
-                :label="key"
-                :ui="(disabled[key] || filterSetNotAffected[key])
+                v-for="key2 in Object.keys(filter)"
+                :key="key2"
+                :model-value="filter[key2] || filterSetNotAffected[key2]"
+                :label="key2"
+                :disabled="disabled[key2] || filterSetNotAffected[key2]"
+                :ui="(disabled[key2] || filterSetNotAffected[key2])
                   ? { label: 'text-gray-500 dark:text-gray-400 cursor-not-allowed' }
                   : undefined"
+                @update:model-value="filter[key2] = $event"
               />
-            </template>
-          </template>
+            </div>
+          </div>
 
           <div class="space-y-1">
             <div class="italic text-sm tracking-wide">
-              {{ timeAxis ? 'Jahr' : 'Zeitraum' }}
+              {{ (timeAxis || years.length === 1) ? 'Jahr' : 'Zeitraum' }}
             </div>
 
-            <UCheckbox v-model="timeAxis" :ui="{ wrapper: 'items-center', inner: 'grow' }">
+            <UCheckbox
+              :model-value="timeAxis || years.length === 1"
+              :disabled="years.length === 1"
+              :ui="{ wrapper: 'items-center', inner: 'grow' }"
+              @update:model-value="timeAxis = $event"
+            >
               <template #label>
                 <div class="relative flex items-center gap-2">
                   <span class="whitespace-nowrap">{{ timeAxis ? year : years.join('\u202f–\u202f') }}</span>
 
                   <URange
+                    v-if="years.length > 1"
                     :model-value="timeAxis ? year : years[1]"
                     size="xs"
                     :min="years[0]"
@@ -176,12 +168,8 @@ const filters = useState<Record<string, any>>('filters', () => extractFilters(sc
 const disabled = computed(() => {
   const ret = {}
   for (const key in filters.value) {
-    if (typeof filters.value[key] === 'object') {
-      for (const key2 in filters.value[key]) {
-        ret[key2] = filtered.value.every(({ meta }) => !meta.filter[key]?.[key2])
-      }
-    } else {
-      ret[key] = filtered.value.every(({ meta }) => !meta.filter[key])
+    for (const key2 in filters.value[key]) {
+      ret[key2] = filtered.value.every(({ meta }) => !meta.filter[key]?.[key2])
     }
   }
   return ret
@@ -261,9 +249,11 @@ const bounds = computed(() => beforeTimeAxis.value.length && [
   [ Math.max(...beforeTimeAxis.value.map(m => m.meta.lat)), Math.max(...beforeTimeAxis.value.map(m => m.meta.lng)) ]
 ])
 
-const years = computed(() =>[
-  Math.min(...beforeTimeAxis.value.map(({ meta }) => Math.min(meta.jahre)).filter(Boolean)),
-  Math.max(...beforeTimeAxis.value.map(({ meta }) => Math.max(meta.jahre)).filter(Boolean))
+const years = computed(() => [
+  ...new Set([
+    Math.min(...beforeTimeAxis.value.map(({ meta }) => meta.jahre && Math.min(...meta.jahre)).filter(Boolean)),
+    Math.max(...beforeTimeAxis.value.map(({ meta }) => meta.jahre && Math.max(...meta.jahre)).filter(Boolean))
+  ])
 ])
 
 watch(() => years.value, () => {
@@ -274,7 +264,7 @@ watch(() => years.value, () => {
 
 function extractFilters (scheme: Record<string, any>) {
   return Object.keys(scheme).reduce((acc, key) => {
-    if (Object.keys(scheme[key]).length === 1) {
+    if (Object.values(scheme[key])[0] === null) {
       acc[key] = false
     } else {
       acc[key] = extractFilters(scheme[key])
@@ -285,11 +275,9 @@ function extractFilters (scheme: Record<string, any>) {
 
 function inFilterSet (meta: Record<string, any>, activeFilters: Record<string, any>) {
   for (const key in activeFilters) {
-    if (typeof activeFilters[key] === 'object') {
-      for (const key2 in activeFilters[key]) {
-        if (activeFilters[key][key2] && !meta.filter[key]?.[key2]) return false
-      }
-    } else if (activeFilters[key] && !meta.filter[key]) return false
+    for (const key2 in activeFilters[key]) {
+      if (activeFilters[key][key2] && !meta.filter[key]?.[key2]) return false
+    }
   }
   return true
 }

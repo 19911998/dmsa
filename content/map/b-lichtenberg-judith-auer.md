@@ -24,7 +24,8 @@ meta:
     Tatbestände:
       Mord: true
       Gewalt: true
-    Verdrängungseffekt: true
+    Effekt:
+      Verdrängung: true
   Leitung:
     Sozialarbeitende: true
   Bezug zu:

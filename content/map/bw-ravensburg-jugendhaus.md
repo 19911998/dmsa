@@ -16,7 +16,8 @@ meta:
       subkulturell: true
     Tatbestände:
       Gewalt: true
-    Verdrängungseffekt: true
+    Effekt:
+      Verdrängung: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true

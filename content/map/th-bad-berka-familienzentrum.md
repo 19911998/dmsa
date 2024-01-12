@@ -13,7 +13,8 @@ meta:
   filter:
     Rechte Klientel:
       subkulturell: true
-    Verdrängungseffekt: true
+    Effekt:
+      Verdrängung: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true
