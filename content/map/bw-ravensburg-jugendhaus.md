@@ -9,7 +9,7 @@ meta:
   name: Jugendhaus
   adresse: Anschrift unbekannt
   jahre: 
-    - 1986
+    - 1986-1988
     - 1989
   filter:
     Rechte Klientel:
