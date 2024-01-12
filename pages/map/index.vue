@@ -28,7 +28,10 @@
             </LTooltip>
 
             <LPopup>
-              <div class="font-semibold">{{ item.title }}</div>
+              <div class="font-semibold">
+                {{ item.title }}
+              </div>
+
               <div class="flex gap-2">
                 <div class="text-gray">
                   {{ item.description }}
@@ -64,12 +67,12 @@
       </ClientOnly>
     </div>
 
-    <UCard class="min-w-fit" :ui="{ body: { padding: '!pt-4' }}">
+    <UCard class="min-w-fit overflow-y-scroll z-[100] relative" :ui="{ body: { padding: '!pt-4' }}">
       <div class="text-primary text-sm/6 font-semibold mb-2">
         Filter
       </div>
 
-      <div class="flex flex-col gap-4 items-start">
+      <div class="flex flex-col gap-4 items-stretch">
         <UBadge v-if="tag" size="md" class="pr-1">
           <div class="whitespace-nowrap flex items-center gap-x-1">
             {{ tag }}
@@ -82,7 +85,7 @@
           <UButton v-if="state" color="gray" icon="i-heroicons-x-mark-20-solid" @click="state = ''" />
         </UButtonGroup>
 
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-2 items-stretch">
           <template v-for="(filter, key) in filters" :key="key">
             <div v-if="typeof filter === 'object'">
               <div class="italic text-sm tracking-wide">{{ key }}</div>
@@ -93,7 +96,6 @@
                   :model-value="filter[key2] || filterSetNotAffected[key2]"
                   :label="key2"
                   :disabled="disabled[key2] || filterSetNotAffected[key2]"
-                  :color="disabled[key2] ? 'orange' : undefined"
                   :ui="(disabled[key2] || filterSetNotAffected[key2])
                     ? { label: 'text-gray-500 dark:text-gray-400 cursor-not-allowed' }
                     : undefined"
@@ -114,6 +116,28 @@
               />
             </template>
           </template>
+
+          <div class="italic text-sm tracking-wide">
+            {{ timeAxis ? 'Jahr' : 'Zeitraum' }}
+          </div>
+
+          <UCheckbox v-model="timeAxis" :ui="{ wrapper: 'items-center', inner: 'grow' }">
+            <template #label>
+              <div class="relative flex items-center gap-2">
+                <span class="whitespace-nowrap">{{ timeAxis ? year : years.join('\u202f–\u202f') }}</span>
+
+                <URange
+                  :model-value="timeAxis ? year : years[1]"
+                  size="xs"
+                  :min="years[0]"
+                  :max="years[1]"
+                  :ui="timeAxis ? { progress: { background: 'bg-gray-200 dark:bg-gray-700' } } : undefined"
+                  :disabled="!timeAxis"
+                  @update:model-value="year = $event"
+                />
+              </div>
+            </template>
+          </UCheckbox>
         </div>
       </div>
 
@@ -132,6 +156,9 @@ import { LMap, LMarker } from '@vue-leaflet/vue-leaflet'
 
 const route = useRoute()
 const tag = computed(() => route.query.tag as string)
+
+const year = ref(0)
+const timeAxis = useState('timeAxis', () => false)
 
 let L: any
 
@@ -200,7 +227,11 @@ const beforeFilterSet = computed(() => state.value
   ? filteredBasic.value.filter(({ meta }) => meta.bundesland === state.value)
   : filteredBasic.value)
 
-const filtered = computed(() => beforeFilterSet.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
+const beforeTimeAxis = computed(() => beforeFilterSet.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
+
+const filtered = computed(() => timeAxis.value
+  ? beforeTimeAxis.value.filter(({ meta }) => meta.jahre?.includes(year.value))
+  : beforeTimeAxis.value)
 
 const notFilteredByState = computed(() => filteredBasic.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
 
@@ -223,10 +254,21 @@ const states = computed(() => [
 
 const state = useState('state', () => '')
 
-const bounds = computed(() => filtered.value.length && [
-  [ Math.min(...filtered.value.map(m => m.meta.lat)), Math.min(...filtered.value.map(m => m.meta.lng)) ],
-  [ Math.max(...filtered.value.map(m => m.meta.lat)), Math.max(...filtered.value.map(m => m.meta.lng)) ]
+const bounds = computed(() => beforeTimeAxis.value.length && [
+  [ Math.min(...beforeTimeAxis.value.map(m => m.meta.lat)), Math.min(...beforeTimeAxis.value.map(m => m.meta.lng)) ],
+  [ Math.max(...beforeTimeAxis.value.map(m => m.meta.lat)), Math.max(...beforeTimeAxis.value.map(m => m.meta.lng)) ]
 ])
+
+const years = computed(() =>[
+  Math.min(...beforeTimeAxis.value.map(({ meta }) => Math.min(meta.jahre)).filter(Boolean)),
+  Math.max(...beforeTimeAxis.value.map(({ meta }) => Math.max(meta.jahre)).filter(Boolean))
+])
+
+watch(() => years.value, () => {
+  year.value = year.value
+    ? Math.min(years.value[1], Math.max(year.value, years.value[0]))
+    : years.value[1]
+}, { immediate: true })
 
 function extractFilters (scheme: Record<string, any>) {
   return Object.keys(scheme).reduce((acc, key) => {
