@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-y-scroll z-[100] relative h-full px-5 py-4">
+  <div class="overflow-y-scroll z-[100] relative h-full px-5 py-4 max-h-[calc(100vh-210px)] lg:max-h-[calc(100vh-130px)]">
     <slot />
     <div class="text-primary text-sm/6 font-semibold mb-2">
       Filter
@@ -77,13 +77,6 @@
         </div>
       </div>
     </div>
-
-    <UPageLinks
-      v-if="props.page.links"
-      :links="props.page.links"
-      class="mt-8 text-primary"
-      title="Links"
-    />
   </div>
 </template>
 

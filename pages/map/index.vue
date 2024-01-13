@@ -1,6 +1,6 @@
 <template>
   <div class="flex relative">
-    <div class="w-full h-[calc(100vh-210px)] lg:h-[calc(100vh-130px)]">
+    <div class="w-full min-h-[calc(100vh-210px)] lg:h-[calc(100vh-130px)]">
       <ClientOnly>
         <LMap
           ref="mapRef"

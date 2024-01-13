@@ -32,25 +32,18 @@ export default defineAppConfig({
     credits: '»Du musst sie akzeptieren!« &middot; &copy&nbsp;2024',
     colorMode: false,
     links: [{
-      icon: 'i-simple-icons-nuxtdotjs',
-      to: 'https://nuxt.com',
-      target: '_blank',
-      'aria-label': 'Nuxt Website'
+      title: 'Einführung',
+      icon: 'i-heroicons-information-circle',
+      to: '/#intro'
+    },
+    {
+      title: 'Karte',
+      icon: 'i-heroicons-map',
+      to: '/map'
     }, {
-      icon: 'i-simple-icons-discord',
-      to: 'https://discord.com/invite/ps2h6QT',
-      target: '_blank',
-      'aria-label': 'Nuxt UI on Discord'
-    }, {
-      icon: 'i-simple-icons-x',
-      to: 'https://x.com/nuxt_js',
-      target: '_blank',
-      'aria-label': 'Nuxt on X'
-    }, {
-      icon: 'i-simple-icons-github',
-      to: 'https://github.com/nuxt/ui',
-      target: '_blank',
-      'aria-label': 'Nuxt UI on GitHub'
+      title: 'Blog',
+      icon: 'i-heroicons-rectangle-stack',
+      to: '/blog'
     }]
   },
   toc: {
