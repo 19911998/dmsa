@@ -1,8 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  app: {
-    pageTransition: { name: 'page', mode: 'out-in' }
-  },
   extends: ['@nuxt/ui-pro'],
   modules: [
     '@nuxt/content',
@@ -14,7 +11,8 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-simple-sitemap',
     'nuxt3-leaflet',
-    '@nuxtjs/robots'
+    '@nuxtjs/robots',
+    '@vueuse/nuxt'
   ],
   robots: {
     rules: {
