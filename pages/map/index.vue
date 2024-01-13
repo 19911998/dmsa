@@ -87,7 +87,10 @@
 
         <div class="flex flex-col gap-2 items-stretch">
           <div v-for="(filter, key) in filters" :key="key">
-            <div class="italic text-sm tracking-wide">{{ key }}</div>
+            <div class="italic text-sm tracking-wide opacity-60">
+              {{ key }}
+            </div>
+
             <div class="flex flex-col gap-1 mt-1">
               <UCheckbox
                 v-for="key2 in Object.keys(filter)"
@@ -104,7 +107,7 @@
           </div>
 
           <div class="space-y-1">
-            <div class="italic text-sm tracking-wide">
+            <div class="italic text-sm tracking-wide opacity-60">
               {{ (timeAxis || years.length === 1) ? 'Jahr' : 'Zeitraum' }}
             </div>
 
