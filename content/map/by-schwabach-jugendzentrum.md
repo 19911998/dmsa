@@ -8,6 +8,8 @@ meta:
   einwohnerzahl: 40792
   name: Jugendzentrum
   adresse: Anschrift unbekannt
+  jahre: 
+    - 1994
   filter:
     Rechte Klientel:
       subkulturell: true
