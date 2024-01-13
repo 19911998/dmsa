@@ -92,7 +92,7 @@
               <UCheckbox
                 v-for="key2 in Object.keys(filter)"
                 :key="key2"
-                :model-value="filter[key2] || filterSetNotAffected[key2]"
+                :model-value="filter[key2] || (filtered.length && filterSetNotAffected[key2]) || false"
                 :label="key2"
                 :disabled="disabled[key2] || filterSetNotAffected[key2]"
                 :ui="(disabled[key2] || filterSetNotAffected[key2])
@@ -127,12 +127,6 @@
               </UCheckbox>
 
               <div class="relative grow">
-                <div
-                  v-if="!timeAxis"
-                  class="absolute z-10 size-full cursor-not-allowed"
-                  @click="timeAxis = true"
-                />
-
                 <URange
                   v-if="years.length > 1"
                   :model-value="timeAxis ? year : years[1]"
@@ -140,8 +134,7 @@
                   :min="years[0]"
                   :max="years[1]"
                   :ui="timeAxis ? { progress: { background: 'bg-gray-200 dark:bg-gray-700' } } : undefined"
-                  :disabled="!timeAxis"
-                  @update:model-value="year = $event"
+                  @update:model-value="year = $event, timeAxis = true"
                 />
               </div>
             </div>
@@ -192,30 +185,20 @@ const disabled = computed(() => {
 const filterSetNotAffected = computed(() => {
   const ret = {}
   for (const key in filters.value) {
-    if (typeof filters.value[key] === 'object') {
-      for (const key2 in filters.value[key]) {
-        ret[key2] = filters.value[key][key2]
-          // deactivating filter doesn't change anything
-          ? beforeFilterSet.value.filter(({ meta }) =>
-              inFilterSet(meta, {
-                ...filters.value,
-                [key]: {
-                  ...filters.value[key],
-                  [key2]: false
-                }
-              })
-            ).length === filtered.value.length
-          // activating filter doesn't change anything
-          : filtered.value.every(({ meta }) => meta.filter[key]?.[key2])
-      }
-    } else {
-      ret[key] = filters.value[key]
+    for (const key2 in filters.value[key]) {
+      ret[key2] = filters.value[key][key2]
         // deactivating filter doesn't change anything
         ? beforeFilterSet.value.filter(({ meta }) =>
-            inFilterSet(meta, { ...filters.value, [key]: false })
+            inFilterSet(meta, {
+              ...filters.value,
+              [key]: {
+                ...filters.value[key],
+                [key2]: false
+              }
+            })
           ).length === filtered.value.length
         // activating filter doesn't change anything
-        : filtered.value.every(({ meta }) => meta.filter[key])
+        : filtered.value.every(({ meta }) => meta.filter[key]?.[key2])
     }
   }
   return ret
@@ -295,6 +278,20 @@ function inFilterSet (meta: Record<string, any>, activeFilters: Record<string, a
   }
   return true
 }
+
+/* function toggleTimeAxis () {
+  timeAxis.value = !timeAxis.value
+  if (timeAxis.value) {
+    year.value = years.value[0]
+    const interval = setInterval(() => {
+      if (year.value < years.value[1]) {
+        year.value++
+      } else {
+        clearInterval(interval)
+      }
+    }, 250)
+  }
+} */
 
 watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], async ([map]) => {
   if (!map || !bounds.value) return
