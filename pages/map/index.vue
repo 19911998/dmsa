@@ -73,7 +73,7 @@
       </div>
 
       <div class="flex flex-col gap-4 items-stretch">
-        <UBadge v-if="tag" size="md" class="pr-1">
+        <UBadge v-if="tag" size="md" class="pr-1 self-start">
           <div class="whitespace-nowrap flex items-center gap-x-1">
             {{ tag }}
             <UButton icon="i-heroicons-x-mark-20-solid" class="text-md" :padded="false" :to="route.path" />
