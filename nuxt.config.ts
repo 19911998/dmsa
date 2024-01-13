@@ -13,8 +13,15 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     '@nuxt/image',
     'nuxt-simple-sitemap',
-    'nuxt3-leaflet'
+    'nuxt3-leaflet',
+    '@nuxtjs/robots'
   ],
+  robots: {
+    rules: {
+      UserAgent: '*',
+      Disallow: '/'
+    }
+  },
   runtimeConfig: {
     public: {
       site_env: process.env.NUXT_SITE_ENV
