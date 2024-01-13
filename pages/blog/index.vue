@@ -43,7 +43,7 @@
             :title="post.title"
             :description="post.description"
             :image="post.image"
-            :date="new Date(post.createdAt).toLocaleDateString('de', { year: 'numeric', month: 'short', day: 'numeric' })"
+            :date="formatDate(post.date)"
             :badge="post.badge"
             orientation="horizontal"
             class="col-span-full"
@@ -56,7 +56,7 @@
             </template>
           </UBlogPost>
         </UBlogList>
-x     </UPageBody>
+      </UPageBody>
     </UPage>
   </UContainer>
 </template>
@@ -68,7 +68,7 @@ const { data: posts } = await useAsyncData(tag.value ? 'tag-' + tag.value : 'blo
   () => (tag.value
       ? queryContent('blog').where({ tags: { $contains: tag.value } })
       : queryContent('blog')
-    ).without('body').sort({ createdAt: -1 }).find(),
+    ).without('body').sort({ date: -1 }).find(),
   { watch: [tag] })
 
 if (!posts.value.length) {

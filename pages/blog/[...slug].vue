@@ -8,7 +8,7 @@
       <UAside>
         <div class="text-gray-500 dark:text-gray-400 text-sm/6 font-medium tracking-wide flex items-center gap-x-2 mb-8">
           <UIcon name="i-heroicons-calendar" class="text-lg" />
-          {{ getCreationDate(page) }}
+          {{ formatDate(page.date) }}
         </div>
 
         <UPageLinks

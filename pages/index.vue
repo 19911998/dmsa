@@ -27,7 +27,7 @@
           :title="post.title"
           :description="post.description"
           :image="post.image"
-          :date="new Date(post.createdAt).toLocaleDateString('de', { year: 'numeric', month: 'short', day: 'numeric' })"
+          :date="formatDate(post.date)"
           :badge="post.badge"
           :ui="{
             description: 'line-clamp-2'
@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
-const { data: blog } = await useAsyncData('blog-entries', () => queryContent('blog').sort({ createdAt: -1 }).limit(4).find())
+const { data: blog } = await useAsyncData('blog-entries', () => queryContent('blog').sort({ date: -1 }).limit(4).find())
 
 const headerLinks = useState('header-links', () => undefined)
 
