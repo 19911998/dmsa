@@ -35,8 +35,28 @@
       </UPageHeader>
 
       <UPageBody>
-        <BlogList :entries="entries" :page-tag="tag" />
-      </UPageBody>
+        <UBlogList orientation="vertical">
+          <UBlogPost
+            v-for="(post, index) in posts"
+            :key="index"
+            :to="post._path"
+            :title="post.title"
+            :description="post.description"
+            :image="post.image"
+            :date="new Date(post.createdAt).toLocaleDateString('de', { year: 'numeric', month: 'short', day: 'numeric' })"
+            :badge="post.badge"
+            orientation="horizontal"
+            class="col-span-full"
+            :ui="{
+              description: 'line-clamp-2'
+            }"
+          >
+            <template #badge>
+              <TagList base="/blog" :tags="post.tags" :page-tag="tag" class="mt-4" />
+            </template>
+          </UBlogPost>
+        </UBlogList>
+x     </UPageBody>
     </UPage>
   </UContainer>
 </template>
@@ -44,20 +64,20 @@
 <script setup lang="ts">
 const tag = computed(() => useRoute().query.tag as string)
 
-const { data: entries } = await useAsyncData(tag.value ? 'tag-' + tag.value : 'blog-entries',
+const { data: posts } = await useAsyncData(tag.value ? 'tag-' + tag.value : 'blog-posts',
   () => (tag.value
       ? queryContent('blog').where({ tags: { $contains: tag.value } })
       : queryContent('blog')
     ).without('body').sort({ createdAt: -1 }).find(),
   { watch: [tag] })
 
-if (!entries.value.length) {
+if (!posts.value.length) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
 const tags = computed(() =>
   Array.from(
-    (entries.value as any[])
+    (posts.value as any[])
     .reduce((acc: Map<string, number>, item) => {
       for (const tag of item.tags) {
         acc.set(tag, (acc.get(tag) || 0) + 1)

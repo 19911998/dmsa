@@ -19,22 +19,21 @@
       :key="key"
       :ui="{ container: 'gap-8 sm:gap-8', description: 'max-w-3xl', links: '!mt-4', headline: 'headline text-lg' }"
     >
-      <UPageGrid v-if="key === 'blog'" class="xl:grid-cols-4">
-        <ULandingCard
-          v-for="(item, index) of blog"
+      <UBlogList v-if="key === 'blog'">
+        <UBlogPost
+          v-for="(post, index) in blog"
           :key="index"
-          v-bind="item"
-          :to="item._path"
-        >
-          <NuxtImg
-            v-if="item.image"
-            :src="item.image.src"
-            style="order: -2; max-width: 250px;"
-            :alt="item.image.alt"
-            preset="blog"
-          />
-        </ULandingCard>
-      </UPageGrid>
+          :to="post._path"
+          :title="post.title"
+          :description="post.description"
+          :image="post.image"
+          :date="new Date(post.createdAt).toLocaleDateString('de', { year: 'numeric', month: 'short', day: 'numeric' })"
+          :badge="post.badge"
+          :ui="{
+            description: 'line-clamp-2'
+          }"
+        />
+      </UBlogList>
     </ULandingSection>
   </div>
 </template>

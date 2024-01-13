@@ -4,7 +4,6 @@
       v-for="tag of tags"
       :key="tag"
       class="z-50"
-      size="md"
       :color="tag === pageTag ? 'primary' : 'gray'"
     >
       <NuxtLink
