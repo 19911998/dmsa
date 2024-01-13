@@ -19,8 +19,8 @@ meta:
   Integrierte Nutzung: true
   Organisationen: 
     - OSL-Bande
-  lng: 51.288505
-  lat: 13.550924
+  lng: 13.550924
+  lat: 51.288505
 ---
 
 Der Jugendclub Großenhain in Nordsachsen an der Grenze zu Brandenburg gehören im Jahr 2007 rund 36 Mitglieder an. Im Dezember veranstaltet der Jugendclub eine Lesung in Kooperation mit dem „Netzwerk für Toleranz Großenhain und Umgebung“, um sich, wie die sächsische Zeitung (SZ) berichtet, zu wehren „gegen das Image, radikal zu sein.“i Zuvor habe es laut der SZ Kritik an der Jugendeinrichtung gegeben: Mitglieder hätten Kontakte in die rechte Hooligan-Szene, zur so genannten OSL-Bande gepflegt, deren Anhänger hätten auf Club-Partys ungestört mitfeiern können.
