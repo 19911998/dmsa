@@ -25,7 +25,7 @@ meta:
   lat: 47.770677
 ---
 
-Im Februar 1990 verhängt das Landgericht Ravensburg Haft- und Bewährungsstrafen gegen insgesamt 20 neonazistische Skinheads.i
+Im Februar 1990 verhängt das Landgericht Ravensburg Haft- und Bewährungsstrafen gegen insgesamt 20 neonazistische Skinheads.
 
 Diese hatten im September 1989 „nach Art eines Rollkommandos“ ein Punk-Konzert im Ravensburger Jugendhaus überfallen und dabei mehrere Besucher[*]innen zum Teil schwer verletzt. „Plötzlich“, erinnerte sich ein Mitarbeiter, „wurden Steine und Flaschen auf das Haus geworfen.“ Unter „Sieg Heil“-Rufen und „Rotfront verrecke“, gingen die rechten Skinheads auch mit Schlagstöcken auf die Jugendlichen Konzertbesucher*innen los.
 
