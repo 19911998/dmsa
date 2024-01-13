@@ -1,22 +1,6 @@
 <template>
-  <div class="flex relative max-h-[calc(100vh-65px)]">
-    <div class="items-stretch max-h-full w-full relative">
-      <UContainer class="py-8 absolute max-h-full overflow-y-scroll">
-        <UBlogList orientation="horizontal">
-          <UBlogPost
-            v-for="(post, index) of filtered"
-            :key="index"
-            :to="post._path"
-            :title="post.title"
-            :description="post.description"
-            :image="post.image"
-            :date="formatDate(post.date)"
-            :badge="post.badge"
-            orientation="vertical"
-          />
-        </UBlogList>
-      </UContainer>
-
+  <div class="flex relative">
+    <div class="w-full h-[calc(100vh-65px)]">
       <ClientOnly>
         <LMap
           ref="mapRef"
@@ -76,6 +60,24 @@
             </UButton>
           </LControl>
         </LMap>
+
+        <template #fallback>
+          <UContainer class="mt-4">
+            <UBlogList orientation="horizontal">
+              <UBlogPost
+                v-for="(post, index) of filtered || entries"
+                :key="index"
+                :to="post._path"
+                :title="post.title"
+                :description="post.description"
+                :image="post.image"
+                :date="formatDate(post.date)"
+                :badge="post.badge"
+                orientation="vertical"
+              />
+            </UBlogList>
+          </UContainer>
+        </template>
       </ClientOnly>
     </div>
 
@@ -106,9 +108,13 @@
 import type { LMap, LMarker } from '@vue-leaflet/vue-leaflet'
 import type FilterMap from 'components/FilterMap.vue'
 
+const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
+const { data: schema } = await useAsyncData('filters', () => queryContent('_schema').findOne())
+const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').without('body').find())
+
 const filterMapRef = ref<typeof FilterMap | null>(null)
-const filtered = computed(() => filterMapRef.value?.filtered || [])
-const bounds = computed(() => filterMapRef.value?.bounds || [])
+const filtered = computed(() => filterMapRef.value?.filtered)
+const bounds = computed(() => filterMapRef.value?.bounds)
 
 const showFilter = ref(false)
 
@@ -116,10 +122,6 @@ let L: any
 
 const mapRef = ref<typeof LMap | null>(null)
 const markerRef = ref<typeof LMarker[]>([])
-
-const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
-const { data: schema } = await useAsyncData('filters', () => queryContent('_schema').findOne())
-const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').without('body').find())
 
 /* function toggleTimeAxis () {
   timeAxis.value = !timeAxis.value
@@ -135,7 +137,7 @@ const { data: entries } = await useAsyncData('map-entries', () => queryContent('
   }
 } */
 watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], async ([map]) => {
-  if (!map || !bounds.value.length) return
+  if (!map || !bounds.value) return
 
   L ||= await import('leaflet')
 
