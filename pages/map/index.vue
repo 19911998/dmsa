@@ -53,7 +53,7 @@
             <UButton
               v-show="!showFilter"
               icon="i-heroicons-funnel"
-              class="sm:hidde"
+              class="sm:hidden"
               @click="showFilter = true"
             >
               Ergebnisse filtern
