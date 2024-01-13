@@ -1,6 +1,22 @@
 <template>
-  <div class="flex relative">
-    <div class="w-full h-[calc(100vh-65px)]">
+  <div class="flex relative max-h-[calc(100vh-65px)]">
+    <div class="items-stretch max-h-full w-full relative">
+      <UContainer class="py-8 absolute max-h-full overflow-y-scroll">
+        <UBlogList orientation="horizontal">
+          <UBlogPost
+            v-for="(post, index) of filtered"
+            :key="index"
+            :to="post._path"
+            :title="post.title"
+            :description="post.description"
+            :image="post.image"
+            :date="formatDate(post.date)"
+            :badge="post.badge"
+            orientation="vertical"
+          />
+        </UBlogList>
+      </UContainer>
+
       <ClientOnly>
         <LMap
           ref="mapRef"
@@ -60,24 +76,6 @@
             </UButton>
           </LControl>
         </LMap>
-
-        <template #fallback>
-          <UContainer class="mt-4">
-            <UBlogList orientation="horizontal">
-              <UBlogPost
-                v-for="(post, index) of filtered"
-                :key="index"
-                :to="post._path"
-                :title="post.title"
-                :description="post.description"
-                :image="post.image"
-                :date="formatDate(post.date)"
-                :badge="post.badge"
-                orientation="vertical"
-              />
-            </UBlogList>
-          </UContainer>
-        </template>
       </ClientOnly>
     </div>
 
