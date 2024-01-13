@@ -63,16 +63,19 @@
 
         <template #fallback>
           <UContainer class="mt-4">
-            <ULandingGrid class="w-full">
-              <ULandingCard
-                v-for="(item, index) of filtered"
+            <UBlogList orientation="horizontal">
+              <UBlogPost
+                v-for="(post, index) of filtered"
                 :key="index"
-                :to="item?._path"
-                :title="item.title + ', ' + item.meta.ort"
-                :description="item.description"
-                class="col-span-3"
+                :to="post._path"
+                :title="post.title"
+                :description="post.description"
+                :image="post.image"
+                :date="formatDate(post.date)"
+                :badge="post.badge"
+                orientation="vertical"
               />
-            </ULandingGrid>
+            </UBlogList>
           </UContainer>
         </template>
       </ClientOnly>
