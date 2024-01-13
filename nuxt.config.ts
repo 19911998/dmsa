@@ -11,8 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     'nuxt-simple-sitemap',
     'nuxt3-leaflet',
-    '@nuxtjs/robots',
-    '@vueuse/nuxt'
+    '@nuxtjs/robots'
   ],
   robots: {
     rules: {

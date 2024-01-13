@@ -1,6 +1,6 @@
 <template>
-  <div style="height: calc(100vh - 65px)" class="flex">
-    <div class="w-full">
+  <div class="flex relative">
+    <div class="w-full h-[calc(100vh-65px)]">
       <ClientOnly>
         <LMap
           ref="mapRef"
@@ -49,11 +49,16 @@
             </LPopup>
           </LMarker>
 
-          <!--LControl position="topright">
-            <UButton icon="i-heroicons-funnel" @click="showFilter = true">
+          <LControl position="topright">
+            <UButton
+              v-show="!showFilter"
+              icon="i-heroicons-funnel"
+              class="sm:hidde"
+              @click="showFilter = true"
+            >
               Ergebnisse filtern
             </UButton>
-          </LControl-->
+          </LControl>
         </LMap>
 
         <template #fallback>
@@ -73,15 +78,32 @@
       </ClientOnly>
     </div>
 
-    <FilterMap ref="filterMapRef" :page="page" :schema="schema" :entries="entries" />
+    <div
+      class="absolute sm:relative top-[65] right-0 z-[1000] min-w-fit transition-transform"
+      :class="showFilter ? '' : 'transform translate-x-full sm:translate-x-0'"
+    >
+      <FilterMap
+        ref="filterMapRef"
+        :page="page"
+        :schema="schema"
+        :entries="entries"
+        :shadow="false"
+        :rounded="false"
+        class="h-[calc(100vh-65px)] sm:relative bg-background"
+      >
+        <div class="absolute top-0 right-0 mt-1 transform sm:hidden">
+          <UButton variant="ghost" color="white" @click="showFilter = false">
+            <UIcon name="i-heroicons-chevron-right" class="text-2xl" />
+          </UButton>
+        </div>
+      </FilterMap>
+    </div>
   </div>
 </template>
   
 <script setup lang="ts">
 import type { LMap, LMarker } from '@vue-leaflet/vue-leaflet'
 import type FilterMap from 'components/FilterMap.vue'
-
-const screen = useScreen()
 
 const filterMapRef = ref<typeof FilterMap | null>(null)
 const filtered = computed(() => filterMapRef.value?.filtered || [])

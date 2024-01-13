@@ -1,5 +1,6 @@
 <template>
-  <UCard class="min-w-fit overflow-y-scroll z-[100] relative" :ui="{ body: { padding: '!pt-4' }}">
+  <div class="overflow-y-scroll z-[100] relative px-5 pb-5 pt-4">
+    <slot />
     <div class="text-primary text-sm/6 font-semibold mb-2">
       Filter
     </div>
@@ -83,7 +84,7 @@
       class="mt-8 text-primary"
       title="Links"
     />
-  </UCard>
+  </div>
 </template>
 
 <script setup lang="ts">
