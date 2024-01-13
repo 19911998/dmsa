@@ -29,7 +29,7 @@ export default defineAppConfig({
     links: []
   },
   footer: {
-    credits: 'Copyright © 2024',
+    credits: '»Du musst sie akzeptieren!« &middot; &copy&nbsp;2024',
     colorMode: false,
     links: [{
       icon: 'i-simple-icons-nuxtdotjs',

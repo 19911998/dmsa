@@ -5,7 +5,7 @@ const { footer } = useAppConfig()
 <template>
   <UFooter>
     <template #left>
-      {{ footer.credits }}
+      <span v-html="footer.credits" />
     </template>
 
     <template #right>

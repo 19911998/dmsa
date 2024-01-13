@@ -1,6 +1,6 @@
 <template>
   <div class="flex relative">
-    <div class="w-full h-[calc(100vh-65px)]">
+    <div class="w-full h-[calc(100vh-210px)] lg:h-[calc(100vh-130px)]">
       <ClientOnly>
         <LMap
           ref="mapRef"
@@ -82,7 +82,7 @@
     </div>
 
     <div
-      class="absolute sm:relative top-[65] right-0 z-[1000] min-w-fit transition-transform"
+      class="absolute sm:relative top-[65] right-0 z-[1000] h-full min-w-fit transition-transform"
       :class="showFilter ? '' : 'transform translate-x-full sm:translate-x-0'"
     >
       <FilterMap
@@ -92,7 +92,7 @@
         :entries="entries"
         :shadow="false"
         :rounded="false"
-        class="h-[calc(100vh-65px)] sm:relative bg-background"
+        class="sm:relative bg-background"
       >
         <div class="absolute top-0 right-0 mt-1 transform sm:hidden">
           <UButton variant="ghost" color="white" @click="showFilter = false">
