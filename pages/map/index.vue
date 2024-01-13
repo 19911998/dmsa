@@ -217,7 +217,7 @@ const beforeFilterSet = computed(() => state.value
 const beforeTimeAxis = computed(() => beforeFilterSet.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
 
 const filtered = computed(() => timeAxis.value
-  ? beforeTimeAxis.value.filter(({ meta }) => meta.jahre?.includes(year.value))
+  ? beforeTimeAxis.value.filter(({ meta }) => meta.jahre?.length && year.value >= Math.min(...meta.jahre) && year.value <= Math.max(...meta.jahre))
   : beforeTimeAxis.value)
 
 const notFilteredByState = computed(() => filteredBasic.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
