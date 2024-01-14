@@ -4,7 +4,7 @@ navigation: false
 hero:
   headline: Blog
   title: »Du musst sie akzeptieren!«
-  description: Eine Dokumentation über die Soziale Arbeit mit Neonazi
+  description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
 links:
   - label: Einführung
     to: /#intro
