@@ -66,6 +66,16 @@
               </UButton>
             </UChip>
           </LControl>
+
+          <LControl position="bottomleft">
+            <UButton
+              variant="ghost"
+              class="bg-white text-black dark:text-black shadow-md"
+              icon="i-heroicons-arrows-pointing-out"
+              size="xl"
+              @click="center"
+            />
+          </LControl>
         </LMap>
 
         <template #fallback>
@@ -143,15 +153,19 @@ const markerRef = ref<typeof LMarker[]>([])
     }, 250)
   }
 } */
-watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], async ([map]) => {
+
+async function center () {
+  const map = mapRef.value?.leafletObject 
   if (!map || !bounds.value) return
 
   L ||= await import('leaflet')
 
   map.fitBounds(bounds.value, {
     padding: [50, 50]
-  })
-})
+  })  
+}
+
+watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], center)
 
 useSeoMeta({
   title: page.value.title,
