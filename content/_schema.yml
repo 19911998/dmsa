@@ -25,7 +25,7 @@ meta:
       Mord: {Tathandlung (Mord):Boolean}
       Sonstige: {Tathandlung (sonstige):Boolean}
     Effekt:
-      Verdrängungseffekt: {Verdrängungseffektseffekt:Boolean}
+      Verdrängungseffekt: {Verdrängungseffekt:Boolean}
   Leitung:
     Sozialarbeitende: {Sozialarbeitende:Boolean}
     Selbstverwaltung: {Selbstverwaltung:Boolean}
