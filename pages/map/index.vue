@@ -69,11 +69,12 @@
 
           <LControl position="bottomleft">
             <UButton
+              ref="centerButtonRef"
               variant="ghost"
               class="bg-white text-black dark:text-black shadow-md"
               icon="i-heroicons-arrows-pointing-out"
               size="xl"
-              @click="center"
+              @click="center(), centerButtonRef.value?.blur()"
             />
           </LControl>
         </LMap>
@@ -124,12 +125,15 @@
 <script setup lang="ts">
 import type { LMap, LMarker } from '@vue-leaflet/vue-leaflet'
 import type FilterMap from 'components/FilterMap.vue'
+import type UButton from '@nuxt/ui/UButton.vue'
 
 const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
 const { data: schema } = await useAsyncData('filters', () => queryContent('_schema').findOne())
 const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').without('body').find())
 
 const filterMapRef = ref<typeof FilterMap | null>(null)
+const centerButtonRef = ref<typeof UButton | null>(null)
+
 const filtered = computed(() => filterMapRef.value?.filtered)
 const bounds = computed(() => filterMapRef.value?.bounds)
 
