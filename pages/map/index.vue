@@ -71,7 +71,7 @@
             <UButton
               ref="centerButtonRef"
               variant="ghost"
-              class="bg-white text-black dark:text-black shadow-md"
+              class="bg-white text-black dark:text-black shadow-md dark:hover:bg-gray-100"
               icon="i-heroicons-arrows-pointing-out"
               size="xl"
               @click="center(), centerButtonRef.value?.blur()"
