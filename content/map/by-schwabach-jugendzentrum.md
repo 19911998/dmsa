@@ -16,7 +16,7 @@ meta:
     Infrastruktur für:
       Parties & Konzerte: true
     Effekt:
-      Verdrängung: true
+      Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true

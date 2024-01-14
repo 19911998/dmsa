@@ -25,7 +25,10 @@
 
       <div class="flex flex-col gap-2 items-stretch">
         <div v-for="(filter, key) in filters" :key="key">
-          <div class="italic text-sm tracking-wide opacity-60">
+          <div
+            class="italic text-sm tracking-wide opacity-60"
+            :class="`filter-${key.toLowerCase().replaceAll(' ', '-')}`"
+          >
             {{ key }}
           </div>
 
@@ -227,3 +230,16 @@ defineExpose({
   filterActive
 })
 </script>
+
+<style scoped>
+.filter-effekt {
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border-top: 1px solid rgb(var(--color-gray-300));
+}
+
+.dark .filter-effekt {
+  border-top-color: rgb(var(--color-gray-700));
+}
+</style>

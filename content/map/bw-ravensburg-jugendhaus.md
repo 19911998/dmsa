@@ -17,7 +17,7 @@ meta:
     Tatbestände:
       Gewalt: true
     Effekt:
-      Verdrängung: true
+      Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true
