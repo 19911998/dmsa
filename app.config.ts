@@ -11,7 +11,10 @@ export default defineAppConfig({
     footer: {
       bottom: {
         left: 'text-sm text-gray-500 dark:text-gray-400',
-        wrapper: 'border-t border-gray-200 dark:border-gray-800'
+        wrapper: 'border-t border-gray-200 dark:border-gray-800',
+      },
+      links: {
+        wrapper: '!flex-row'
       }
     }
   },
@@ -29,21 +32,24 @@ export default defineAppConfig({
     links: []
   },
   footer: {
-    credits: '»Du musst sie akzeptieren!« &middot; &copy&nbsp;2024',
+    credits: 'DMSA &copy; 2024',
     colorMode: false,
     links: [{
-      title: 'Einführung',
-      icon: 'i-heroicons-information-circle',
+      label: 'Intro',
       to: '/#intro'
     },
     {
-      title: 'Karte',
-      icon: 'i-heroicons-map',
+      label: 'Karte',
       to: '/map'
     }, {
-      title: 'Blog',
-      icon: 'i-heroicons-rectangle-stack',
+      label: 'Blog',
       to: '/blog'
+    }],
+    icons: [{
+      icon: 'i-simple-icons-nuxtdotjs',
+      to: 'https://nuxt.com',
+      target: '_blank',
+      'aria-label': 'Nuxt Website'
     }]
   },
   toc: {

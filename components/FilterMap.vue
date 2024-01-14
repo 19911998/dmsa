@@ -55,7 +55,7 @@
                 <div
                   class="flex items-stretch gap-2"
                 >
-                  <span class="whitespace-nowrap">
+                  <span class="whitespace-nowrap" :class="{ 'font-mono': timeAxis }">
                     {{ timeAxis ? year : years.join('\u202f–\u202f') }}
                   </span>
                 </div>
