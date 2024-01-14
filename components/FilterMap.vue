@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-y-scroll z-[100] relative h-full px-5 py-4 max-h-[calc(100vh-210px)] lg:max-h-[calc(100vh-130px)]">
+  <div class="overflow-y-scroll z-[100] relative h-full px-5 py-4 max-h-[calc(100vh-210px)] lg:max-h-[calc(100vh-140px)]">
     <slot />
     <div class="text-primary text-sm/6 font-semibold mb-2">
       Filter

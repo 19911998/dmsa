@@ -2,7 +2,7 @@
   <div>
     <Header />
 
-    <UMain class="min-h-[calc(100vh-210px)] lg:min-h-[calc(100vh-130px)]">
+    <UMain class="min-h-[calc(100vh-var(--header-height)+20)]">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
