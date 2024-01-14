@@ -11,8 +11,8 @@ export default defineAppConfig({
     footer: {
       bottom: {
         left: 'text-sm text-gray-500 dark:text-gray-400',
-        right: 'hidden md:block',
-        center: 'mt-0 md:mt-3',
+        right: 'hidden lg:flex',
+        center: 'mt-0',
         wrapper: 'border-t border-gray-200 dark:border-gray-800',
       },
       links: {
