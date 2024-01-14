@@ -56,7 +56,7 @@
               class="sm:hidden"
               @click="showFilter = true"
             >
-              Ergebnisse filtern
+              Filter
             </UButton>
           </LControl>
         </LMap>
