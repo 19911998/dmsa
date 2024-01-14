@@ -34,7 +34,7 @@ export default defineAppConfig({
     links: []
   },
   footer: {
-    credits: 'DMSA &copy; 2024',
+    credits: 'DMSA &middot; Dokumentation über die Soziale Arbeit mit Neonazis &middot; &copy;&nbsp;2024',
     colorMode: false,
     links: [{
       label: 'Intro',
@@ -53,28 +53,5 @@ export default defineAppConfig({
       target: '_blank',
       'aria-label': 'Nuxt Website'
     }]
-  },
-  toc: {
-    title: 'Table of Contents',
-    bottom: {
-      title: 'Community',
-      edit: 'https://github.com/nuxt-ui-pro/docs/edit/main/content',
-      links: [{
-        icon: 'i-heroicons-star',
-        label: 'Star on GitHub',
-        to: 'https://github.com/nuxt/ui',
-        target: '_blank',
-      }, {
-        icon: 'i-heroicons-book-open',
-        label: 'Nuxt UI Pro docs',
-        to: 'https://ui.nuxt.com/pro/guide',
-        target: '_blank',
-      }, {
-        icon: 'i-simple-icons-nuxtdotjs',
-        label: 'Purchase a license',
-        to: 'https://ui.nuxt.com/pro/purchase',
-        target: '_blank',
-      }]
-    }
   }
 })

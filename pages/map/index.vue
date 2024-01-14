@@ -50,14 +50,21 @@
           </LMarker>
 
           <LControl position="topright">
-            <UButton
+            <UChip
               v-show="!showFilter"
-              icon="i-heroicons-funnel"
+              inset
+              :color="filterMapRef?.filterActive ? 'orange' : 'transparent'"
               class="sm:hidden"
-              @click="showFilter = true"
+              size="lg"
+              :ui="{ base: '!ring-0' }"
             >
-              Filter
-            </UButton>
+              <UButton
+                icon="i-heroicons-funnel"
+                @click="showFilter = true"
+              >
+                Filter
+              </UButton>
+            </UChip>
           </LControl>
         </LMap>
 

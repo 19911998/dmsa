@@ -1,8 +1,13 @@
 <template>
   <div class="overflow-y-scroll z-[100] relative h-full px-5 py-4 max-h-[calc(100vh-210px)] lg:max-h-[calc(100vh-140px)]">
     <slot />
-    <div class="text-primary text-sm/6 font-semibold mb-2">
+    <div class="text-primary text-sm/6 font-semibold mb-2 flex items-center gap-x-2">
       Filter
+      <UTooltip v-if="filterActive" text="Zur&uuml;cksetzen">
+        <UBadge class="cursor-pointer" variant="outline" @click="reset">
+          <UIcon name="i-heroicons-minus" class="text-md" />
+        </UBadge>
+      </UTooltip>
     </div>
 
     <div class="flex flex-col gap-4 items-stretch">
@@ -105,6 +110,8 @@ const filtered = computed(() => timeAxis.value
   ? beforeTimeAxis.value.filter(({ meta }) => meta.jahre?.length && year.value >= Math.min(...meta.jahre) && year.value <= Math.max(...meta.jahre))
   : beforeTimeAxis.value)
 
+const filterActive = computed(() => filtered.value.length < hasGeo.value.length)
+
 const filterSetNotAffected = computed(() => {
   const ret = {}
   for (const key in filters.value) {
@@ -139,19 +146,17 @@ const disabled = computed(() => {
   return ret
 })
 
-const filteredBasic = computed(() => props.entries.filter(({ meta, tags }) => {
-  if (!(meta?.lng && meta.lat)) return
-  if (tag.value && !tags?.includes(tag.value)) return
-  return true
-}))
+const hasGeo = computed(() => props.entries.filter(({ meta }) => meta?.lng && meta.lat))
+
+const filteredByTag = computed(() => hasGeo.value.filter(({ tags }) => !tag.value || tags?.includes(tag.value)))
 
 const beforeFilterSet = computed(() => state.value
-  ? filteredBasic.value.filter(({ meta }) => meta.bundesland === state.value)
-  : filteredBasic.value)
+  ? filteredByTag.value.filter(({ meta }) => meta.bundesland === state.value)
+  : filteredByTag.value)
 
 const beforeTimeAxis = computed(() => beforeFilterSet.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
 
-const notFilteredByState = computed(() => filteredBasic.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
+const notFilteredByState = computed(() => filteredByTag.value.filter(({ meta }) => inFilterSet(meta, filters.value)))
 
 const states = computed(() => [
   { label: 'Alle Bundesländer', value: '' },
@@ -179,11 +184,16 @@ const years = computed(() => [
   ])
 ])
 
-watch(() => years.value, () => {
-  year.value = year.value
-    ? Math.min(years.value[1], Math.max(year.value, years.value[0]))
-    : years.value[1]
-}, { immediate: true })
+function reset () {
+  for (const key in filters.value) {
+    for (const key2 in filters.value[key]) {
+      filters.value[key][key2] = false
+    }
+  }
+  state.value = ''
+  timeAxis.value = false
+  if (tag.value) navigateTo({ path: route.path })
+}
 
 function extractFilters (scheme: Record<string, any>) {
   return Object.keys(scheme).reduce((acc, key) => {
@@ -205,8 +215,15 @@ function inFilterSet (meta: Record<string, any>, activeFilters: Record<string, a
   return true
 }
 
+watch(() => years.value, () => {
+  year.value = year.value
+    ? Math.min(years.value[1], Math.max(year.value, years.value[0]))
+    : years.value[1]
+}, { immediate: true })
+
 defineExpose({
   bounds,
-  filtered
+  filtered,
+  filterActive
 })
 </script>
