@@ -22,17 +22,7 @@ cards:
     headline: Einführung
     title: 
     description: "Eine Visitenkarte des Projekts auf max. 650 Zeichen: Thema, Anzahl der in der Datenbank erfassten Projekte, Stand der letzten Aktualisierung, Verweis auf die angewandte Methodik beim Erarbeiten der Fallbeispiele Recherche; Aufruf, Hinweise und Feedback zu geben via »Kontakt«."
-  map:
-    headline: Karte
-    title:
-    description: "Mit Klick auf »Karte« erfolgt die Weiterleitung auf eine statische Seite mit einer interaktiven Landkarte auf welcher die Fallbeispiele lokalisiert sind. Über eine Filter-Leiste können die Fallbeispiele je nach Vorhandensein bestimmter Kriterien hervorgehoben oder ausgegraut werden."
-    links:
-      - label: Zur Karte
-        trailingIcon: i-heroicons-arrow-right-20-solid
-        color: gray
-        to: /map
-        size: lg
-  blog:
+    blog:
     headline: Blog
     title:
     description: "Hier wird ein Blog-Feed dargestellt. Die zwei (oder drei) jüngsten Beiträge erscheinen mit ihrem Titel, dem Datum ihrer Veröffentlichung und einem Exzerpt."
@@ -41,4 +31,14 @@ cards:
         trailingIcon: i-heroicons-arrow-right-20-solid
         color: gray
         to: /blog
+        size: lg
+    map:
+    headline: Karte
+    title:
+    description: "Mit Klick auf »Karte« erfolgt die Weiterleitung auf eine statische Seite mit einer interaktiven Landkarte auf welcher die Fallbeispiele lokalisiert sind. Über eine Filter-Leiste können die Fallbeispiele je nach Vorhandensein bestimmter Kriterien hervorgehoben oder ausgegraut werden."
+    links:
+      - label: Zur Karte
+        trailingIcon: i-heroicons-arrow-right-20-solid
+        color: gray
+        to: /map
         size: lg
