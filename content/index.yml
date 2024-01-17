@@ -3,7 +3,7 @@ description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
 navigation: false
 search: false
 hero:
-  title: »Du musst sie akzeptieren!«
+  title: »Du musst sie <span class="text-primary">akzeptieren!</span>«
   description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
   links:
     - label: Einführung
