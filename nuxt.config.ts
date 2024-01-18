@@ -27,6 +27,9 @@ export default defineNuxtConfig({
   sitemap: {
     exclude: ['/convert']
   },
+  ignore: [
+    process.env.NUXT_SITE_ENV === 'preview' ? '' : 'pages/convert.vue'
+  ],
   image: {
     presets: {
       blog: {

@@ -16,7 +16,7 @@
 import Papa from 'papaparse'
 
 if (useRuntimeConfig().public.site_env !== 'preview') {
-  throw createError({ statusCode: 404, statusMessage: 'Page not found' })
+  throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
 const id = ref('')
