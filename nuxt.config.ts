@@ -9,7 +9,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
     '@nuxt/image',
-    'nuxt-simple-sitemap',
+    '@nuxtjs/sitemap',
     'nuxt3-leaflet',
     '@nuxtjs/robots'
   ],
@@ -26,7 +26,8 @@ export default defineNuxtConfig({
     }
   },
   sitemap: {
-    exclude: ['/convert']
+    exclude: ['/convert'],
+    trailingSlash: true
   },
   ignore: [
     process.env.NUXT_SITE_ENV === 'preview' ? '' : 'pages/convert.vue'
@@ -71,7 +72,7 @@ export default defineNuxtConfig({
     }
   },
   router: {
-    strue: true
+    strict: true
   },
   routeRules: {
     '/api/search.json': { prerender: true }
