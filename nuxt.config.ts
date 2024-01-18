@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   },
   sitemap: {
     exclude: ['/convert'],
-    trailingSlash: true
+    autoLastmod: true
   },
   ignore: [
     process.env.NUXT_SITE_ENV === 'preview' ? '' : 'pages/convert.vue'
