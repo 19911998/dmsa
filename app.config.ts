@@ -34,7 +34,7 @@ export default defineAppConfig({
     links: []
   },
   footer: {
-    credits: 'DMSA &middot; Dokumentation über die Soziale Arbeit mit Neonazis &middot; &copy;&nbsp;2024',
+    credits: 'Dokumentation über die Soziale Arbeit mit Neonazis &middot; &copy;&nbsp;2024',
     colorMode: false,
     links: [{
       label: 'Intro',

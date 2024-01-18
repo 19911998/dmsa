@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-y-scroll z-[100] relative h-full px-5 py-4 max-h-[calc(100vh-210px)] lg:max-h-[calc(100vh-140px)]">
+  <div class="overflow-y-scroll z-[100] relative h-full px-5 py-4 max-h-[calc(100vh-210px)] lg:max-h-[calc(100vh-139px)]">
     <slot />
     <div class="text-primary text-sm/6 font-semibold mb-2 flex items-center gap-x-2">
       Filter
@@ -70,7 +70,7 @@
 
             <div class="relative grow">
               <URange
-                v-if="years.length > 1"
+                v-show="years.length > 1"
                 :model-value="timeAxis ? year : years[1]"
                 size="xs"
                 :min="years[0]"

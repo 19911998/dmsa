@@ -1,6 +1,6 @@
 <template>
   <div class="flex relative">
-    <div class="w-full min-h-[calc(100vh-210px)] lg:h-[calc(100vh-140px)]">
+    <div class="w-full min-h-[calc(100vh-210px)] lg:h-[calc(100vh-139px)]">
       <ClientOnly>
         <LMap
           ref="mapRef"
@@ -121,7 +121,7 @@
     </div>
   </div>
 </template>
-  
+
 <script setup lang="ts">
 import type { LMap, LMarker } from '@vue-leaflet/vue-leaflet'
 import type FilterMap from 'components/FilterMap.vue'
@@ -159,14 +159,14 @@ const markerRef = ref<typeof LMarker[]>([])
 } */
 
 async function center () {
-  const map = mapRef.value?.leafletObject 
+  const map = mapRef.value?.leafletObject
   if (!map || !bounds.value) return
 
   L ||= await import('leaflet')
 
   map.fitBounds(bounds.value, {
     padding: [50, 50]
-  })  
+  })
 }
 
 watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], center)
