@@ -9,5 +9,5 @@ links:
     to: /#intro
     icon: i-heroicons-information-circle
   - label: Blog
-    to: /blog
+    to: /blog/
     icon: i-heroicons-rectangle-stack

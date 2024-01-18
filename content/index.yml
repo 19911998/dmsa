@@ -15,12 +15,12 @@ hero:
     - label: Zur Karte
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
-      to: /map
+      to: /map/
       size: lg
 cards:
   intro:
     headline: Einführung
-    title: 
+    title:
     description: "Eine Visitenkarte des Projekts auf max. 650 Zeichen: Thema, Anzahl der in der Datenbank erfassten Projekte, Stand der letzten Aktualisierung, Verweis auf die angewandte Methodik beim Erarbeiten der Fallbeispiele Recherche; Aufruf, Hinweise und Feedback zu geben via »Kontakt«."
   map:
     headline: Karte
@@ -30,7 +30,7 @@ cards:
       - label: Zur Karte
         trailingIcon: i-heroicons-arrow-right-20-solid
         color: gray
-        to: /map
+        to: /map/
         size: lg
   blog:
     headline: Blog
@@ -40,5 +40,5 @@ cards:
       - label: Alle Beiträge
         trailingIcon: i-heroicons-arrow-right-20-solid
         color: gray
-        to: /blog
+        to: /blog/
         size: lg

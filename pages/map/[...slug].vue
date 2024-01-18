@@ -36,7 +36,7 @@
           v-if="page.tags"
           :links="page.tags.map((tag: string) => ({
             label: tag,
-            to: `/map?tag=${encodeURIComponent(tag)}`,
+            to: `/map/?tag=${encodeURIComponent(tag)}`,
             icon: 'i-heroicons-hashtag'
           }))"
           :ui="{ title: 'text-primary' }"
@@ -67,7 +67,7 @@
     </UPageBody>
   </UPage>
 </template>
-  
+
 <script setup lang="ts">
 import { withoutTrailingSlash } from 'ufo'
 
@@ -118,4 +118,3 @@ defineOgImage({
   description: page.value.description
 })
 </script>
-  

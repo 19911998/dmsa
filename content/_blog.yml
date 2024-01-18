@@ -10,5 +10,5 @@ links:
     to: /#intro
     icon: i-heroicons-information-circle
   - label: Karte
-    to: /map
+    to: /map/
     icon: i-heroicons-map-20-solid

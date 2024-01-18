@@ -21,7 +21,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      site_env: process.env.NUXT_SITE_ENV
+      site_env: process.env.NUXT_SITE_ENV,
+      trailingSlash: true
     }
   },
   sitemap: {
@@ -68,6 +69,9 @@ export default defineNuxtConfig({
     families: {
       'DM+Sans': [400, 500, 600, 700]
     }
+  },
+  router: {
+    strue: true
   },
   routeRules: {
     '/api/search.json': { prerender: true }

@@ -14,7 +14,7 @@
         <UPageLinks
           :links="page.tags?.map((tag: string) => ({
             label: tag,
-            to: `/blog?tag=${encodeURIComponent(tag)}`,
+            to: `/blog/?tag=${encodeURIComponent(tag)}`,
             icon: 'i-heroicons-tag'
           }))"
           title="Schlagworte"
@@ -30,7 +30,7 @@
       :links="[{
         label: 'Blog',
         icon: 'i-heroicons-arrow-uturn-left',
-        to: '/blog',
+        to: '/blog/',
         target: '_self'
       }]"
       :ui="{ links: 'ml-4 min-w-fit' }"

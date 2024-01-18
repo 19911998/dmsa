@@ -11,7 +11,7 @@
             v-if="tags.length"
             :links="[...tags].map(([tag, count]) => ({
               label: `${tag} (${count})`,
-              to: `/blog?tag=${encodeURIComponent(tag)}`,
+              to: `/blog/?tag=${encodeURIComponent(tag)}`,
               icon: 'i-heroicons-tag',
               exactQuery: true
             }))"
@@ -24,7 +24,7 @@
         v-bind="page.hero"
         :links="tag ? [{
           label: 'Alle Blog-Einträge',
-          to: '/blog',
+          to: '/blog/',
           target: '_self',
           icon: 'i-heroicons-arrow-uturn-left'
         }] : undefined"
@@ -52,7 +52,7 @@
             }"
           >
             <template #badge>
-              <TagList base="/blog" :tags="post.tags" :page-tag="tag" class="mt-4" />
+              <TagList base="/blog/" :tags="post.tags" :page-tag="tag" class="mt-4" />
             </template>
           </UBlogPost>
         </UBlogList>

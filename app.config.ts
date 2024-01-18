@@ -42,10 +42,10 @@ export default defineAppConfig({
     },
     {
       label: 'Karte',
-      to: '/map'
+      to: '/map/'
     }, {
       label: 'Blog',
-      to: '/blog'
+      to: '/blog/'
     }],
     icons: [{
       icon: 'i-simple-icons-nuxtdotjs',
