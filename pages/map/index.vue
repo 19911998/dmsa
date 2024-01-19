@@ -51,9 +51,9 @@
 
           <LControl position="topright">
             <UChip
-              v-show="!showFilter"
+              v-show="!showFilter && filterMapRef?.filterActive"
               inset
-              :color="filterMapRef?.filterActive ? 'orange' : 'transparent'"
+              color="orange"
               class="sm:hidden"
               size="lg"
               :ui="{ base: '!ring-0' }"

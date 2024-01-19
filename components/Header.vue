@@ -1,16 +1,5 @@
-<script setup lang="ts">
-import type { NavItem } from '@nuxt/content/dist/runtime/types'
-
-const navigation = inject<NavItem[]>('navigation', [])
-const route = useRoute()
-
-const headerLinks = useState('header-links', () => undefined)
-
-const { header } = useAppConfig()
-</script>
-
 <template>
-  <UHeader :links="headerLinks">
+  <UHeader :links="route.path === '/' ? headerLinks : undefined">
     <template #logo>
       <template v-if="header?.logo?.dark || header?.logo?.light">
         <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
@@ -43,3 +32,21 @@ const { header } = useAppConfig()
     </template>
   </UHeader>
 </template>
+
+<script setup lang="ts">
+import type { NavItem } from '@nuxt/content/dist/runtime/types'
+
+const navigation = inject<NavItem[]>('navigation', [])
+const route = useRoute()
+
+const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+
+const headerLinks = useState('header-links', () => Object.keys(page.value.cards).map(key => ({
+  label: page.value.cards[key].headline,
+  to: '#' + key,
+  exactHash: true
+})))
+
+const { header } = useAppConfig()
+</script>
+

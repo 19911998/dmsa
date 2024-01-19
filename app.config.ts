@@ -30,8 +30,7 @@ export default defineAppConfig({
       dark: ''
     },
     search: true,
-    colorMode: true,
-    links: []
+    colorMode: true
   },
   footer: {
     credits: 'Dokumentation über die Soziale Arbeit mit Neonazis &middot; &copy;&nbsp;2024',
