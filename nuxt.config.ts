@@ -71,11 +71,9 @@ export default defineNuxtConfig({
       'DM+Sans': [400, 500, 600, 700]
     }
   },
-  router: {
-    strict: true
-  },
   routeRules: {
-    '/api/search.json': { prerender: true }
+    '/api/search.json': { prerender: true },
+    '/rss.xml': { prerender: true }
   },
   colorMode: {
     preference: 'dark'
