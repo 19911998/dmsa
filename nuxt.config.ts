@@ -9,18 +9,25 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
     '@nuxt/image',
-    'nuxt-simple-sitemap',
-    'nuxt-simple-robots',
+    '@nuxtjs/sitemap',
     'nuxt3-leaflet'
   ],
   runtimeConfig: {
     public: {
-      site_env: process.env.NUXT_SITE_ENV
+      site_name: process.env.NUXT_SITE_NAME,
+      site_env: process.env.NUXT_SITE_ENV,
+      site_url: process.env.NUXT_PUBLIC_SITE_URL,
+      canonical_url: process.env.NUXT_CANONICAL_URL,
+      trailingSlash: true,
     }
   },
   sitemap: {
-    exclude: ['/convert']
+    exclude: ['/convert'],
+    autoLastmod: true
   },
+  ignore: [
+    process.env.NUXT_SITE_ENV === 'preview' ? '' : 'pages/convert.vue'
+  ],
   image: {
     presets: {
       blog: {
@@ -61,7 +68,8 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
-    '/api/search.json': { prerender: true }
+    '/api/search.json': { prerender: true },
+    '/rss.xml': { prerender: true, experimentalNoScripts: true }
   },
   colorMode: {
     preference: 'dark'

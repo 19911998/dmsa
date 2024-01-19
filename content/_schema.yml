@@ -21,10 +21,11 @@ meta:
       Kameradschaftstreffen: {Kameradschaftstreffen:Boolean}
       Propaganda: {Propaganda:Boolean}
     Tatbestände:
-      Mord: {Tathandlung (Mord):Boolean}
       Gewalt: {Tathandlung (Gewalt):Boolean}
+      Mord: {Tathandlung (Mord):Boolean}
       Sonstige: {Tathandlung (sonstige):Boolean}
-    Verdrängungseffekt: {Verdrängungseffekt:Boolean}
+    Effekt:
+      Verdrängungseffekt: {Verdrängungseffekt:Boolean}
   Leitung:
     Sozialarbeitende: {Sozialarbeitende:Boolean}
     Selbstverwaltung: {Selbstverwaltung:Boolean}

@@ -1,7 +1,6 @@
 <template>
-  <!-- UPageHero v-if="page.hero" v-bind="page.hero" /-->
-  <div style="height: calc(100vh - 65px)" class="flex">
-    <div class="w-full">
+  <div class="flex relative">
+    <div class="w-full min-h-[calc(100vh-210px)] lg:h-[calc(100vh-139px)]">
       <ClientOnly>
         <LMap
           ref="mapRef"
@@ -29,7 +28,10 @@
             </LTooltip>
 
             <LPopup>
-              <div class="font-semibold">{{ item.title }}</div>
+              <div class="font-semibold">
+                {{ item.title }}
+              </div>
+
               <div class="flex gap-2">
                 <div class="text-gray">
                   {{ item.description }}
@@ -46,161 +48,128 @@
               </div>
             </LPopup>
           </LMarker>
+
+          <LControl position="topright">
+            <UChip
+              v-show="!showFilter"
+              inset
+              :color="filterMapRef?.filterActive ? 'orange' : 'transparent'"
+              class="sm:hidden"
+              size="lg"
+              :ui="{ base: '!ring-0' }"
+            >
+              <UButton
+                icon="i-heroicons-funnel"
+                @click="showFilter = true"
+              >
+                Filter
+              </UButton>
+            </UChip>
+          </LControl>
+
+          <LControl position="bottomleft">
+            <UButton
+              ref="centerButtonRef"
+              variant="ghost"
+              class="bg-white text-black dark:text-black shadow-md dark:hover:bg-gray-100"
+              icon="i-heroicons-arrows-pointing-out"
+              size="xl"
+              @click="center(), centerButtonRef.value?.blur()"
+            />
+          </LControl>
         </LMap>
 
         <template #fallback>
           <UContainer class="mt-4">
-            <ULandingGrid class="w-full">
-              <ULandingCard
-                v-for="(item, index) of filtered"
+            <UBlogList orientation="horizontal">
+              <UBlogPost
+                v-for="(post, index) of filtered || entries"
                 :key="index"
-                :to="item?._path"
-                :title="item.title + ', ' + item.meta.ort"
-                :description="item.description"
-                class="col-span-3"
+                :to="post._path"
+                :title="post.title"
+                :description="post.description"
+                :image="post.image"
+                :date="formatDate(post.date)"
+                :badge="post.badge"
+                orientation="vertical"
               />
-            </ULandingGrid>
+            </UBlogList>
           </UContainer>
         </template>
       </ClientOnly>
     </div>
 
-    <UCard class="min-w-fit">
-      <div class="flex flex-col gap-4 items-start">
-        <UBadge v-if="tag" size="md" class="pr-1">
-          <div class="whitespace-nowrap flex items-center gap-x-1">
-            {{ tag }}
-            <UButton icon="i-heroicons-x-mark-20-solid" class="text-md" :padded="false" :to="route.path" />
-          </div>
-        </UBadge>
-
-        <UButtonGroup>
-          <USelect v-model="state" :options="states" />
-          <UButton v-if="state" color="gray" icon="i-heroicons-x-mark-20-solid" @click="state = ''" />
-        </UButtonGroup>
-
-        <div class="flex flex-col gap-2">
-          <template v-for="(filter, key) in filters" :key="key">
-            <div v-if="typeof filter == 'object'">
-              <div class="italic text-sm tracking-wide">{{ key }}</div>
-              <div class="flex flex-col gap-1 mt-1">
-                <UCheckbox
-                  v-for="key2 in Object.keys(filter)"
-                  :key="key2"
-                  v-model="filter[key2]"
-                  :label="key2"
-                  class="bg-gray"
-                />
-              </div>
-            </div>
-            <template v-else>
-              <UDivider />
-              <UCheckbox
-                v-model="filters[key]"
-                class="bt-1"
-                :label="key"
-              />
-            </template>
-          </template>
+    <div
+      class="absolute sm:relative top-[65] right-0 z-[1000] h-full min-w-fit transition-transform"
+      :class="showFilter ? '' : 'transform translate-x-full sm:translate-x-0'"
+    >
+      <FilterMap
+        ref="filterMapRef"
+        :page="page"
+        :schema="schema"
+        :entries="entries"
+        :shadow="false"
+        :rounded="false"
+        class="sm:relative bg-background"
+      >
+        <div class="absolute top-0 right-0 mt-1 transform sm:hidden">
+          <UButton variant="ghost" color="white" @click="showFilter = false">
+            <UIcon name="i-heroicons-chevron-right" class="text-2xl" />
+          </UButton>
         </div>
-      </div>
-    </UCard>
+      </FilterMap>
+    </div>
   </div>
 </template>
-  
-<script setup lang="ts">
-import { LMap, LMarker } from '@vue-leaflet/vue-leaflet'
 
-const route = useRoute()
-const tag = computed(() => route.query.tag as string)
+<script setup lang="ts">
+import type { LMap, LMarker } from '@vue-leaflet/vue-leaflet'
+import type FilterMap from 'components/FilterMap.vue'
+import type UButton from '@nuxt/ui/UButton.vue'
+
+const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
+const { data: schema } = await useAsyncData('filters', () => queryContent('_schema').findOne())
+const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').without('body').find())
+
+const filterMapRef = ref<typeof FilterMap | null>(null)
+const centerButtonRef = ref<typeof UButton | null>(null)
+
+const filtered = computed(() => filterMapRef.value?.filtered)
+const bounds = computed(() => filterMapRef.value?.bounds)
+
+const showFilter = ref(false)
 
 let L: any
 
 const mapRef = ref<typeof LMap | null>(null)
 const markerRef = ref<typeof LMarker[]>([])
 
-const { data: page } = await useAsyncData('map-overview', () => queryContent('_map').findOne())
-const { data: schema } = await useAsyncData('filters', () => queryContent('schema').findOne())
-const { data: entries } = await useAsyncData('map-entries', () => queryContent('map').sort({ createdAt: -1 }).find())
-
-
-function extractFilters (scheme: Record<string, any>) {
-  return Object.keys(scheme).reduce((acc, key) => {
-    if (Object.keys(scheme[key]).length === 1) {
-      acc[key] = false
-    } else {
-      acc[key] = extractFilters(scheme[key])
-    }
-    return acc
-  }, {})
-}
-
-const filters = useState('filters', () => extractFilters(schema.value.meta.filter))
-
-const filteredBeforeState = computed(() => entries.value.filter(({ meta, tags }) => {
-  if (!(meta?.lng && meta.lat)) return
-  if (tag.value && !tags?.includes(tag.value)) return
-
-  for (const key in filters.value) {
-    if (typeof filters.value[key] === 'object') {
-      for (const key2 in filters.value[key]) {
-        if (filters.value[key][key2] && !meta.filter[key]?.[key2]) {
-          return
-        }
+/* function toggleTimeAxis () {
+  timeAxis.value = !timeAxis.value
+  if (timeAxis.value) {
+    year.value = years.value[0]
+    const interval = setInterval(() => {
+      if (year.value < years.value[1]) {
+        year.value++
+      } else {
+        clearInterval(interval)
       }
-    } else if (filters.value[key] && !meta.filter[key]) return
+    }, 250)
   }
+} */
 
-  return true
-}))
-
-const filtered = computed(() => filteredBeforeState.value.filter(({ meta }) => {
-  if (state.value && meta.bundesland !== state.value) return
-
-  return true
-}))
-
-const states = computed(() => [
-  { label: 'Alle Bundesländer', value: '' },
-  ...Array.from(
-      // extract unique list of states from all entries via Set syntax
-      entries.value.reduce((acc, { meta }) => {
-        if (meta?.bundesland) acc.add(meta.bundesland)
-        return acc
-      }, new Set() as Set<string>)
-    )
-    // transform to array and disable states that are not available due to active filters
-    .map(value => ({
-      label: value,
-      value,
-      disabled: !filteredBeforeState.value.find(_ => _.meta.bundesland === value)
-    }))
-])
-
-const state = useState('state', () => '')
-
-if (tag.value) {
-  const stateSelected = states.value.find(_ => _.label.toLowerCase() === tag.value.toLowerCase())
-  if (stateSelected) {
-    state.value = stateSelected?.label
-    useRouter().push(route.path)
-  }
-}
-
-const bounds = computed(() => filtered.value.length && [
-  [ Math.min(...filtered.value.map(m => m.meta.lat)), Math.min(...filtered.value.map(m => m.meta.lng)) ],
-  [ Math.max(...filtered.value.map(m => m.meta.lat)), Math.max(...filtered.value.map(m => m.meta.lng)) ]
-])
-
-watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], async ([map]) => {
+async function center () {
+  const map = mapRef.value?.leafletObject
   if (!map || !bounds.value) return
 
   L ||= await import('leaflet')
 
-  map.fitBounds(L.latLngBounds(bounds.value), {
+  map.fitBounds(bounds.value, {
     padding: [50, 50]
   })
-})
+}
+
+watch([() => mapRef.value?.leafletObject, () => bounds.value, () => filtered.value], center)
 
 useSeoMeta({
   title: page.value.title,

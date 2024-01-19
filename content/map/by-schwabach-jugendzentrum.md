@@ -8,19 +8,22 @@ meta:
   einwohnerzahl: 40792
   name: Jugendzentrum
   adresse: Anschrift unbekannt
+  jahre: 
+    - 1994
   filter:
     Rechte Klientel:
       subkulturell: true
     Infrastruktur für:
       Parties & Konzerte: true
-    Verdrängungseffekt: true
+    Effekt:
+      Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true
   Organisationen: 
     - Boots&Braces(Band)
   lng: 11.027498
-  lat: 49.324754  
+  lat: 49.324754
 ---
 
 Antifaschist[*]innen veröffentlichen im Jahr 2003 eine umfassende Recherche zur Neonaziszene in Mittelfranken. Im Kapitel zur 40.000-Einwohner*innenstadt Schwabach, in der Nähe von Nürnberg, ist von einer Neonaziszene die Rede, die gut im gesellschaftlichen Leben verankert ist. Mitglieder der Nationaldemokratischen Partei Deutschlands (NPD) seien in diversen Vereinen und Verbänden der Stadt aktiv und „aufstrebende Jungnazis“ profitierten davon, dass „ältere Rechtsextremisten“ ihnen finanziell und logistisch unter die Arme greifen.

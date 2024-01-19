@@ -2,7 +2,7 @@
   <div>
     <Header />
 
-    <UMain>
+    <UMain class="min-h-[calc(100vh-var(--header-height)+20)]">
       <NuxtLayout>
         <NuxtPage />
       </NuxtLayout>
@@ -37,12 +37,13 @@ const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
 
 useHead({
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    ...useRuntimeConfig().public.site_env === 'preview' ? [{ name: 'robots', content: 'noindex' }] : []
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
-    { rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL + route.path }
-  ],    
+    { rel: 'canonical', href: useRuntimeConfig().public.canonical_url + route.path }
+  ],
   htmlAttrs: {
     lang: 'de'
   }

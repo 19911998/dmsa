@@ -1,58 +1,73 @@
 <template>
-  <div>
-    <UBreadcrumb
-      :links="[
-        {
-          label: 'Karte',
-          icon: 'i-heroicons-map',
-          to: '/map'
-        }
-      ]"
-      class="mt-4"
+  <UPage>
+    <template #left>
+      <UAside :links="map.links" />
+    </template>
+
+    <template #right>
+      <UAside>
+        <dl class="flex flex-col gap-y-2 text-sm">
+          <template
+            v-for="prop of ['bundesland', 'ort', 'träger', 'zeitraum', 'Organisationen']"
+            :key="prop"
+          >
+            <div
+              v-if="page.meta?.[prop]"
+            >
+              <dt class="text-primary font-semibold capitalize">
+                {{ prop }}
+              </dt>
+              <dd>
+                <ul v-if="Array.isArray(page.meta[prop])">
+                  <li v-for="(li, i) in page.meta[prop]" :key="i" class="mb-2">
+                    {{ li }}
+                  </li>
+                </ul>
+
+                <template v-else>
+                  {{ page.meta[prop] }}
+                </template>
+              </dd>
+            </div>
+          </template>
+        </dl>
+
+        <UPageLinks
+          v-if="page.tags"
+          :links="page.tags.map((tag: string) => ({
+            label: tag,
+            to: `/map/?tag=${encodeURIComponent(tag)}`,
+            icon: 'i-heroicons-hashtag'
+          }))"
+          :ui="{ title: 'text-primary' }"
+          class="mt-8"
+          title="Hashtags"
+        />
+      </UAside>
+    </template>
+
+    <UPageHeader
+      :title="page.title"
+      :description="page.description"
+      :links="[{
+        label: 'Zurück zur Karte',
+        icon: 'i-heroicons-arrow-uturn-left',
+        to: '/map',
+        target: '_self'
+      }]"
+      :ui="{ links: 'ml-4 min-w-fit' }"
     />
 
-    <UPageHero v-bind="page">
-      <template #description>
-        <MDC :value="page.description" />
-
-        <TagList base="/map" :tags="page.tags" class="mt-5" />
-      </template>
-
-      <dl>
-        <template
-          v-for="prop of ['ort', 'träger']"
-          :key="prop"
-        >
-          <div
-            v-if="page.meta[prop]"
-            class="grid grid-cols-3 gap-x-2" 
-          >
-            <dt class="text-right font-semibold capitalize">
-              {{ prop }}:
-            </dt>
-            <dd
-              class="col-span-2"
-              v-html="Array.isArray(page.meta[prop])
-                ? page.meta[prop].join(', ')
-                : page.meta[prop]"
-            />
-          </div>
-        </template>
-      </dl>
-    </UPageHero>
-
     <UPageBody prose>
-      <UContainer>
-        <ContentRenderer v-if="page.body" :value="page" class="max-w-lg mx-auto" />
-      </UContainer>
+      <ContentRenderer v-if="page.body" :value="page" class="max-w-xl" />
 
       <hr v-if="surround?.length">
 
       <UDocsSurround :surround="surround" />
     </UPageBody>
-  </div>
+  </UPage>
 </template>
-  
+
 <script setup lang="ts">
 import { withoutTrailingSlash } from 'ufo'
 
@@ -68,10 +83,11 @@ if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
-/*
-if (page.value.meta.jahre) {
+const { data: map } = await useAsyncData('map-links', () => queryContent('_map').only('links').findOne())
+
+if (page.value.meta?.jahre) {
   page.value.meta.zeitraum = page.value.meta.jahre.reduce((acc: number[][], val: number) => {
-    if (!acc.length || (val > acc.at(-1)[0] + 1)) {
+    if (!acc.length || (val > acc.at(-1).at(-1) + 1)) {
       acc.push([val])
     } else {
       acc.at(-1)[1] = val
@@ -80,7 +96,7 @@ if (page.value.meta.jahre) {
   }, []).map((val: number[]) => {
     return (val.length > 1) ? val.join('\u202f–\u202f') : val[0]
   })
-} */
+}
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('map')
   .where({ _extension: 'md', navigation: { $ne: false } })
@@ -102,4 +118,3 @@ defineOgImage({
   description: page.value.description
 })
 </script>
-  

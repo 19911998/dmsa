@@ -14,11 +14,11 @@ meta:
     Rechte Klientel:
       subkulturell: true
       organisiert: true
-    Verdrängungseffekt: true
+      gewaltbereit: true
+    Effekt:
+      Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
-  Bezug zu:
-    Gewalttäterinnen: true
   Integrierte Nutzung: true
   Privilegierte Nutzung: true
   Organisationen: 

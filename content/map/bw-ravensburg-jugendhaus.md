@@ -5,25 +5,27 @@ tags:
 meta:
   bundesland: Baden-Württemberg
   ort: Ravensburg
-  einwohnerzahl: 40792
+  einwohnerzahl: 50393
   name: Jugendhaus
   adresse: Anschrift unbekannt
+  jahre: 
+    - 1986
+    - 1989
   filter:
     Rechte Klientel:
       subkulturell: true
-    Infrastruktur für:
-      Parties & Konzerte: true
-    Verdrängungseffekt: true
+    Tatbestände:
+      Gewalt: true
+    Effekt:
+      Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true
-  Organisationen: 
-    - Boots&Braces(Band)
   lng: 9.605318
   lat: 47.770677
 ---
 
-Im Februar 1990 verhängt das Landgericht Ravensburg Haft- und Bewährungsstrafen gegen insgesamt 20 neonazistische Skinheads.i
+Im Februar 1990 verhängt das Landgericht Ravensburg Haft- und Bewährungsstrafen gegen insgesamt 20 neonazistische Skinheads.
 
 Diese hatten im September 1989 „nach Art eines Rollkommandos“ ein Punk-Konzert im Ravensburger Jugendhaus überfallen und dabei mehrere Besucher[*]innen zum Teil schwer verletzt. „Plötzlich“, erinnerte sich ein Mitarbeiter, „wurden Steine und Flaschen auf das Haus geworfen.“ Unter „Sieg Heil“-Rufen und „Rotfront verrecke“, gingen die rechten Skinheads auch mit Schlagstöcken auf die Jugendlichen Konzertbesucher*innen los.
 

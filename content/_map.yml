@@ -4,3 +4,10 @@ navigation: false
 hero:
   title: »Du musst sie akzeptieren!«
   description: Die Karte
+links:
+  - label: Einführung
+    to: /#intro
+    icon: i-heroicons-information-circle
+  - label: Blog
+    to: /blog/
+    icon: i-heroicons-rectangle-stack

@@ -1,56 +1,56 @@
 <template>
-  <div>
-    <UBreadcrumb
-      :links="[
-        {
-          label: 'Blog',
-          icon: 'i-heroicons-square-3-stack-3d',
-          to: '/blog'
-        }
-      ]"
-      class="mt-4"
+  <UPage>
+    <template #left>
+      <UAside :links="blog.links" />
+    </template>
+
+    <template #right>
+      <UAside>
+        <div class="text-gray-500 dark:text-gray-400 text-sm/6 font-medium tracking-wide flex items-center gap-x-2 mb-8">
+          <UIcon name="i-heroicons-calendar" class="text-lg" />
+          {{ formatDate(page.date) }}
+        </div>
+
+        <UPageLinks
+          :links="page.tags?.map((tag: string) => ({
+            label: tag,
+            to: `/blog/?tag=${encodeURIComponent(tag)}`,
+            icon: 'i-heroicons-tag'
+          }))"
+          title="Schlagworte"
+        />
+
+        <UDocsToc title="Inhalt" v-if="page.body?.toc?.links?.length" :links="page.body.toc.links" />
+      </UAside>
+    </template>
+
+    <UPageHeader
+      :title="page.title"
+      :description="page.description"
+      :links="[{
+        label: 'Blog',
+        icon: 'i-heroicons-arrow-uturn-left',
+        to: '/blog/',
+        target: '_self'
+      }]"
+      :ui="{ links: 'ml-4 min-w-fit' }"
     />
 
-    <UPageHero
-      v-bind="page"
-    >
-      <template #description>
-        <div class="flex flex-col">
-          <MDC :value="page.description" />
-
-          <div class="flex items-center mt-5 gap-5">
-            <div class="text-slate-500 font-light text-sm tracking-wide flex items-center gap-x-2">
-              <UIcon name="i-heroicons-calendar" class="text-lg" />
-              {{ getCreationDate(page) }}
-            </div>
-
-            <TagList base="/blog" tag-base="/blog/tags" :tags="page.tags" />
-          </div>
-        </div>
-      </template>
-
+    <UPageBody prose>
       <NuxtImg
         v-if="page.image"
         :src="page.image.src"
         :alt="page.image.alt"
-        class="ml-auto"
         preset="page"
       />
-    </UPageHero>
 
-    <UPageBody prose>
-      <UContainer>
-        <ContentRenderer v-if="page.body" :value="page" class="max-w-xl mx-auto" />
-      </UContainer>
+      <ContentRenderer v-if="page.body" :value="page" class="max-w-xl" />
 
       <hr v-if="surround?.length">
 
       <UDocsSurround :surround="surround" />
     </UPageBody>
-    <template v-if="page.body?.toc?.links?.length">
-      <UDocsToc :links="page.body.toc.links" />
-    </template>
-  </div>
+  </UPage>
 </template>
 
 <script setup lang="ts">
@@ -67,6 +67,8 @@ const { data: page } = await useAsyncData(route.path, () => queryContent(route.p
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
+
+const { data: blog } = await useAsyncData('blog-links', () => queryContent('_blog').only('links').findOne())
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent('blog')
   .where({ _extension: 'md', navigation: { $ne: false } })

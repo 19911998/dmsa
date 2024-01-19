@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <UPageHero v-bind="page">
-      <template #description>
-        <MDC :value="page.description" />
-      </template>
-
+  <UPage>
+    <UPageHeader v-bind="page">
       <NuxtImg
         v-if="page.image"
         :src="page.image.src"
@@ -12,14 +8,12 @@
         class="ml-auto"
         preset="page"
       />
-    </UPageHero>
+    </UPageHeader>
 
     <UPageBody prose>
-      <UContainer>
-        <ContentRenderer v-if="page.body" :value="page" class="max-w-lg mx-auto" />
-      </UContainer>
+      <ContentRenderer v-if="page.body" :value="page" class="max-w-xl" />
     </UPageBody>
-  </div>
+  </UPage>
 </template>
   
 <script setup lang="ts">

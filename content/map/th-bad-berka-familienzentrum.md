@@ -2,7 +2,6 @@
 title: Familien- und Jugendzentrum Bad Berka
 description: Akzeptanz für Neonazis in Bad Berka.
 tags:
-  - Thüringen
 meta:
   bundesland: Thüringen
   ort: Bad Berka
@@ -14,7 +13,8 @@ meta:
   filter:
     Rechte Klientel:
       subkulturell: true
-    Verdrängungseffekt: true
+    Effekt:
+      Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
   Integrierte Nutzung: true

@@ -3,7 +3,6 @@ title: Jugendclub Max Reichpietsch
 description: Überregionales rechtes Zentrum in Rostocker Jugendclub.
 tags:
   - blood & honour
-  - mecklenburg-vorpommern
 meta:
   bundesland: Mecklenburg-Vorpommern
   ort: Rostock
@@ -20,17 +19,17 @@ meta:
     Rechte Klientel:
       subkulturell: true
       organisiert: true
+      gewaltbereit: true
     Infrastruktur für:
       Parties & Konzerte: true
       Kameradschaftstreffen: true
       Propaganda: true
     Tatbestände:
       Gewalt: true
-    Verdrängungseffekt: true
+    Effekt:
+      Verdrängungseffekt: true
   Leitung:
     Sozialarbeitende: true
-  Bezug zu:
-    Gewalttäterinnen: true
   Integrierte Nutzung: true
   Privilegierte Nutzung: true
   Organisationen: 

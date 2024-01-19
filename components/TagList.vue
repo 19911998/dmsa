@@ -4,14 +4,13 @@
       v-for="tag of tags"
       :key="tag"
       class="z-50"
-      size="md"
-      :color="tag === pageTag ? 'primary' : 'gray'"
+      :variant="tag === pageTag ? 'solid' : 'subtle'"
+      color="primary"
     >
       <NuxtLink
         :to="(tag === pageTag) ? base : base + '?tag=' + encodeURIComponent(tag)"
         class="flex items-center gap-x-2"
       >
-        <UIcon name="i-heroicons-tag" />
         {{ tag }}
       </NuxtLink>
     </UBadge>
