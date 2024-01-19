@@ -41,8 +41,8 @@ useHead({
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
-    { rel: 'canonical', href: process.env.NUXT_PUBLIC_SITE_URL + route.path }
-  ],    
+    { rel: 'canonical', href: process.env.NUXT_CANONICAL_URL + route.path }
+  ],
   htmlAttrs: {
     lang: 'de'
   }
