@@ -42,13 +42,7 @@
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
 const { data: blog } = await useAsyncData('blog-entries', () => queryContent('blog').sort({ date: -1 }).limit(4).find())
 
-const headerLinks = useState('header-links', () => undefined)
-
-headerLinks.value = Object.keys(page.value.cards).map(key => ({
-  label: page.value.cards[key].headline,
-  to: '#' + key,
-  exactHash: true
-}))
+const headerLinks = useState('header-links', () => [])
 
 useSeoMeta({
   title: page.value.title,
@@ -78,6 +72,6 @@ onMounted(() => {
   // Track all sections that have an `id` applied
   document.querySelectorAll('div[id] > div').forEach((section) => {
     observer.observe(section)
-  })  
+  })
 })
 </script>

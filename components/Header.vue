@@ -1,14 +1,3 @@
-<script setup lang="ts">
-import type { NavItem } from '@nuxt/content/dist/runtime/types'
-
-const navigation = inject<NavItem[]>('navigation', [])
-const route = useRoute()
-
-const headerLinks = useState('header-links', () => undefined)
-
-const { header } = useAppConfig()
-</script>
-
 <template>
   <UHeader :links="headerLinks">
     <template #logo>
@@ -43,3 +32,22 @@ const { header } = useAppConfig()
     </template>
   </UHeader>
 </template>
+
+<script setup lang="ts">
+import type { NavItem } from '@nuxt/content/dist/runtime/types'
+
+const navigation = inject<NavItem[]>('navigation', [])
+const route = useRoute()
+
+const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
+
+const headerLinks = useState('header-links', () => route.path === '/'
+  ? Object.keys(page.value.cards).map(key => ({
+      label: page.value.cards[key].headline,
+      to: '#' + key,
+      exactHash: true
+    }))
+  : [])
+
+const { header } = useAppConfig()
+</script>
