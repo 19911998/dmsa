@@ -51,4 +51,7 @@ const headerLinks = useState('header-links', () => route.path === '/'
 
 const { header } = useAppConfig()
 </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> hotfix

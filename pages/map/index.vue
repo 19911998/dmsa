@@ -51,7 +51,11 @@
 
           <LControl position="topright">
             <UChip
+<<<<<<< HEAD
               v-show="!showFilter && filterMapRef?.filterActive"
+=======
+              v-if="filterMapRef?.filterActive"
+>>>>>>> hotfix
               inset
               color="orange"
               class="sm:hidden"
@@ -65,7 +69,15 @@
                 Filter
               </UButton>
             </UChip>
-          </LControl>
+
+            <UButton
+              v-else
+              icon="i-heroicons-funnel"
+              @click="showFilter = true"
+            >
+              Filter
+            </UButton>
+        </LControl>
 
           <LControl position="bottomleft">
             <UButton
