@@ -1,7 +1,3 @@
-<script setup lang="ts">
-const { footer } = useAppConfig()
-</script>
-
 <template>
   <UFooter :links="footer?.links">
     <template #left>
@@ -14,11 +10,14 @@ const { footer } = useAppConfig()
           icon="i-heroicons-rss"
           variant="ghost"
           color="gray"
-          target="_blank"
-          to="/rss.xml"
+          :to="`${useRuntimeConfig().public.site_url}/rss.xml`"
           aria-label="RSS Feed"
         />
       </UTooltip>
     </template>
   </UFooter>
 </template>
+
+<script setup lang="ts">
+const { footer } = useAppConfig()
+</script>

@@ -22,7 +22,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       site_env: process.env.NUXT_SITE_ENV,
-      trailingSlash: true
+      trailingSlash: true,
+      site_url: process.env.NUXT_PUBLIC_SITE_URL
     }
   },
   sitemap: {
@@ -73,7 +74,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/api/search.json': { prerender: true },
-    '/rss.xml': { prerender: true }
+    '/rss.xml': { prerender: true, experimentalNoScripts: true }
   },
   colorMode: {
     preference: 'dark'
