@@ -1,5 +1,5 @@
 <template>
-  <UHeader :links="route.path === '/' ? headerLinks : undefined">
+  <UHeader :links="headerLinks">
     <template #logo>
       <template v-if="header?.logo?.dark || header?.logo?.light">
         <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
@@ -41,11 +41,13 @@ const route = useRoute()
 
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
 
-const headerLinks = useState('header-links', () => Object.keys(page.value.cards).map(key => ({
-  label: page.value.cards[key].headline,
-  to: '#' + key,
-  exactHash: true
-})))
+const headerLinks = useState('header-links', () => route.path === '/'
+  ? Object.keys(page.value.cards).map(key => ({
+      label: page.value.cards[key].headline,
+      to: '#' + key,
+      exactHash: true
+    }))
+  : [])
 
 const { header } = useAppConfig()
 </script>
