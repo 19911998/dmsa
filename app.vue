@@ -37,8 +37,7 @@ const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
 
 useHead({
   meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-    ...process.env.NUXT_SITE_ENV === 'preview' ? [{ name: 'robots', content: 'noindex' }] : []
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
