@@ -29,8 +29,6 @@ const { header } = useAppConfig()
 
       <UColorModeButton v-if="header?.colorMode" />
 
-      <UButton icon="i-heroicons-rss" variant="ghost" color="gray" target="_blank" to="/rss.xml" />
-
       <template v-if="header?.links">
         <UButton
           v-for="(link, index) of header.links"
