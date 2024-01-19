@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[»Du musst sie akzeptieren!«]]></title>
+        <description><![CDATA[»Du musst sie akzeptieren!«]]></description>
+        <link>https://dmsa.netlify.app</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Fri, 19 Jan 2024 01:34:10 GMT</lastBuildDate>
+        <atom:link href="https://dmsa.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Dies ist ein Beitragstitel 02]]></title>
+            <description><![CDATA[Exzerpt 02 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla]]></description>
+            <link>https://dmsa.netlify.app/blog/2024-01-04-test</link>
+            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-01-04-test</guid>
+            <pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Dies ist ein Beitragstitel 01]]></title>
+            <description><![CDATA[Exzerpt 01 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla]]></description>
+            <link>https://dmsa.netlify.app/blog/2024-01-03-test</link>
+            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-01-03-test</guid>
+            <pubDate>Wed, 03 Jan 2024 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
