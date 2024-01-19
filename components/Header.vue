@@ -1,5 +1,5 @@
 <template>
-  <UHeader :links="headerLinks">
+  <UHeader>
     <template #logo>
       <template v-if="header?.logo?.dark || header?.logo?.light">
         <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
@@ -9,8 +9,9 @@
       </template>
     </template>
 
-    <template v-if="header?.search && route.name !== 'index'" #center>
-      <UDocsSearchButton label="Suche&hellip;" class="hidden lg:flex" />
+    <template #center>
+      <UHeaderLinks v-if="route.path === '/'" :links="headerLinks" />
+      <UDocsSearchButton v-else-if="header?.search" label="Suche&hellip;" class="hidden lg:flex" />
     </template>
 
     <template #right>
@@ -39,15 +40,7 @@ import type { NavItem } from '@nuxt/content/dist/runtime/types'
 const navigation = inject<NavItem[]>('navigation', [])
 const route = useRoute()
 
-const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
-
-const headerLinks = useState('header-links', () => route.path === '/'
-  ? Object.keys(page.value.cards).map(key => ({
-      label: page.value.cards[key].headline,
-      to: '#' + key,
-      exactHash: true
-    }))
-  : [])
+const headerLinks = useState('header-links', () => [])
 
 const { header } = useAppConfig()
 </script>

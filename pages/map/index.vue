@@ -53,7 +53,7 @@
             <UChip
               v-if="filterMapRef?.filterActive"
               inset
-              color="orange"
+              :color="filterMapRef?.filterActive ? 'orange' : 'transparent'"
               class="sm:hidden"
               size="lg"
               :ui="{ base: '!ring-0' }"
