@@ -15,7 +15,7 @@
     </template>
 
     <template #right>
-      <UDocsSearchButton v-if="header?.search" :label="null" :class="{ 'lg:hidden': route.name !== 'index' }" />
+      <UDocsSearchButton v-if="header?.search && route.path === '/'" :label="null" />
 
       <UColorModeButton v-if="header?.colorMode" />
 
@@ -44,7 +44,3 @@ const headerLinks = useState('header-links', () => [])
 
 const { header } = useAppConfig()
 </script>
-<<<<<<< HEAD
-
-=======
->>>>>>> hotfix
