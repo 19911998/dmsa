@@ -1,7 +1,3 @@
-<script setup lang="ts">
-const { footer } = useAppConfig()
-</script>
-
 <template>
   <UFooter :links="footer?.links">
     <template #left>
@@ -9,12 +5,19 @@ const { footer } = useAppConfig()
     </template>
 
     <template #right>
-      <UButton
-        v-for="(link, index) of footer?.icons"
-        :key="index"
-        class="hidden lg:block"
-        v-bind="{ color: 'gray', variant: 'ghost', ...link }"
-      />
+      <UTooltip text="RSS Feed" placement="top">
+        <UButton
+          icon="i-heroicons-rss"
+          variant="ghost"
+          color="gray"
+          :to="`${useRuntimeConfig().public.site_url}/rss.xml`"
+          aria-label="RSS Feed"
+        />
+      </UTooltip>
     </template>
   </UFooter>
 </template>
+
+<script setup lang="ts">
+const { footer } = useAppConfig()
+</script>

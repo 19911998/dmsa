@@ -51,9 +51,9 @@
 
           <LControl position="topright">
             <UChip
-              v-show="!showFilter"
+              v-if="filterMapRef?.filterActive"
               inset
-              :color="filterMapRef?.filterActive ? 'orange' : 'transparent'"
+              color="orange"
               class="sm:hidden"
               size="lg"
               :ui="{ base: '!ring-0' }"
@@ -65,7 +65,15 @@
                 Filter
               </UButton>
             </UChip>
-          </LControl>
+
+            <UButton
+              v-else
+              icon="i-heroicons-funnel"
+              @click="showFilter = true"
+            >
+              Filter
+            </UButton>
+        </LControl>
 
           <LControl position="bottomleft">
             <UButton

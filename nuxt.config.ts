@@ -10,8 +10,7 @@ export default defineNuxtConfig({
     'nuxt-og-image',
     '@nuxt/image',
     '@nuxtjs/sitemap',
-    'nuxt3-leaflet',
-    '@nuxtjs/robots'
+    'nuxt3-leaflet'
   ],
   robots: {
     rules: {
@@ -21,8 +20,11 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
+      site_name: process.env.NUXT_SITE_NAME,
       site_env: process.env.NUXT_SITE_ENV,
-      trailingSlash: true
+      site_url: process.env.NUXT_PUBLIC_SITE_URL,
+      canonical_url: process.env.NUXT_CANONICAL_URL,
+      trailingSlash: true,
     }
   },
   sitemap: {
@@ -71,11 +73,9 @@ export default defineNuxtConfig({
       'DM+Sans': [400, 500, 600, 700]
     }
   },
-  router: {
-    strict: true
-  },
   routeRules: {
-    '/api/search.json': { prerender: true }
+    '/api/search.json': { prerender: true },
+    '/rss.xml': { prerender: true, experimentalNoScripts: true }
   },
   colorMode: {
     preference: 'dark'

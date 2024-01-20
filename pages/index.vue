@@ -39,15 +39,16 @@
 </template>
 
 <script setup lang="ts">
+const headerLinks = useState('header-links', () => [])
+
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
 const { data: blog } = await useAsyncData('blog-entries', () => queryContent('blog').sort({ date: -1 }).limit(4).find())
-
-const headerLinks = useState('header-links', () => undefined)
 
 headerLinks.value = Object.keys(page.value.cards).map(key => ({
   label: page.value.cards[key].headline,
   to: '#' + key,
-  exactHash: true
+  exactHash: true,
+  activeClass: 'text-primary'
 }))
 
 useSeoMeta({
@@ -69,7 +70,7 @@ onMounted(() => {
       const id = entry.target.closest('[id]').getAttribute('id')
       const link = headerLinks.value.find(({ to }) => to === '#' + id)
       if (link) {
-        link.class = entry.isIntersecting ? 'text-primary' : '!text-inherit hover:!text-primary'
+        link.active = entry.isIntersecting
       }
     })
   }, {
@@ -78,6 +79,6 @@ onMounted(() => {
   // Track all sections that have an `id` applied
   document.querySelectorAll('div[id] > div').forEach((section) => {
     observer.observe(section)
-  })  
+  })
 })
 </script>
