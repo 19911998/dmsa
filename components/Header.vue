@@ -44,3 +44,7 @@ const headerLinks = useState('header-links', () => [])
 
 const { header } = useAppConfig()
 </script>
+<<<<<<< HEAD
+
+=======
+>>>>>>> hotfix

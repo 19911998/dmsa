@@ -51,7 +51,11 @@
 
           <LControl position="topright">
             <UChip
+<<<<<<< HEAD
+              v-show="!showFilter && filterMapRef?.filterActive"
+=======
               v-if="filterMapRef?.filterActive"
+>>>>>>> hotfix
               inset
               :color="filterMapRef?.filterActive ? 'orange' : 'transparent'"
               class="sm:hidden"
