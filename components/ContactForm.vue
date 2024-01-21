@@ -3,19 +3,56 @@
     <input type="text" name="name">
     <input type="text" name="email">
     <textarea name="message" />
-    <button type="submit">Send</button>
+    <button type="submit">
+      Send
+    </button>
   </form>
 
   <UModal
     :prevent-close="Object.values(state).some(Boolean)"
     :model-value="modelValue"
-    @update:model-value="$emit('update:model-value', $event)"
+    @update:model-value="close"
   >
-    <div class="p-4">
+    <ULandingCTA
+      v-if="sent"
+      title="Vielen Dank!"
+      description="Ihr Formular wurde erfolgreich gesendet."
+      :links="[{
+        label: 'Schlie&szlig;en',
+        color: 'primary',
+        size: 'md',
+        icon: 'i-heroicons-x-mark-20-solid',
+        click: close
+      }]"
+    />
+
+    <ULandingCTA
+      v-else-if="error"
+      title="Oops!"
+      description="Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es sp&auml;ter erneut."
+      :links="[{
+        label: 'Zur&uuml;ck zum Formular',
+        color: 'gray',
+        size: 'md',
+        icon: 'i-heroicons-arrow-left-20-solid',
+        click: () => { Object.assign(state, lastCommit), error = false }
+      }, {
+        label: 'Schlie&szlig;en',
+        color: 'gray',
+        size: 'md',
+        icon: 'i-heroicons-x-mark-20-solid',
+        click: close
+      }]"
+    />
+
+    <div v-else class="p-4">
       <div class="flex items-center justify-between pb-4">
-        <h3 class="text-2xl font-semibold leading-6 text-gray-900 dark:text-white">
-          Kontaktformular
-        </h3>
+        <div class="flex items-center space-x-3">
+          <UIcon name="i-heroicons-chat-bubble-left-ellipsis" class="text-2xl text-primary" />
+          <h2 class="text-2xl font-semibold leading-6 text-gray-900 dark:text-white">
+            Kontaktformular
+          </h2>
+        </div>
         <UButton
           color="gray"
           variant="ghost"
@@ -56,7 +93,7 @@
         </UFormGroup>
 
         <div class="text-right">
-          <UButton v-if="complete" type="submit">
+          <UButton v-if="complete" type="submit" trailing-icon="i-heroicons-paper-airplane">
             Mail senden
           </UButton>
 
@@ -65,7 +102,7 @@
             :ui="{ base: 'text-sm !text-amber-500 h-7'}"
             text="F&uuml;llen Sie alle erforderlichen Felder!"
           >
-            <UButton type="submit" disabled>
+            <UButton type="submit" trailing-icon="i-heroicons-paper-airplane" disabled>
               Mail senden
             </UButton>
           </UTooltip>
@@ -90,19 +127,33 @@ defineProps({
   }
 })
 
-defineEmits(['update:model-value'])
+const emit = defineEmits(['update:model-value'])
 
 const state = reactive({
-  email: undefined,
-  name: undefined,
-  message: undefined
+  email: '',
+  name: '',
+  message: ''
 })
+
+const sent = ref(false)
+const lastCommit= reactive<Partial<typeof state>>({})
+const error = ref(false)
 
 const schema = object({
   email: string().email('E-Mail ung\u00fcltig')
 })
 
 type Schema = InferType<typeof schema>
+
+async function close () {
+  for (const key in state) {
+    lastCommit[key] = state[key] = ''
+  }
+  emit('update:model-value', false)
+  setTimeout(() => {
+    error.value = sent.value = false
+  }, 200)
+}
 
 function encode (data: Record<string, string>) {
   return Object.keys(data)
@@ -112,11 +163,21 @@ function encode (data: Record<string, string>) {
     .join('&')
 }
 
-function handleSubmit (e: FormSubmitEvent<Schema>) {
-  $fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: encode({ 'form-name': 'contact', ...e.data })
-  })
+async function handleSubmit (e: FormSubmitEvent<Schema>) {
+  try {
+    await $fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...e.data })
+    })
+    sent.value = true
+    for (const key in state) {
+      state[key] = undefined
+    }
+  } catch (e) {
+    Object.assign(lastCommit, e.data)
+    error.value = true
+    console.log(e)
+  }
 }
 </script>
