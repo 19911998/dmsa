@@ -4,7 +4,7 @@
     <input type="text" name="email">
     <textarea name="message" />
     <input type="hidden" name="form-name" value="contactForm">
-    <button type="submit" />
+    <button type="submit">Send</button>
   </form>
 
   <UModal
