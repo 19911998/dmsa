@@ -1,7 +1,8 @@
 <template>
-  <form name="contact" method="post" class="hidden" netlify>
+  <form name="contact" method="post" class="hidden" netlify-honeypot="bot-field" data-netlify="true">
     <input type="text" name="name">
     <input type="text" name="email">
+    <input type="text" name="bot-field">
     <textarea name="message" />
     <button type="submit">
       Send
@@ -85,6 +86,13 @@
             E-Mail<span class="text-red-700">*</span>
           </template>
           <UInput v-model="state.email" />
+        </UFormGroup>
+
+        <UFormGroup name="bot-field" class="hidden">
+          <template #label>
+            Don&apos;t fill this out if you&apos;re human
+          </template>
+          <UInput name="bot-ield" />
         </UFormGroup>
 
         <UFormGroup name="message">
