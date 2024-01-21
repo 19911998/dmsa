@@ -19,7 +19,14 @@
         />
       </div>
 
-      <UForm :state="state" class="space-y-4" netlify>
+      <UForm
+        ref="formRef"
+        :state="state"
+        class="space-y-4"
+        name="contactForm"
+        data-netlify="true"
+        @submit="handleSubmit"
+      >
         <UFormGroup label="Name" name="name">
           <UInput v-model="state.name" />
         </UFormGroup>
@@ -32,6 +39,8 @@
           <UTextarea v-model="state.message" autoresize />
         </UFormGroup>
 
+        <input type="hidden" name="form-name" value="contactForm">
+
         <div class="text-right">
           <UButton type="submit">
             Mail senden
@@ -43,6 +52,8 @@
 </template>
 
 <script setup lang="ts">
+const formRef = ref(null)
+
 defineProps({
   modelValue: {
     type: Boolean,
@@ -57,4 +68,20 @@ const state = reactive({
   name: '',
   message: ''
 })
+
+function encode (data: Record<string, string>) {
+  return Object.keys(data)
+    .map(
+      key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+    )
+    .join('&')
+}
+
+function handleSubmit () {
+  $fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encode({ 'form-name': 'contactForm', ...state })
+  })
+}
 </script>
