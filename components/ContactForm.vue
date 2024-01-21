@@ -1,5 +1,5 @@
 <template>
-  <form name="contact" method="post" netlify>
+  <form name="contact" method="post" class="hidden" netlify>
     <input type="text" name="name">
     <input type="text" name="email">
     <textarea name="message" />
@@ -28,27 +28,47 @@
 
       <UForm
         ref="formRef"
+        :schema="schema"
         :state="state"
         class="space-y-4"
         name="contactForm"
         @submit="handleSubmit"
       >
-        <UFormGroup label="Name" name="name">
+        <UFormGroup name="name">
+          <template #label>
+            Name<span class="text-red-700">*</span>
+          </template>
           <UInput v-model="state.name" />
         </UFormGroup>
 
-        <UFormGroup label="Email" name="email">
+        <UFormGroup name="email">
+          <template #label>
+            E-Mail<span class="text-red-700">*</span>
+          </template>
           <UInput v-model="state.email" />
         </UFormGroup>
 
-        <UFormGroup label="Nachricht" name="message">
+        <UFormGroup name="message">
+          <template #label>
+            Nachricht<span class="text-red-700">*</span>
+          </template>
           <UTextarea v-model="state.message" autoresize />
         </UFormGroup>
 
         <div class="text-right">
-          <UButton type="submit">
+          <UButton v-if="complete" type="submit">
             Mail senden
           </UButton>
+
+          <UTooltip
+            v-else
+            :ui="{ base: 'text-sm !text-amber-500 h-7'}"
+            text="F&uuml;llen Sie alle erforderlichen Felder!"
+          >
+            <UButton type="submit" disabled>
+              Mail senden
+            </UButton>
+          </UTooltip>
         </div>
       </UForm>
     </div>
@@ -56,7 +76,12 @@
 </template>
 
 <script setup lang="ts">
+import { object, string, type InferType } from 'yup'
+import type { FormSubmitEvent } from '#ui/types'
+
 const formRef = ref(null)
+
+const complete = computed(() => Object.values(state).every(Boolean))
 
 defineProps({
   modelValue: {
@@ -68,10 +93,16 @@ defineProps({
 defineEmits(['update:model-value'])
 
 const state = reactive({
-  email: '',
-  name: '',
-  message: ''
+  email: undefined,
+  name: undefined,
+  message: undefined
 })
+
+const schema = object({
+  email: string().email('E-Mail ung\u00fcltig')
+})
+
+type Schema = InferType<typeof schema>
 
 function encode (data: Record<string, string>) {
   return Object.keys(data)
@@ -81,11 +112,11 @@ function encode (data: Record<string, string>) {
     .join('&')
 }
 
-function handleSubmit () {
+function handleSubmit (e: FormSubmitEvent<Schema>) {
   $fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: encode({ 'form-name': 'contact', ...state })
+    body: encode({ 'form-name': 'contact', ...e.data })
   })
 }
 </script>
