@@ -1,9 +1,8 @@
 <template>
-  <form method="post" netlify>
+  <form name="contact" method="post" netlify>
     <input type="text" name="name">
     <input type="text" name="email">
     <textarea name="message" />
-    <input type="hidden" name="form-name" value="contactForm">
     <button type="submit">Send</button>
   </form>
 
@@ -86,7 +85,7 @@ function handleSubmit () {
   $fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: encode({ 'form-name': 'contactForm', ...state })
+    body: encode({ 'form-name': 'contact', ...state })
   })
 }
 </script>
