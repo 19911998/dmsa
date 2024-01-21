@@ -78,7 +78,7 @@
           <template #label>
             Name<span class="text-red-700">*</span>
           </template>
-          <UInput v-model="state.name" />
+          <UInput v-model="state.name" autofocus />
         </UFormGroup>
 
         <UFormGroup name="email">
