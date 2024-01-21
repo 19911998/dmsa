@@ -1,5 +1,7 @@
 <template>
   <div>
+    <NuxtLoadingIndicator />
+
     <Header />
 
     <UMain class="min-h-[calc(100vh-var(--header-height)+20)]">

@@ -12,12 +12,6 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     'nuxt3-leaflet'
   ],
-  robots: {
-    rules: {
-      UserAgent: '*',
-      Disallow: '/'
-    }
-  },
   runtimeConfig: {
     public: {
       site_name: process.env.NUXT_SITE_NAME,
