@@ -5,25 +5,28 @@
     </template>
 
     <template #right>
-      <UTooltip text="RSS Feed" placement="top">
+      <ContactForm
+        v-if="footer?.buttons.some(_ => _.contactForm)"
+        v-model="openContactForm"
+      />
+
+      <UTooltip v-for="(btn, i) in footer?.buttons" :key="i" :text="btn.label" placement="top">
         <UButton
-          icon="i-heroicons-rss"
+          v-if="btn.contactForm"
+          :icon="btn.icon"
           variant="ghost"
           color="gray"
-          :to="`${useRuntimeConfig().public.site_url}/rss.xml`"
-          aria-label="RSS Feed"
-        />
-      </UTooltip>
-
-      <ContactForm v-model="openContactForm" />
-
-      <UTooltip text="Kontaktformular" placement="top">
-        <UButton
-          icon="i-heroicons-envelope"
-          variant="ghost"
-          color="gray"
-          aria-label="Kontaktformular"
+          :aria-label="btn.label"
           @click="openContactForm = true"
+        />
+
+        <UButton
+          v-else
+          :icon="btn.icon"
+          variant="ghost"
+          color="gray"
+          :to="(btn.abspath ? useRuntimeConfig().public.site_url : '') + btn.to"
+          :aria-label="btn.label"
         />
       </UTooltip>
     </template>
@@ -33,7 +36,7 @@
 <script setup lang="ts">
 import ContactForm from '~/components/ContactForm.vue'
 
-const { footer } = useAppConfig()
+const { data: footer } = await useAsyncData('footer', () => queryContent('_footer').findOne())
 
 const openContactForm = ref(false)
 </script>
