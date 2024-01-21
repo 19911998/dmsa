@@ -1,4 +1,11 @@
 <template>
+  <form class="hidden" data-netlify="true">
+    <input type="text" name="form-name" value="">
+    <input type="text" name="name" value="">
+    <input type="email" name="email" value="">
+    <input type="hidden" name="form-name" value="contactForm">
+  </form>
+
   <UModal
     :prevent-close="Object.values(state).some(Boolean)"
     :model-value="modelValue"
@@ -24,7 +31,6 @@
         :state="state"
         class="space-y-4"
         name="contactForm"
-        data-netlify="true"
         @submit="handleSubmit"
       >
         <UFormGroup label="Name" name="name">
@@ -38,8 +44,6 @@
         <UFormGroup label="Nachricht" name="message">
           <UTextarea v-model="state.message" autoresize />
         </UFormGroup>
-
-        <input type="hidden" name="form-name" value="contactForm">
 
         <div class="text-right">
           <UButton type="submit">
