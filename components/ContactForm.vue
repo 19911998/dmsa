@@ -46,21 +46,23 @@
     />
 
     <div v-else class="p-4">
-      <div class="flex items-center justify-between pb-4">
+      <div class="flex items-start justify-between pb-5">
         <div class="flex items-center space-x-3">
           <UIcon name="i-heroicons-chat-bubble-left-ellipsis" class="text-2xl text-primary" />
-          <h2 class="text-2xl font-semibold leading-6 text-gray-900 dark:text-white">
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-white">
             Kontaktformular
           </h2>
         </div>
+
         <UButton
           color="gray"
           variant="ghost"
-          icon="i-heroicons-x-mark-20-solid"
-          size="xl"
-          class="-my-1"
+          class="-mt-3 -mr-3 p-2"
+          aria-label="Schlie&szlig;en"
           @click="$emit('update:model-value', false)"
-        />
+        >
+          <UIcon name="i-heroicons-x-mark-20-solid" class="text-3xl !p-4" />
+        </UButton>
       </div>
 
       <UForm

@@ -39,13 +39,12 @@ export default defineAppConfig({
     links: [{
       label: 'Intro',
       to: '/#intro'
-    },
-    {
-      label: 'Karte',
-      to: '/map/'
     }, {
       label: 'Blog',
       to: '/blog/'
+    }, {
+      label: 'Karte',
+      to: '/map/'
     }],
     icons: [{
       icon: 'i-simple-icons-nuxtdotjs',
