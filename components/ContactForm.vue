@@ -21,7 +21,7 @@
 
       <UForm :state="state" class="space-y-4" netlify>
         <UFormGroup label="Name" name="name">
-          <UInput v-model="state.name" type="password" />
+          <UInput v-model="state.name" />
         </UFormGroup>
 
         <UFormGroup label="Email" name="email">
