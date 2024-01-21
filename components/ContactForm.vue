@@ -1,8 +1,8 @@
 <template>
-  <form class="hidden" data-netlify="true">
-    <input type="text" name="form-name" value="">
+  <form netlify>
     <input type="text" name="name" value="">
-    <input type="email" name="email" value="">
+    <input type="text" name="email" value="">
+    <textarea name="message" value="" />
     <input type="hidden" name="form-name" value="contactForm">
   </form>
 
