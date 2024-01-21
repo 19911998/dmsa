@@ -1,9 +1,10 @@
 <template>
-  <form netlify>
-    <input type="text" name="name" value="">
-    <input type="text" name="email" value="">
-    <textarea name="message" value="" />
+  <form method="post" netlify>
+    <input type="text" name="name">
+    <input type="text" name="email">
+    <textarea name="message" />
     <input type="hidden" name="form-name" value="contactForm">
+    <button type="submit" />
   </form>
 
   <UModal
