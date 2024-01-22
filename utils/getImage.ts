@@ -27,7 +27,7 @@ export default function (img: { src: string, [key: string]: string } | undefined
   let vw = ''
   const sizes = Object.keys(screens).reduce((acc, screen) => {
     vw = widths[screen] || vw || widths.default
-    if (screens[screen] < size.value.width) acc += ` ${screen}:${vw}`
+    if (screens[screen] <= size.value.width) acc += ` ${screen}:${vw}`
     return acc
   }, '100vw')
 
