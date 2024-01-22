@@ -11,10 +11,11 @@
         <MDC :value="page.hero.title" />
       </template>
 
-      <NuxtImg
+      <NuxtPicture
         v-if="page.hero.image?.src"
-        v-bind="getImage(page.hero.image, '100vw md:50vw')"
+        v-bind="getPicture(page.hero.image, '100vw md:50vw')"
         class="mx-auto"
+        densities="x1"
       />
     </ULandingHero>
 

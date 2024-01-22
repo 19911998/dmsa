@@ -27,7 +27,9 @@ export default function (img: { src: string, [key: string]: string } | undefined
   let vw = ''
   const sizes = Object.keys(screens).reduce((acc, screen) => {
     vw = widths[screen] || vw || widths.default
-    if (screens[screen] <= size.value.width) acc += ` ${screen}:${vw}`
+    if (screens[screen] <= size.value.width) {
+      acc += ` ${screen}:${vw}`
+    }
     return acc
   }, '100vw')
 
@@ -37,5 +39,5 @@ export default function (img: { src: string, [key: string]: string } | undefined
     return acc
   }, [] as string[])
 
-  return { ...img, sizes, quality: 80, format: 'webp', class: maxWidths.join(' ') }
+  return { ...img, sizes, quality: 80, densities: 'x1', format: 'webp', class: maxWidths.join(' ') }
 }
