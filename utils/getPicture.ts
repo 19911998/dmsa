@@ -34,6 +34,8 @@ export default function (img: { src: string, [key: string]: string } | undefined
     return acc
   }, '100vw')
 
+  console.log(sizes)
+
   return {
     ...img,
     imgAttrs: { width, height },

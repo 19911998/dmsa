@@ -49,12 +49,11 @@
             </LPopup>
           </LMarker>
 
-          <LControl position="topright">
+          <LControl position="topright" class="sm:hidden">
             <UChip
               v-if="filterMapRef?.filterActive"
               inset
               color="orange"
-              class="sm:hidden"
               size="lg"
               :ui="{ base: '!ring-0' }"
             >
@@ -73,7 +72,7 @@
             >
               Filter
             </UButton>
-        </LControl>
+          </LControl>
 
           <LControl position="bottomleft">
             <UButton
