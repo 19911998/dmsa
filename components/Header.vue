@@ -10,7 +10,7 @@
     </template>
 
     <template #center>
-      <UHeaderLinks v-if="route.path === '/'" :links="headerLinks" class="hidden xs:block" />
+      <UHeaderLinks v-if="route.path === '/'" :links="headerLinks" class="hidden sm:flex" />
       <UDocsSearchButton v-else-if="header?.search" label="Suche&hellip;" class="hidden lg:flex" />
     </template>
 
