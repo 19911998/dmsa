@@ -10,6 +10,12 @@
       <template #title>
         <MDC :value="page.hero.title" />
       </template>
+
+      <NuxtImg
+        v-if="page.hero.image?.src"
+        v-bind="getImage(page.hero.image, '100vw md:50vw')"
+        class="mx-auto"
+      />
     </ULandingHero>
 
     <ULandingSection

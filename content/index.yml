@@ -5,6 +5,9 @@ search: false
 hero:
   title: »Du musst sie <span class="text-primary">akzeptieren!</span>«
   description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
+  image:
+    src: /images/signal-2024-01-21-213815_002.jpeg
+    alt: Platzhalter
   links:
     - label: Einführung
       icon: i-heroicons-information-circle-20-solid
