@@ -13,6 +13,7 @@ export default function (img: { src: string, [key: string]: string } | undefined
   if (!img?.src) return
 
   const size = useState(img.src, () => imageSize('./public' + img.src))
+  const { width, height } = size.value
 
   const widths = viewWidths.split(' ').reduce((acc, curr: string) => {
     const val = curr.split(':')
@@ -33,11 +34,12 @@ export default function (img: { src: string, [key: string]: string } | undefined
     return acc
   }, '100vw')
 
-  const maxWidths = Object.keys(widths).reduce((acc, key: string) => {
-    const maxWidth = `max-w-[${widths[key]}]`.replace('[100vw]', 'full')
-    acc.push(((key === 'default') ? '' : key + ':') + maxWidth)
-    return acc
-  }, [] as string[])
-
-  return { ...img, sizes, quality: 80, densities: 'x1', format: 'webp', class: maxWidths.join(' ') }
+  return {
+    ...img,
+    imgAttrs: { width, height },
+    sizes,
+    quality: 80,
+    densities: 'x1',
+    format: 'webp'
+  }
 }

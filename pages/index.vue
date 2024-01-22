@@ -13,8 +13,8 @@
 
       <NuxtPicture
         v-if="page.hero.image?.src"
+        class="max-w-full md:max-w-[50vw] mx-auto"
         v-bind="getPicture(page.hero.image, '100vw md:50vw')"
-        class="mx-auto"
       />
     </ULandingHero>
 
