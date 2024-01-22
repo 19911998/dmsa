@@ -1,12 +1,12 @@
 <template>
   <UHeader>
-    <template #logo>
+    <template v-if="Object.values(header?.logo).some(Boolean)" #logo>
       <template v-if="header?.logo?.dark || header?.logo?.light">
         <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
       </template>
-      <template v-else>
-        DMSA
-      </template>
+    </template>
+    <template v-else #left>
+      <a href="/" class="font-bold text-xl text-gray-900 dark:text-white">DMSA</a>
     </template>
 
     <template #center>
