@@ -12,6 +12,7 @@
   <UModal
     :prevent-close="Object.values(state).some(Boolean)"
     :model-value="modelValue"
+    :ui="{ wrapper: 'z-[1001]' }"
     @update:model-value="close"
   >
     <ULandingCTA

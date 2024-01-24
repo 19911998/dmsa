@@ -28,23 +28,6 @@ export default defineNuxtConfig({
   ignore: [
     process.env.NUXT_SITE_ENV === 'preview' ? '' : 'pages/convert.vue'
   ],
-  image: {
-    presets: {
-      blog: {
-        modifiers: {
-          fit: 'cover',
-          format: 'webp',
-          loading: 'lazy',
-          modifiers: { resize: '250x150' }
-        },
-      },
-      page: {
-        modifiers: {
-          format: 'webp',
-        }
-      }
-    }
-  },
   hooks: {
     // Define `@nuxt/ui` components as global to use them in `.md` (feel free to add those you need)
     'components:extend': (components) => {
