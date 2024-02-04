@@ -45,3 +45,16 @@ cards:
         color: gray
         to: /map/
         size: lg
+  doku:
+    headline: Dokumentation
+    title:
+    description: "Textbasierte Auflistung der erfassten Fallbeispiele, die mittels eines Drop-Down-Menüs vollständig dargestellt oder nach Bundesländern gefiltert werden kann."
+  recherche:
+    headline: Recherche
+    title:
+    description: "Mit Kick auf »Recherche« erfolgt die Weiterleitung
+    auf eine statische Seite in der die Methodik skizziert wird, die beim Erarbeiten der Fallbeispiele angewendet worden ist (wann z.B. gilt eine Klientel als »organisierte Rechte«?)"
+  kontakt:
+    headline: Kontakt
+    title:
+    description: "Kontaktformular"
