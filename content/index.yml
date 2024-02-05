@@ -11,6 +11,7 @@ hero:
   links:
     - label: Zur Karte
       icon: i-heroicons-arrow-right-20-solid
+      color: gray
       trailing: true
       to: /map/
       size: lg
