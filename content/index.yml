@@ -9,12 +9,6 @@ hero:
     src: /images/signal-2024-01-21-213815_002.jpeg
     alt: Platzhalter
   links:
-    - label: Einführung
-      icon: i-heroicons-information-circle-20-solid
-      color: gray
-      trailing: false
-      to: /#intro
-      size: lg
     - label: Zur Karte
       icon: i-heroicons-arrow-right-20-solid
       trailing: true
