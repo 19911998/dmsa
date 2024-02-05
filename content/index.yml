@@ -22,7 +22,7 @@ hero:
       size: lg
 cards:
   intro:
-    headline: Einführung
+    headline: About
     title:
     description: "Eine Visitenkarte des Projekts auf max. 650 Zeichen: Thema, Anzahl der in der Datenbank erfassten Projekte, Stand der letzten Aktualisierung, Verweis auf die angewandte Methodik beim Erarbeiten der Fallbeispiele Recherche; Aufruf, Hinweise und Feedback zu geben via »Kontakt«."
   blog:
@@ -46,7 +46,7 @@ cards:
         to: /map/
         size: lg
   doku:
-    headline: Dokumentation
+    headline: Doku
     title:
     description: "Textbasierte Auflistung der erfassten Fallbeispiele, die mittels eines Drop-Down-Menüs vollständig dargestellt oder nach Bundesländern gefiltert werden kann."
   recherche:
