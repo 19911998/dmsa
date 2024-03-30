@@ -9,20 +9,15 @@ hero:
     src: /images/signal-2024-01-21-213815_002.jpeg
     alt: Platzhalter
   links:
-    - label: Einführung
-      icon: i-heroicons-information-circle-20-solid
-      color: gray
-      trailing: false
-      to: /#intro
-      size: lg
     - label: Zur Karte
       icon: i-heroicons-arrow-right-20-solid
+      color: gray
       trailing: true
       to: /map/
       size: lg
 cards:
   intro:
-    headline: Einführung
+    headline: About
     title:
     description: "Eine Visitenkarte des Projekts auf max. 650 Zeichen: Thema, Anzahl der in der Datenbank erfassten Projekte, Stand der letzten Aktualisierung, Verweis auf die angewandte Methodik beim Erarbeiten der Fallbeispiele Recherche; Aufruf, Hinweise und Feedback zu geben via »Kontakt«."
   blog:
@@ -45,3 +40,16 @@ cards:
         color: gray
         to: /map/
         size: lg
+  doku:
+    headline: Doku
+    title:
+    description: "Textbasierte Auflistung der erfassten Fallbeispiele, die mittels eines Drop-Down-Menüs vollständig dargestellt oder nach Bundesländern gefiltert werden kann."
+  recherche:
+    headline: Recherche
+    title:
+    description: "Mit Kick auf »Recherche« erfolgt die Weiterleitung
+    auf eine statische Seite in der die Methodik skizziert wird, die beim Erarbeiten der Fallbeispiele angewendet worden ist (wann z.B. gilt eine Klientel als »organisierte Rechte«?)"
+  kontakt:
+    headline: Kontakt
+    title:
+    description: "Kontaktformular"
