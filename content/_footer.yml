@@ -1,16 +1,16 @@
-  credits: Eine Dokumentation über die Soziale Arbeit mit Rechtsradikalen. · &copy;&nbsp;2024
-  links:
-    - label: Intro
-      to: /#intro
-    - label: Blog
-      to: /blog/
-    - label: Karte
-      to: /map/
-  buttons:
-    - label: RSS Feed
-      to: /rss.xml
-      abspath: true
-      icon: i-heroicons-rss
-    - label: Kontaktformular
-      contactForm: true
-      icon: i-heroicons-envelope
+credits: Eine Dokumentation über die Soziale Arbeit mit Neonazis. · &copy;&nbsp;2024
+links:
+  - label: Intro
+    to: /#intro
+  - label: Blog
+    to: /blog/
+  - label: Karte
+    to: /map/
+buttons:
+  - label: RSS Feed
+    to: /rss.xml
+    abspath: true
+    icon: i-heroicons-rss
+  - label: Kontaktformular
+    contactForm: true
+    icon: i-heroicons-envelope

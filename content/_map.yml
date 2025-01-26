@@ -1,8 +1,8 @@
-title: 'Karte: »Du musst sie akzeptieren!«'
-description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
+title: 'Karte: »<span class="text-primary">doku</span>-soziale-arbeit.de«'
+description: Eine Dokumentation über die Soziale Arbeit mit Neonazis.
 navigation: false
 hero:
-  title: »Du musst sie akzeptieren!«
+  title: doku-soziale-arbeit.de
   description: Die Karte
 links:
   - label: Einführung

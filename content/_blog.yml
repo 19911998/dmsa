@@ -1,10 +1,10 @@
-title: 'Blog: »Du musst sie akzeptieren!«'
-description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
+title: 'Blog: »<span class="text-primary">doku</span>-soziale-arbeit.de«'
+description: Eine Dokumentation über die Soziale Arbeit mit Neonazis.
 navigation: false
 hero:
   headline: Blog
-  title: »Du musst sie akzeptieren!«
-  description: Eine Dokumentation über die Soziale Arbeit mit Neonazis
+  title: doku-soziale-arbeit.de
+  description: Eine Dokumentation über die Soziale Arbeit mit Neonazis.
 links:
   - label: Einführung
     to: /#intro
