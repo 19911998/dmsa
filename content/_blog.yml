@@ -1,9 +1,9 @@
-title: 'Blog: »<span class="text-primary">doku</span>-soziale-arbeit.de«'
+title: Blog
 description: Eine Dokumentation über die Soziale Arbeit mit Neonazis.
 navigation: false
 hero:
-  headline: Blog
-  title: doku-soziale-arbeit.de
+  headline: 'Blog: »<span class="text-primary">doku</span>-soziale-arbeit.de«'
+  title: ''
   description: Eine Dokumentation über die Soziale Arbeit mit Neonazis.
 links:
   - label: Einführung
