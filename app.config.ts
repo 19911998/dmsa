@@ -21,7 +21,7 @@ export default defineAppConfig({
     }
   },
   seo: {
-    siteName: process.env.NUXT_SITE_NAME,
+    siteName: 'doku-soziale-arbeit.de | Eine Dokumentation über die Soziale Arbeit mit Neonazis.',
   },
   header: {
     logo: {
