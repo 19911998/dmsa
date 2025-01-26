@@ -4,20 +4,20 @@
         <description><![CDATA[»Du musst sie akzeptieren!«]]></description>
         <link>https://dmsa.netlify.app</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 26 Jan 2025 22:55:44 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 26 Jan 2025 22:59:05 GMT</lastBuildDate>
         <atom:link href="https://dmsa.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[03 [Testbeitrag]]]></title>
             <description><![CDATA[03 [Exzerpt] Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla]]></description>
-            <link>https://dmsa.netlify.app/blog/2024-02-09-test</link>
-            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-02-09-test</guid>
+            <link>https://dmsa.netlify.app/blog/2024-02-20-test</link>
+            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-02-20-test</guid>
             <pubDate>Tue, 20 Feb 2024 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[02 [Testbeitrag]]]></title>
             <description><![CDATA[02 [Exzerpt] Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla]]></description>
-            <link>https://dmsa.netlify.app/blog/2024-01-04-test</link>
-            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-01-04-test</guid>
+            <link>https://dmsa.netlify.app/blog/2024-01-15-test</link>
+            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-01-15-test</guid>
             <pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate>
         </item>
         <item>
