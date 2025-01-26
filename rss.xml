@@ -4,27 +4,27 @@
         <description><![CDATA[»Du musst sie akzeptieren!«]]></description>
         <link>https://dmsa.netlify.app</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 26 Jan 2025 22:34:17 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 26 Jan 2025 22:42:37 GMT</lastBuildDate>
         <atom:link href="https://dmsa.netlify.app/rss.xml" rel="self" type="application/rss+xml"/>
         <item>
-            <title><![CDATA[Dies ist ein Beitragstitel 03]]></title>
-            <description><![CDATA[Exzerpt 03 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla]]></description>
-            <link>https://dmsa.netlify.app/blog/2024-01-04-test-copy</link>
-            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-01-04-test-copy</guid>
-            <pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Dies ist ein Beitragstitel 02]]></title>
+            <title><![CDATA[Testbeitrag 02]]></title>
             <description><![CDATA[Exzerpt 02 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla]]></description>
             <link>https://dmsa.netlify.app/blog/2024-01-04-test</link>
             <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-01-04-test</guid>
             <pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Dies ist ein Beitragstitel 01]]></title>
+            <title><![CDATA[Testbeitrag 03]]></title>
+            <description><![CDATA[Exzerpt 03 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla]]></description>
+            <link>https://dmsa.netlify.app/blog/2024-02-09-test</link>
+            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-02-09-test</guid>
+            <pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Testbeitrag 01]]></title>
             <description><![CDATA[Exzerpt 01 - Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla Bla]]></description>
-            <link>https://dmsa.netlify.app/blog/2024-01-03-test</link>
-            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-01-03-test</guid>
+            <link>https://dmsa.netlify.app/blog/2024-01-01-test</link>
+            <guid isPermaLink="true">https://dmsa.netlify.app/blog/2024-01-01-test</guid>
             <pubDate>Wed, 03 Jan 2024 00:00:00 GMT</pubDate>
         </item>
     </channel>
