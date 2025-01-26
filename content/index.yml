@@ -23,7 +23,7 @@ cards:
   blog:
     headline: Blog
     title: null
-    description: Hier wird ein Blog-Feed dargestellt. Die drei jüngsten Beiträge erscheinen mit ihrem Titel, dem Datum ihrer Veröffentlichung und einem Exzerpt.
+    description: Hier wird ein Blog-Feed dargestellt. Die drei jüngsten Beiträge erscheinen mit ihrem Titel, einem Exzerpt und dem Datum ihrer Veröffentlichung.
     links:
       - label: Alle Beiträge
         trailingIcon: i-heroicons-arrow-right-20-solid
