@@ -1,9 +1,9 @@
-title: 'Karte: doku-soziale-arbeit.de'
+title: '[Karte] doku-soziale-arbeit.de'
 description: Eine Dokumentation über die Soziale Arbeit mit Neonazis.
 navigation: false
 hero:
   title: doku-soziale-arbeit.de
-  description: Die Karte
+  description: '[Karte] doku-soziale-arbeit.de'
 links:
   - label: Einführung
     to: /#intro
