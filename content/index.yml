@@ -3,7 +3,7 @@ description: Eine Dokumentation über die Soziale Arbeit mit Neonazis.
 navigation: false
 search: false
 hero:
-  title: »doku-<span class="text-primary">soziale-arbeit</span>.de«
+  title: »<span class="text-primary">doku</span>-soziale-arbeit.de«
   description: Eine Dokumentation über die Soziale Arbeit mit Neonazis.
   image:
     src: /images/signal-2024-01-21-213815_002.jpeg
